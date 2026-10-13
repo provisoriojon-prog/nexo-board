@@ -1,0 +1,70 @@
+/* Six compact sections, with the active section in a persistent second row. */
+.workbench-ribbon.nexus-toolbar45{display:grid;grid-template-columns:auto minmax(170px,1fr);align-items:center;gap:0 16px;min-height:54px;padding:3px 8px 4px;background:#edf2f6}
+.nexus-toolbar45>.ribbon-scroll{grid-column:1;grid-row:1;display:grid;grid-template-columns:repeat(6,minmax(54px,auto));align-items:stretch;gap:3px;width:auto;overflow:visible;min-width:0}
+.nexus-toolbar45 .ribbon-button{min-width:0;width:100%;height:46px;padding:3px 5px;gap:3px;border-radius:4px;font-size:10.5px;line-height:1.15;font-weight:400;touch-action:manipulation}
+.nexus-toolbar45 .ribbon-button svg{width:20px;height:20px;flex:0 0 20px;stroke-width:1.6}
+.nexus-toolbar45 .ribbon-button>span{max-width:100%;white-space:nowrap}
+.nexus-toolbar45 .ribbon-button[aria-expanded=true]{background:#d5eaf4;border-color:#80afc7;color:#125673}
+.nexus-toolbar45 .ribbon-button:focus-visible{outline:2px solid #177c9a;outline-offset:1px}
+.nexus-toolbar45>.search-form{grid-column:2;grid-row:1;width:min(100%,320px);min-width:0;max-width:320px;justify-self:end;margin:0}
+.nexus-toolbar45 .search-form input{height:30px}
+.nexus-toolbar-options{grid-column:1/-1;grid-row:2;min-width:0;padding:4px 0 0;margin-top:3px;border-top:1px solid #c7d7e1}
+.nexus-toolbar-options[hidden],.nexus-toolbar-group-panel[hidden]{display:none!important}
+.nexus-toolbar-group-panel{display:flex;align-items:stretch;gap:3px;min-width:0;width:max-content;max-width:100%}
+.nexus-toolbar-group-panel .ribbon-button{width:64px;height:44px;flex:0 1 64px;font-size:10px}
+.nexus-toolbar-group-panel .ribbon-button svg{width:19px;height:19px;flex-basis:19px}
+.nexus-toolbar-group-panel .nexus-toolbar-nav-start{margin-left:6px;position:relative}
+.nexus-toolbar-group-panel .nexus-toolbar-nav-start::after{content:"";position:absolute;left:-5px;top:5px;bottom:5px;border-left:1px solid #c2d0da}
+.nexus-toolbar45 .ribbon-button:disabled{opacity:.4}
+@media(max-width:900px){
+ .workbench-ribbon.nexus-toolbar45{grid-template-columns:minmax(0,1fr);gap:0;padding:3px 5px 5px;min-width:0}
+ .nexus-toolbar45>.ribbon-scroll{grid-column:1;grid-row:1;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;width:100%}
+ .nexus-toolbar45 .ribbon-button{height:47px;padding:3px 1px;font-size:clamp(9px,2.75vw,10.5px);gap:3px}
+ .nexus-toolbar45 .ribbon-button svg{width:20px;height:20px;flex-basis:20px}
+ .nexus-toolbar45>.search-form{grid-column:1;grid-row:3;min-width:0;width:100%;max-width:none;margin-top:4px}
+ .nexus-toolbar45 .search-form input{height:34px;font-size:16px}
+ .nexus-toolbar-options{grid-column:1;grid-row:2;padding-top:3px;margin-top:3px}
+ .nexus-toolbar-group-panel{gap:2px;width:100%;justify-content:flex-start}
+ .nexus-toolbar-group-panel .ribbon-button{flex:0 1 64px;width:64px;height:43px;font-size:clamp(9px,2.55vw,10px)}
+ .nexus-toolbar-group-panel .ribbon-button svg{width:18px;height:18px;flex-basis:18px}
+ .nexus-toolbar-view .ribbon-button{flex:1 1 0;width:0}
+ .nexus-toolbar-group-panel .nexus-toolbar-nav-start{margin-left:5px}
+}
+@media(max-width:900px) and (max-height:450px){
+ .nexus-toolbar45 .ribbon-button{height:41px;gap:2px}
+ .nexus-toolbar45 .ribbon-button svg{width:18px;height:18px;flex-basis:18px}
+ .nexus-toolbar-group-panel .ribbon-button{height:39px}
+}
+/* Keep native text editing in fields, without selecting the app around them. */
+@media(hover:none),(pointer:coarse){
+ html.nexus-native-shell,html.nexus-native-shell body,html.nexus-native-shell body *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+ html.nexus-native-shell input:not([type=button]):not([type=submit]):not([type=reset]):not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]),html.nexus-native-shell textarea,html.nexus-native-shell [contenteditable=true],html.nexus-native-shell [contenteditable=true] *,html.nexus-native-shell [data-allow-selection],html.nexus-native-shell [data-allow-selection] *{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+ html.nexus-native-shell img,html.nexus-native-shell canvas,html.nexus-native-shell svg{-webkit-user-drag:none}
+}
+
+/* One label scale across the ribbon; wrap complete buttons, never their words. */
+.nexus-toolbar45 .ribbon-button{font:400 10.5px/1.15 'Segoe UI',Arial,sans-serif;box-sizing:border-box}
+.nexus-toolbar45>.ribbon-scroll{grid-template-columns:repeat(6,70px)}
+.nexus-toolbar45 .ribbon-button>span{white-space:nowrap;max-width:none}
+.nexus-toolbar-group-panel{flex-wrap:wrap;width:max-content}
+.nexus-toolbar-group-panel .ribbon-button{width:80px;flex:0 0 80px;font-size:10.5px;min-width:0}
+.nexus-toolbar-group-panel .nexus-toolbar-nav-start{margin-left:0}
+.nexus-toolbar-group-panel .nexus-toolbar-nav-start::after{display:none}
+@media(max-width:900px){
+ .nexus-toolbar45>.ribbon-scroll{grid-template-columns:repeat(6,minmax(0,1fr))}
+ .nexus-toolbar45 .ribbon-button{font-size:10.5px;padding-inline:1px}
+ .nexus-toolbar-group-panel{width:100%;gap:3px}
+ .nexus-toolbar-group-panel .ribbon-button{flex:1 0 72px;width:auto;max-width:110px;min-width:72px;font-size:10.5px}
+ .nexus-toolbar-view .ribbon-button{max-width:none}
+ .nexus-toolbar-measure .ribbon-button{flex:0 0 76px}
+}
+
+/* Touch-size layout: every group remains one complete row. Desktop rules stay intact. */
+
+@media(max-width:900px){
+ .nexus-toolbar45>.ribbon-scroll,.nexus-toolbar-group-panel{display:grid;grid-template-columns:repeat(var(--nexus-row-count,6),minmax(0,1fr));grid-auto-flow:column;grid-template-rows:1fr;gap:2px;width:100%;max-width:100%;flex-wrap:nowrap}
+ .nexus-toolbar-display{--nexus-row-count:4}.nexus-toolbar-measure{--nexus-row-count:2}.nexus-toolbar-view{--nexus-row-count:7}
+ .nexus-toolbar45 .ribbon-button,.nexus-toolbar-group-panel .ribbon-button,.nexus-toolbar-view .ribbon-button,.nexus-toolbar-measure .ribbon-button{min-width:0;max-width:none;width:100%;padding-inline:1px;margin:0;font-size:var(--nexus-row-label,8px)}
+ .nexus-toolbar45 .ribbon-button>svg{width:var(--nexus-row-icon,16px);height:var(--nexus-row-icon,16px);flex:0 0 var(--nexus-row-icon,16px)}
+ .nexus-toolbar45 .ribbon-button>span{white-space:nowrap;line-height:1.15;font-size:inherit}
+}

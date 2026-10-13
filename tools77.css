@@ -1,0 +1,40 @@
+/* Keep the existing notes identities; Estudos is a distinct, expandable tool. */
+.study-flow-overlay{position:absolute;inset:0;pointer-events:none;z-index:4;touch-action:none}
+.study-flow-overlay[hidden]{display:none!important}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu{grid-template-columns:27px repeat(20,minmax(0,1fr));grid-template-rows:repeat(2,26px)}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #detailsButton{grid-area:1/1/span 2/2}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #schematicTool{grid-area:1/2/2/span 5}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #netcolorTool{grid-area:1/7/2/span 5}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #rffeTool{grid-area:1/12/2/span 5}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #i2cTool{grid-area:1/17/2/span 5}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #icValuesTool{grid-area:2/2/3/span 4}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #componentSearchTool{grid-area:2/6/3/span 4}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #boardEditorTool{grid-area:2/10/3/span 4}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #studiesTool{grid-area:2/14/3/span 4}
+.workspace .tools-refined:has(#functionStudiesTool) .tool-menu #functionStudiesTool{grid-area:2/18/3/span 4}
+@media(min-width:901px) and (pointer:fine){.workspace .tools-refined:has(#functionStudiesTool) .tool-menu{grid-template-rows:repeat(2,var(--desktop-button,23px))}}
+@media(max-width:900px),(pointer:coarse){
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu{grid-template-rows:repeat(2,31px)}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #icValuesTool{grid-area:2/2/3/span 5}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #componentSearchTool{grid-area:2/7/3/span 5}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #studiesTool{grid-area:2/12/3/span 5}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #functionStudiesTool{grid-area:2/17/3/span 5}
+}
+@container nexus-tools (max-width:315px){
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu{grid-template-columns:25px repeat(6,minmax(0,1fr));grid-template-rows:repeat(3,26px)}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #detailsButton{grid-area:1/1/span 3/2}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #schematicTool{grid-area:1/2/2/span 2}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #netcolorTool{grid-area:1/4/2/span 2}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #rffeTool{grid-area:1/6/2/span 2}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #i2cTool{grid-area:2/2/3/span 2}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #icValuesTool{grid-area:2/4/3/span 2}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #componentSearchTool{grid-area:2/6/3/span 2}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #boardEditorTool{grid-area:3/2/4/span 2}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #studiesTool{grid-area:3/4/4/span 2}
+ .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #functionStudiesTool{grid-area:3/6/4/span 2}
+ @media(max-width:900px),(pointer:coarse){
+  .workspace .tools-refined:has(#functionStudiesTool) .tool-menu{grid-template-rows:repeat(3,31px)}
+  .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #studiesTool{grid-area:3/2/4/span 3}
+  .workspace .tools-refined:has(#functionStudiesTool) .tool-menu #functionStudiesTool{grid-area:3/5/4/span 3}
+ }
+}

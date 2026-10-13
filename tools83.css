@@ -1,0 +1,199 @@
+/* The device tree uses 10.5px, independently of the older 11px desktop token.
+   Keep the complete tool chrome on that scale, including dynamic content.
+   Canvas/PDF drawing, icon glyphs and touch typography retain their own sizes. */
+@media (min-width:901px) and (pointer:fine) {
+  #inspector :is(#studiesPane,#functionStudiesPane,#netcolorPane,#rffePane,#i2cPane,#icValuesPane,#componentSearchPane,#boardEditorPane,#schematicPane) {
+    --tool-font83:10.5px;
+    --tool-small83:10.5px;
+    /* Existing per-tool rules use these tokens on deeply nested controls. */
+    --desktop-font:var(--tool-font83);
+    --desktop-small:var(--tool-small83);
+    font-family:'Segoe UI',Arial,sans-serif;
+    font-size:var(--tool-font83);
+    line-height:1.4;
+  }
+
+  /* Native options, spans, links and prose also need an explicit size: several
+     panels define their own 12/13px descendants instead of inheriting it. */
+  #inspector.inspector :is(#studiesPane,#functionStudiesPane,#netcolorPane,#rffePane,#i2cPane,#icValuesPane,#componentSearchPane,#boardEditorPane,#schematicPane)
+    :is(a,b,button,dd,details,div,dt,h2,h3,h4,input,kbd,label,legend,li,ol,optgroup,option,output,p,select,small,span,strong,summary,table,td,textarea,th,ul) {
+    font-family:inherit;
+    font-size:var(--tool-font83);
+  }
+  #inspector :is(#studiesPane,#functionStudiesPane,#netcolorPane,#rffePane,#i2cPane,#icValuesPane,#componentSearchPane,#boardEditorPane)
+    :is(h2,h3,h4,strong) { font-weight:600; }
+  #inspector :is(#studiesPane,#functionStudiesPane,#netcolorPane,#rffePane,#i2cPane,#icValuesPane,#componentSearchPane,#boardEditorPane)
+    :is(small,kbd,th,label,legend,option,summary,.rffe-status,.i2c-status,.ic-values-status,.capacitor-search-status) {
+    line-height:1.4;
+  }
+
+  /* Keep values tabular and compact, without changing the pad scene or matrix geometry. */
+  #inspector #icValuesPane .ic-values-entry input { font-size:var(--tool-font83);font-variant-numeric:tabular-nums; }
+  #inspector #icValuesPane .ic-values-entry button { font-size:19px;line-height:1; }
+  #inspector #icValuesPane .ic-pad-name { font-size:var(--tool-small83); }
+  #inspector #icValuesPane .ic-pad-value { font-size:var(--tool-font83); }
+  #inspector #studiesPane .study-note-head button { font-size:16px;line-height:1; }
+  #inspector #schematicPane .window-actions button { font-size:16px;line-height:1; }
+  #inspector #netcolorPane .netcolor-row,#inspector #rffePane .rffe-bus-list button,
+  #inspector #i2cPane .i2c-bus-list button { font-size:var(--tool-font83);line-height:1.4; }
+
+  /* Labels belong beside their fields. Keep long names wrapping rather than
+     reserving an entire empty row for a short caption. */
+  #inspector #rffePane .rffe-model,#inspector #i2cPane .i2c-model {
+    gap:4px;padding:4px 6px;min-height:24px;
+  }
+  #inspector #rffePane .rffe-model>span,#inspector #i2cPane .i2c-model>span {
+    flex:none;white-space:nowrap;
+  }
+  #inspector #rffePane .rffe-model input { padding:1px 3px;height:22px; }
+  #inspector #rffePane .rffe-connection { justify-content:flex-start;padding:2px 6px 4px;gap:4px 6px; }
+  #inspector #rffePane .rffe-connection-summary { flex:1 1 90px;justify-content:flex-start;gap:2px 4px; }
+  #inspector #rffePane .rffe-connection-state { text-align:left; }
+  #inspector #rffePane .rffe-browser,#inspector #i2cPane .i2c-browser { padding:4px 6px;gap:4px; }
+  #inspector #rffePane .rffe-buses { display:grid;grid-template-columns:max-content minmax(0,1fr);align-items:start;gap:4px; }
+  #inspector #rffePane .rffe-buses>.rffe-caption { padding-top:4px; }
+  #inspector #rffePane .rffe-bus-list { height:104px; }
+  #inspector #i2cPane .i2c-search { flex-direction:row;align-items:center;gap:4px; }
+  #inspector #i2cPane .i2c-bus-list { height:104px; }
+  #inspector #rffePane .rffe-signals { gap:3px; }
+  #inspector #rffePane .rffe-signals>.rffe-caption { margin:0;line-height:14px; }
+  #inspector #rffePane .rffe-signal button { flex-direction:row;min-height:23px;gap:3px;padding:2px 3px; }
+  #inspector #rffePane .rffe-table-title,#inspector #i2cPane .i2c-table-title {
+    flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:2px 5px;padding:4px 6px;min-height:0;
+  }
+  #inspector #rffePane .rffe-table-title>span,#inspector #i2cPane .i2c-table-title>span { flex:none; }
+  #inspector #rffePane .rffe-table-title strong,#inspector #i2cPane .i2c-table-title strong {
+    display:block;width:auto;flex:1 1 90px;min-width:0;line-height:1.4;
+  }
+
+  /* Five Editor tabs stay in place. Only label/field pairs use two columns;
+     lists, descriptions, checkboxes and action rows retain the complete width. */
+  #inspector #boardEditorPane .board-editor-tabs { padding:3px 4px;gap:2px; }
+  #inspector #boardEditorPane .board-editor-body { gap:4px; }
+  #inspector #boardEditorPane .board-editor-body>section { gap:4px; }
+  #inspector #boardEditorPane :is([data-editor-page=nets],[data-editor-page=parts]):not([hidden]),
+  #inspector #boardEditorPane :is(#boardEditorForm,#boardEditorPartForm) {
+    display:grid;grid-template-columns:fit-content(42%) minmax(0,1fr);gap:4px 5px;align-items:center;
+  }
+  #inspector #boardEditorPane :is([data-editor-page=nets],[data-editor-page=parts])>:is(select,form,div,p),
+  #inspector #boardEditorPane :is(#boardEditorForm,#boardEditorPartForm)>:is(.editor-check,.board-editor-actions) { grid-column:1/-1; }
+  #inspector #boardEditorPane form { margin-top:0; }
+  #inspector #boardEditorPane label:not(.editor-check) { font-weight:400; }
+  #inspector #boardEditorPane .board-editor-footer { padding:4px 6px;gap:3px; }
+
+  /* Estudos includes content loaded after the pane is created. Use the same
+     control rhythm as Notas without reducing the map or pad scene. */
+  #inspector #functionStudiesPane .function-studies-model { gap:4px;padding:4px 6px;margin-bottom:4px;min-height:24px; }
+  #inspector #functionStudiesPane :is(#functionStudyFunction,#researchTopic86,#storyStep83) { height:24px;min-height:24px;padding:2px 4px; }
+  #inspector #functionStudiesPane :is(.study-mode83,.function-studies-actions,.story84-terminals) { gap:4px;margin-bottom:4px; }
+  #inspector #functionStudiesPane :is(.function-studies-actions,.study-mode83,.story83-controls,.research86-actions,.research86-connection,.study85-directions) button {
+    min-height:23px;padding:2px 5px;
+  }
+  #inspector #functionStudiesPane :is(.function-studies-summary,.story83-copy,.study-research86) { padding:4px 5px;margin-top:4px;margin-bottom:4px; }
+  #inspector #functionStudiesPane :is(.research86-summary,.research86-reference,.research86-sources p,.research86-mechanism p) { margin-top:4px;margin-bottom:4px; }
+  #inspector #functionStudiesPane .study-research86>summary { line-height:20px; }
+  #inspector #functionStudiesPane .function-studies-how { margin-top:6px;padding-top:4px; }
+  #inspector #icValuesPane .ic-values-readout { gap:4px; }
+  #inspector #icValuesPane :is(.ic-values-heading,.ic-values-actions) { gap:4px; }
+  #inspector #studiesPane :is(.studies-profiles,.studies-note-tools) { gap:4px; }
+
+  /* The walkthrough also keeps a second copy in canvasWrap, outside inspector.
+     It is hidden on desktop, but retains the same text scale when inspecting
+     or relocating the card. Touch cards keep their separate 12/13px rules. */
+  #storyCard83 { --tool-font83:10.5px;font-size:var(--tool-font83); }
+  #storyCard83 :is(.story83-title,.story83-summary,.story83-direction,.story83-counter,.story83-controls,.story84-terminals),
+  #storyCard83 :is(p,span,strong,a,small) { font-size:var(--tool-font83); }
+
+  @media (max-height:620px) {
+    #inspector #rffePane .rffe-bus-list,#inspector #i2cPane .i2c-bus-list { height:72px; }
+  }
+
+  /* Dialogs belong to the same desktop tool system, including dynamically mounted ones. */
+  :is(.appearance-dialog,.rffe-esp-dialog,.netcolor-color-dialog,.ic-smb-dialog,.maintenance-dialog,.library-manager-dialog,.nexus-individual-dialog,.nexus-dialog,.library-sync65) {
+    --tool-font83:var(--desktop-font,11px);
+    --tool-small83:var(--desktop-small,10px);
+    font-family:'Segoe UI',Arial,sans-serif;
+    font-size:var(--tool-font83);
+    line-height:1.4;
+  }
+  :is(.appearance-dialog,.rffe-esp-dialog,.netcolor-color-dialog,.ic-smb-dialog,.maintenance-dialog,.library-manager-dialog,.nexus-individual-dialog,.nexus-dialog,.library-sync65)
+    :is(button,input,select,textarea,label,legend,p) { font-size:var(--tool-font83); }
+  :is(.appearance-dialog,.rffe-esp-dialog,.netcolor-color-dialog,.ic-smb-dialog,.maintenance-dialog,.library-manager-dialog,.nexus-individual-dialog,.nexus-dialog,.library-sync65)
+    :is(h2,h3,header strong,.ic-smb-head h2) { font-size:12px;font-weight:600; }
+  :is(.appearance-dialog,.rffe-esp-dialog,.netcolor-color-dialog,.ic-smb-dialog,.maintenance-dialog,.library-manager-dialog,.nexus-individual-dialog,.nexus-dialog,.library-sync65)
+    :is(small,.rffe-esp-browser-note,.color-field-caption,.color-comparison span,.color-dialog-status,.ic-smb-target,.ic-values-readout,.ic-values-status,.ic-scene-hint,.library-sync-summary66 dt) { font-size:var(--tool-small83); }
+  :is(.netcolor-color-dialog,.ic-smb-dialog) :is(.color-tabs button,.color-window-actions>button,.color-rgb-fields input,.color-hex-field input,.ic-values-entry input,.ic-values-readout output,.ic-pad-value) { font-size:var(--tool-font83); }
+  .ic-smb-dialog .ic-values-entry button { font-size:19px;line-height:1; }
+  .ic-smb-dialog .ic-pad-name { font-size:var(--tool-small83); }
+  :is(.appearance-dialog,.rffe-esp-dialog,.netcolor-color-dialog,.ic-smb-dialog,.maintenance-dialog,.library-manager-dialog,.nexus-individual-dialog,.nexus-dialog) :is(header,.ic-smb-head) button { font-size:18px;line-height:1; }
+  /* Short pairing/transfer codes are intentionally distinct from prose. */
+  .rffe-esp-dialog #rffeEspCode,.library-sync65 .library-sync-code-input { font-size:18px; }
+  .library-sync65 .library-sync-summary66 dd { font-size:12px; }
+}
+
+/* An embedded schematic is narrow even on desktop. Its fine-pointer query must
+   not use the iframe's width as a mobile signal. The PDF itself is not styled. */
+@media (pointer:fine) and (hover:hover) {
+  body:has(>.viewer-toolbar) { font:11px/1.4 'Segoe UI',Arial,sans-serif; }
+  body:has(>.viewer-toolbar) :is(.viewer-heading strong,.viewer-source select,.search-bar input,.search-bar select,.viewer-toolbar button,.viewer-toolbar>a) { font-size:11px; }
+  body:has(>.viewer-toolbar) :is(.exact-search,.page-field,.viewer-status) { font-size:10px; }
+  body:has(>.viewer-toolbar) .control-group button { font-size:17px;line-height:1; }
+}
+
+/* Before toolbar45 reorganizes the existing controls, show today's six-group
+   shell instead of flashing the obsolete flat ribbon. Removed on readiness. */
+html.nexus-shell-pending83 .workbench-ribbon:not(.nexus-toolbar45) {
+  display:block;min-height:40px;padding:2px 7px 3px;
+}
+html.nexus-shell-pending83 .workbench-ribbon:not(.nexus-toolbar45)>:not(.nexus-opening83) { display:none!important; }
+.nexus-opening83 { display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;color:#28495d;font-family:'Segoe UI',Arial,sans-serif;pointer-events:none; }
+.nexus-opening83-groups { display:grid;grid-template-columns:repeat(6,56px);gap:2px; }
+.nexus-opening83-item { display:flex;flex-direction:column;align-items:center;justify-content:center;height:34px;gap:1px;font-size:10px;line-height:11px;white-space:nowrap; }
+.nexus-opening83-item svg { display:block;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round; }
+.nexus-opening83-search { flex:0 1 320px;min-width:100px;border:1px solid #b9cddd;border-radius:3px;background:#fff;padding:4px 7px;color:#778c99;font-size:11px;line-height:15px;overflow:hidden;white-space:nowrap; }
+@media (max-width:900px),(pointer:coarse) {
+  html.nexus-shell-pending83 .workbench-ribbon:not(.nexus-toolbar45) { padding:3px 5px 5px; }
+  .nexus-opening83 { display:grid;grid-template-columns:minmax(0,1fr);gap:5px; }
+  .nexus-opening83-groups { grid-template-columns:repeat(6,minmax(0,1fr));gap:2px; }
+  .nexus-opening83-item { height:46px;font-size:10.5px;line-height:13px;gap:3px; }
+  .nexus-opening83-item svg { width:20px;height:20px; }
+  .nexus-opening83-search { min-width:0;width:100%;font-size:16px;line-height:20px;padding:6px; }
+}
+
+/* The touch handle must fit its own grid track. responsive.css gives every
+   panel icon an important 34px width, larger than the old 27/25px track. */
+@media (max-width:900px),(pointer:coarse) {
+  .workspace:not(.tools-hidden) .tools-refined:has(#functionStudiesTool)>.tool-menu {
+    grid-template-columns:34px repeat(20,minmax(0,1fr));
+  }
+  .workspace:not(.tools-hidden) .tools-refined>.tool-menu>#detailsButton {
+    width:100%!important;
+    max-width:100%;
+    min-width:0;
+    height:100%!important;
+    min-height:0;
+    box-sizing:border-box;
+    justify-self:stretch;
+    align-self:stretch;
+  }
+  @container nexus-tools (max-width:315px) {
+    .workspace:not(.tools-hidden) .tools-refined:has(#functionStudiesTool)>.tool-menu {
+      grid-template-columns:34px repeat(6,minmax(0,1fr));
+    }
+  }
+  /* The collapsed rail is flex, not grid; keep its control inside the 40px
+     rail and its padding rather than retaining the expanded row height. */
+  .workspace.tools-hidden .tools-refined>.tool-menu>#detailsButton {
+    flex:0 0 32px;
+    width:32px!important;
+    max-width:100%;
+    min-width:0;
+    height:32px!important;
+    min-height:0;
+    box-sizing:border-box;
+  }
+}
+
+/* Window actions use the same vector strokes on Safari and desktop. */
+:is(#floatSchematic,#separateSchematic,#closeSchematic,#assetExternal){display:inline-flex;align-items:center;justify-content:center;gap:4px}
+.nexus-window-icon87{display:block;width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}

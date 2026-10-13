@@ -1,0 +1,33 @@
+/* Eight independent tools. The collapsed rail and document workspace are unchanged. */
+.workspace .tools-refined:has(#i2cTool) .tool-menu{grid-template-columns:27px repeat(12,minmax(0,1fr));grid-template-rows:repeat(2,26px)}
+.workspace .tools-refined:has(#i2cTool) .tool-menu #detailsButton{grid-area:1/1/span 2/2}
+.workspace .tools-refined:has(#i2cTool) .tool-menu #schematicTool{grid-area:1/2/2/span 3}
+.workspace .tools-refined:has(#i2cTool) .tool-menu #netcolorTool{grid-area:1/5/2/span 3}
+.workspace .tools-refined:has(#i2cTool) .tool-menu #rffeTool{grid-area:1/8/2/span 3}
+.workspace .tools-refined:has(#i2cTool) .tool-menu #i2cTool{grid-area:1/11/2/span 3}
+.workspace .tools-refined:has(#i2cTool) .tool-menu #icValuesTool{grid-area:2/2/3/span 3}
+.workspace .tools-refined:has(#i2cTool) .tool-menu #componentSearchTool{grid-area:2/5/3/span 3}
+.workspace .tools-refined:has(#i2cTool) .tool-menu #boardEditorTool{grid-area:2/8/3/span 3}
+.workspace .tools-refined:has(#i2cTool) .tool-menu #studiesTool{grid-area:2/11/3/span 3}
+@media(min-width:901px) and (pointer:fine){.workspace .tools-refined:has(#i2cTool) .tool-menu{grid-template-rows:repeat(2,var(--desktop-button,23px))}}
+@media(max-width:900px){
+ .workspace .tools-refined:has(#i2cTool) .tool-menu{grid-template-rows:repeat(2,31px)}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #icValuesTool{grid-area:2/2/3/span 4}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #componentSearchTool{grid-area:2/6/3/span 4}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #studiesTool{grid-area:2/10/3/span 4}
+}
+@media(pointer:coarse){.workspace .tools-refined:has(#i2cTool) .tool-menu{grid-template-rows:repeat(2,31px)}}
+@container nexus-tools (max-width:285px){
+ .workspace .tools-refined:has(#i2cTool) .tool-menu{grid-template-rows:repeat(3,26px)}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #detailsButton{grid-area:1/1/span 3/2}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #schematicTool{grid-area:1/2/2/span 4}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #netcolorTool{grid-area:1/6/2/span 4}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #rffeTool{grid-area:1/10/2/span 4}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #i2cTool{grid-area:2/2/3/span 4}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #icValuesTool{grid-area:2/6/3/span 4}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #componentSearchTool{grid-area:2/10/3/span 4}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #boardEditorTool{grid-area:3/2/4/span 6}
+ .workspace .tools-refined:has(#i2cTool) .tool-menu #studiesTool{grid-area:3/8/4/span 6}
+ @media(max-width:900px){.workspace .tools-refined:has(#i2cTool) .tool-menu{grid-template-rows:repeat(3,31px)}.workspace .tools-refined:has(#i2cTool) .tool-menu #studiesTool{grid-area:3/2/4/span 12}}
+ @media(pointer:coarse){.workspace .tools-refined:has(#i2cTool) .tool-menu{grid-template-rows:repeat(3,31px)}}
+}

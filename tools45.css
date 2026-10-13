@@ -1,0 +1,149 @@
+/* Tool landing and a compact RFFE workspace, shared by PC and mobile. */
+.tools-refined { container-name: nexus-tools; container-type: inline-size; }
+/* The fixed schematic must escape the tool rail's containment and stacking context.
+   Keep the existing iframe in place, preserving the open PDF and selection. */
+.workspace .tools-refined:has(> .schematic-panel.floating:not([hidden])){container-type:normal;contain:none;overflow:visible;z-index:200}
+.workspace .tools-refined>.schematic-panel.floating:not([hidden]){z-index:201;visibility:visible}
+.tools-refined .tool-menu { gap: 3px; padding: 3px; }
+.tools-refined .tool-menu .tool-tab { padding: 1px 7px; font-size: 11px; }
+.tools-welcome {
+  display: flex; flex: 1 1 0; flex-direction: column; gap: 17px;
+  min-width: 0; min-height: 0; overflow: auto; padding: 22px 13px 16px;
+  color: #294457; background: linear-gradient(155deg, #f7fbfc 0, #edf3f6 58%, #e8f0f4 100%);
+  font: 12px/1.5 'Segoe UI', Arial, sans-serif;
+}
+.tools-welcome[hidden], .tools-welcome-action[hidden] { display: none !important; }
+.source-mode #inspector > .tools-welcome:not([hidden]) { display: flex; }
+.tools-welcome-heading { padding: 0 3px; }
+.tools-welcome-kicker { font-size: 10px; letter-spacing: 1.8px; font-weight: 650; color: #24829b; }
+.tools-welcome h2 { margin: 7px 0 4px; font-size: 20px; font-weight: 600; letter-spacing: -.4px; line-height: 1.25; }
+.tools-welcome-heading p { margin: 0; color: #69808e; font-size: 12px; }
+.tools-welcome-actions { display: grid; gap: 7px; }
+.inspector .tools-welcome-action {
+  display: flex; align-items: center; gap: 10px; width: 100%; min-width: 0; min-height: 65px;
+  padding: 10px; text-align: left; border: 1px solid #d0dfe6; border-radius: 5px;
+  background: #ffffffd6; color: #294457; font: inherit; cursor: pointer;
+}
+.inspector .tools-welcome-action:hover { border-color: #87bdcd; background: #fff; }
+.inspector .tools-welcome-action:focus-visible { outline: 2px solid #2689a4; outline-offset: 2px; }
+.tools-welcome-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 33px; width: 33px; height: 33px; border-radius: 5px; background: #e5f1f5; color: #237d96; }
+.tools-welcome svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.tools-welcome-icon svg { width: 22px; height: 22px; }
+.tools-welcome-copy { display: grid; gap: 2px; min-width: 0; flex: 1; }
+.tools-welcome-copy strong { font-size: 12px; font-weight: 600; }
+.tools-welcome-copy > span { font-size: 11px; line-height: 1.4; color: #6a7f8d; }
+.tools-welcome-arrow { flex: 0 0 14px; width: 14px; height: 14px; color: #8ca2af; }
+.tools-welcome-tip { display: flex; align-items: flex-start; gap: 7px; padding: 2px 3px 0; color: #748996; }
+.tools-welcome-tip svg { flex: 0 0 15px; width: 15px; height: 15px; margin-top: 1px; }
+.tools-welcome-tip p { margin: 0; font-size: 11px; line-height: 1.5; }
+
+.tools-refined #rffePane { background: #edf3f6; font-size: 12px; overflow: hidden; }
+#rffePane .rffe-model { gap: 8px; padding: 7px 8px 5px; border-bottom: 0; }
+#rffePane .rffe-model > span { font-size: 10px; font-weight: 500; color: #718794; }
+#rffePane .rffe-model input { height: 25px; padding: 2px 6px; background: transparent; border: 0; font-size: 13px; font-weight: 600; }
+#rffePane .rffe-connection { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 7px; padding: 2px 8px 8px; border-bottom: 1px solid #cedde5; }
+.rffe-connection-actions { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.rffe-connection-summary { display: flex; flex: 1 1 90px; justify-content: flex-end; flex-wrap: wrap; align-items: center; gap: 2px 4px; min-width: 0; }
+#rffePane .rffe-connection button { min-height: 27px; height: 27px; padding: 3px 7px; border-color: #bed0da; border-radius: 3px; font-size: 11px; background: #fff; }
+#rffePane .rffe-connection .rffe-refresh { width: 27px; padding: 3px; }
+#rffePane .rffe-connection-state, #rffePane .rffe-communication-state { margin-left: 0; font-size: 10px; line-height: 1.3; }
+#rffePane .rffe-connection-state { white-space: normal; text-align: right; overflow-wrap: anywhere; }
+#rffePane .rffe-communication-state { max-width: 110px; }
+#rffePane .rffe-browser { display: grid; grid-template-columns: minmax(0, 1fr); gap: 9px; min-height: 0; padding: 9px 8px 10px; border-bottom: 1px solid #cedde5; }
+#rffePane .rffe-caption { font-size: 10px; letter-spacing: .2px; color: #69818f; font-weight: 600; line-height: 14px; }
+#rffePane .rffe-buses { gap: 4px; }
+#rffePane .rffe-bus-list { height: 122px; min-height: 0; border-color: #bfced8; border-radius: 3px; padding: 2px; scrollbar-width: thin; overscroll-behavior: contain; }
+#rffePane .rffe-bus-list button { min-height: 25px; padding: 5px 6px; background: #fff; border-radius: 2px; font-size: 11px; line-height: 1.4; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+#rffePane .rffe-bus-list button:hover:not(:disabled) { background: #edf5f8; }
+#rffePane .rffe-bus-list button[aria-selected=true] { background: #197d9d; color: #fff; }
+#rffePane .rffe-bus-list button[aria-selected=true]:hover { background: #176f8c; }
+#rffePane .rffe-signals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+#rffePane .rffe-signals > .rffe-caption { grid-column: 1 / -1; margin-bottom: 1px; }
+#rffePane .rffe-signal { min-width: 0; }
+#rffePane .rffe-signal button { min-width: 0; min-height: 30px; gap: 4px; padding: 4px 3px; border-color: #bdcfd9; border-radius: 3px; background: #fdfefe; font-size: 11px; line-height: 1.2; }
+#rffePane .rffe-signal svg { width: 13px; height: 13px; }
+#rffePane .rffe-signal button:hover:not(:disabled) { background: #dfedf3; }
+#rffePane .rffe-signal button[aria-pressed=true] { background: #197d9d; border-color: #166e8a; color: #fff; }
+#rffePane .rffe-signal button[aria-pressed=true]:hover:not(:disabled) { background: #176f8c; }
+#rffePane .rffe-table-title { flex: 0 0 auto; flex-direction: column; align-items: flex-start; gap: 1px; padding: 7px 9px 6px; min-height: 0; border-bottom: 0; }
+#rffePane .rffe-table-title > span { font-size: 10px; color: #708693; }
+#rffePane .rffe-table-title strong { display: block; width: 100%; font-size: 11px; font-weight: 600; line-height: 1.5; }
+#rffePane .rffe-table-wrap { margin: 0 8px 7px; flex: 1 1 120px; min-height: 85px; border: 1px solid #c3d2db; border-radius: 3px; scrollbar-width: thin; overscroll-behavior: contain; }
+#rffePane .rffe-table { min-width: 275px; font-size: 11px; }
+#rffePane .rffe-table col:nth-child(1) { width: 25px; }
+#rffePane .rffe-table col:nth-child(2) { width: 33%; }
+#rffePane .rffe-table col:nth-child(4) { width: 40px; }
+#rffePane .rffe-table col:nth-child(5) { width: 63px; }
+#rffePane .rffe-table th { z-index: 1; background: #e6eef3; font-size: 10px; padding: 6px 3px; font-weight: 600; }
+#rffePane .rffe-table td { padding: 5px 3px; }
+#rffePane .rffe-table .rffe-part { font-size: 11px; min-height: 19px; padding: 0; background: transparent; line-height: 1.4; }
+#rffePane .rffe-table small { font-size: 10px; line-height: 1.5; }
+#rffePane .rffe-table input:not([type=checkbox]) { height: 25px; font-size: 11px; }
+#rffePane .rffe-table input.rffe-mark { width: 14px; height: 14px; margin: 4px; }
+#rffePane .rffe-result { font-size: 10px; }
+#rffePane .rffe-status { padding: 5px 8px; font-size: 10px; line-height: 1.45; background: #e8f0f4; border-color: #d2dfe6; }
+@media (max-width: 900px) {
+  .tools-welcome { padding-top: 20px; }
+  .inspector .tools-welcome-action { min-height: 69px; }
+  #rffePane .rffe-model input { font-size: 16px; }
+  #rffePane .rffe-connection button { min-height: 32px; height: 32px; }
+  #rffePane .rffe-connection .rffe-refresh { width: 32px; }
+  #rffePane .rffe-bus-list { height: 128px; }
+  #rffePane .rffe-bus-list button { min-height: 31px; padding-top: 7px; padding-bottom: 7px; }
+  #rffePane .rffe-signal button { min-height: 35px; }
+  #rffePane .rffe-table .rffe-part { min-height: 25px; }
+  #rffePane .rffe-table input.rffe-mark { width: 17px; height: 17px; }
+  #rffePane .rffe-table input:not([type=checkbox]) { height: 30px; font-size: 16px; }
+  #rffePane .rffe-status { font-size: 11px; }
+}
+@container nexus-tools (max-width: 255px) {
+  .tools-welcome { padding: 16px 8px; gap: 12px; }
+  .tools-welcome h2 { font-size: 17px; }
+  .inspector .tools-welcome-action { padding: 8px; gap: 7px; }
+  .tools-welcome-icon { flex-basis: 25px; width: 25px; height: 29px; }
+  .tools-welcome-icon svg { width: 19px; height: 19px; }
+  .tools-welcome-arrow { display: none; }
+  #rffePane .rffe-signal button { flex-direction: column; gap: 3px; font-size: 10px; }
+  #rffePane .rffe-bus-list { height: 108px; }
+  #rffePane .rffe-connection-summary { flex-basis: 100%; justify-content: flex-start; }
+  #rffePane .rffe-connection-state { text-align: left; }
+}
+@media (max-height: 620px) {
+  #rffePane { overflow: auto; }
+  #rffePane .rffe-bus-list { height: 82px; }
+  #rffePane .rffe-table-wrap { flex-shrink: 0; min-height: 100px; }
+}
+
+/* The rail and five tools form two complete rows, without a ragged wrap. */
+.tools-refined .tool-menu,.source-mode .tools-refined>.tool-menu{display:grid;grid-template-columns:27px repeat(6,minmax(0,1fr));grid-template-rows:repeat(2,26px);gap:3px;overflow:visible;align-items:stretch}
+.tools-refined .tool-menu #detailsButton{grid-column:1;grid-row:1/span 2;width:27px;height:auto;min-height:0;align-self:stretch;margin:0}
+.tools-refined .tool-menu .tool-tab{grid-column:span 2;width:100%;height:100%;min-height:0;padding:1px 3px;font:400 11px/1.2 'Segoe UI',Arial,sans-serif;min-width:0;white-space:nowrap;box-sizing:border-box}
+.tools-refined .tool-menu #icValuesTool,.tools-refined .tool-menu #componentSearchTool{grid-column:span 3}
+.tools-refined .tool-menu #componentSearchTool{font-size:11px}
+@container nexus-tools (max-width:275px){
+ .tools-refined .tool-menu{grid-template-rows:repeat(3,26px)}
+ .tools-refined .tool-menu #detailsButton{grid-row:1/span 3}
+ .tools-refined .tool-menu .tool-tab,.tools-refined .tool-menu #icValuesTool{grid-column:span 3}
+ .tools-refined .tool-menu #componentSearchTool{grid-column:span 6}
+}
+@media(pointer:coarse){.tools-refined .tool-menu{grid-template-rows:repeat(2,31px)}}
+@media(pointer:coarse){@container nexus-tools (max-width:275px){.tools-refined .tool-menu{grid-template-rows:repeat(3,31px)}}}
+
+/* Desktop density uses real control sizing, without shrinking the board or touch UI. */
+.workspace .tools-refined:has(#studiesTool) .tool-menu{grid-template-columns:27px repeat(12,minmax(0,1fr));grid-template-rows:repeat(2,26px)}
+.workspace .tools-refined:has(#studiesTool) .tool-menu #detailsButton{grid-column:1;grid-row:1/span 2}
+.workspace .tools-refined:has(#studiesTool) .tool-menu .tool-tab{overflow:hidden;text-overflow:ellipsis;min-width:0}
+.workspace .tools-refined:has(#studiesTool) .tool-menu #schematicTool{grid-area:1/2/2/span 3}
+.workspace .tools-refined:has(#studiesTool) .tool-menu #netcolorTool{grid-area:1/5/2/span 3}
+.workspace .tools-refined:has(#studiesTool) .tool-menu #rffeTool{grid-area:1/8/2/span 3}
+.workspace .tools-refined:has(#studiesTool) .tool-menu #studiesTool{grid-area:1/11/2/span 3}
+.workspace .tools-refined:has(#studiesTool) .tool-menu #icValuesTool{grid-area:2/2/3/span 4}
+.workspace .tools-refined:has(#studiesTool) .tool-menu #componentSearchTool{grid-area:2/6/3/span 4}
+.workspace .tools-refined:has(#studiesTool) .tool-menu #boardEditorTool{grid-area:2/10/3/span 4}
+@media(max-width:900px){
+ .workspace .tools-refined:has(#studiesTool) .tool-menu{grid-template-rows:repeat(2,31px)}
+ .workspace .tools-refined:has(#studiesTool) .tool-menu #schematicTool{grid-area:1/2/2/span 4}
+ .workspace .tools-refined:has(#studiesTool) .tool-menu #netcolorTool{grid-area:1/6/2/span 4}
+ .workspace .tools-refined:has(#studiesTool) .tool-menu #rffeTool{grid-area:1/10/2/span 4}
+ .workspace .tools-refined:has(#studiesTool) .tool-menu #studiesTool{grid-area:2/10/3/span 4}
+}
