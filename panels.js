@@ -20,7 +20,7 @@
   // Reuse the real controls and their handlers; expanded panels retain their layout.
   for(const [side,id,home] of [['left','devicesButton',leftRow],['right','detailsButton',rightMenu]]){
    const button=$(id);if(!button||!home||!tabbar)return;
-   const docked=(desktop.matches||document.documentElement.classList.contains('nexus-landscape91'))&&hidden(side),host=docked?tabbar:home;
+   const docked=(desktop.matches||document.documentElement.classList.contains('nexus-landscape91')||document.documentElement.classList.contains('nexo-pwa94'))&&hidden(side),host=docked?tabbar:home;
    button.classList.toggle('panel-tab-toggle',docked);
    if(button.parentElement!==host){
     const focused=document.activeElement===button;
@@ -52,5 +52,5 @@
   for(const name of ['pointerup','pointercancel','lostpointercapture'])h.addEventListener(name,end);
   h.addEventListener('keydown',e=>{let value=widths[side],step=e.shiftKey?50:10;if(e.key==='ArrowLeft')value-=side==='left'?step:-step;else if(e.key==='ArrowRight')value+=side==='left'?step:-step;else if(e.key==='Home')value=min[side];else if(e.key==='End')value=limit(side);else return;e.preventDefault();e.stopPropagation();resize(side,value);save();});
  }
- new ResizeObserver(render).observe(workspace);window.addEventListener('jcid:panels',render);window.addEventListener('nexus:mobile-scale',()=>{end();render();});small.addEventListener('change',()=>{end();render();});desktop.addEventListener('change',render);document.addEventListener('DOMContentLoaded',render,{once:true});render();
+ new ResizeObserver(render).observe(workspace);window.addEventListener('jcid:panels',render);window.addEventListener('nexus:mobile-scale',()=>{end();render();});window.addEventListener('nexo:pwa-mode',()=>{end();render();});small.addEventListener('change',()=>{end();render();});desktop.addEventListener('change',render);document.addEventListener('DOMContentLoaded',render,{once:true});render();
 })();

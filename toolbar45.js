@@ -105,6 +105,29 @@
     if (touchUI.matches && !allowsText(event.target)) event.preventDefault();
   });
 
+  // Map native gesture guard: iOS can start its loupe before contextmenu or
+  // selectstart. Cancel the native touch action on this canvas only. The map's
+  // Pointer Events still own tap, double-tap drag, pan and pinch; do not stop
+  // propagation, synthesize pointer events, or cancel touches on text fields.
+  const mapCanvas = $('boardCanvas');
+  if (mapCanvas) {
+    const preventNativeMapTouch = event => {
+      if (event.cancelable) event.preventDefault();
+    };
+    mapCanvas.addEventListener('touchstart', event => {
+      preventNativeMapTouch(event);
+      const selection = window.getSelection?.();
+      if (selection && !selection.isCollapsed) {
+        try {
+          if (mapCanvas.contains(selection.anchorNode) || mapCanvas.contains(selection.focusNode) || selection.containsNode(mapCanvas, true)) selection.removeAllRanges();
+        } catch {}
+      }
+    }, {passive:false});
+    mapCanvas.addEventListener('touchmove', preventNativeMapTouch, {passive:false});
+    mapCanvas.addEventListener('selectstart', preventNativeMapTouch);
+  }
+  // End map native gesture guard.
+
 
   // Keep the directional icon above a plain label on every screen size.
   for (const [id,direction] of [['rotateLeftButton','esquerda'],['rotateButton','direita']]) {

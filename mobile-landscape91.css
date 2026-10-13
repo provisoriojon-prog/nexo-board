@@ -4,34 +4,35 @@ html.nexus-landscape91 body :is(input:not([type=checkbox]):not([type=radio]):not
 html.nexus-landscape91,html.nexus-landscape91 body{height:100%;height:100dvh}
 html.nexus-landscape91 body select:not([multiple]):not([size]){box-sizing:border-box;min-height:30px!important;line-height:20px!important;padding-block:3px!important;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='m1 1 4 4 4-4' fill='none' stroke='%23486170' stroke-width='1.4'/%3E%3C/svg%3E");background-size:10px 6px;background-repeat:no-repeat;background-position:right 6px center;padding-right:22px!important}
 
-/* At the landscape scale a phone uses the wide grid, but its pointer remains
-   coarse. Reuse the desktop docking behavior without retaining empty rails.
-   Expanded panels keep their existing controls and dimensions. */
-html.nexus-landscape91 .workspace{--rail:0px}
-html.nexus-landscape91 .workspace.devices-hidden .device-sidebar,
-html.nexus-landscape91 .workspace.tools-hidden .inspector{
+/* Installed portrait and the compact landscape use the same collapsed-panel
+   docking, sized to their own tab row. Expanded panels keep their controls. */
+html:is(.nexus-landscape91,.nexo-pwa94){--nexo-tab-height:27px}
+html.nexo-pwa94:not(.nexus-landscape91){--nexo-tab-height:38px}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace{--rail:0px}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace.devices-hidden .device-sidebar,
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace.tools-hidden .inspector{
  width:0;height:0;min-width:0;min-height:0;max-height:0;
  padding:0;border:0;background:transparent;box-shadow:none;
 }
-html.nexus-landscape91 .workspace.tools-hidden .inspector{overflow:visible}
-html.nexus-landscape91 .workspace.devices-hidden .device-sidebar>.device-search-row,
-html.nexus-landscape91 .workspace.tools-hidden .inspector>.tool-menu{display:none!important}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace.tools-hidden .inspector{overflow:visible}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace.devices-hidden .device-sidebar>.device-search-row,
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace.tools-hidden .inspector>.tool-menu{display:none!important}
 /* Keep a floating schematic alive when its containing panel is collapsed. */
-html.nexus-landscape91 .workspace.tools-hidden .inspector>.schematic-panel.floating:not([hidden]){display:flex!important;visibility:visible}
-html.nexus-landscape91 .workspace .document-toolbar{
- height:27px;min-height:27px;padding:0;gap:0;flex-wrap:nowrap;
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace.tools-hidden .inspector>.schematic-panel.floating:not([hidden]){display:flex!important;visibility:visible}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-toolbar{
+ height:var(--nexo-tab-height);min-height:var(--nexo-tab-height);padding:0;gap:0;flex-wrap:nowrap;
  border-bottom:0;box-shadow:inset 0 -1px var(--border);
 }
-html.nexus-landscape91 .workspace .document-tabs,
-html.nexus-landscape91 .workspace .document-tab{height:27px;min-height:27px}
-html.nexus-landscape91 .workspace .document-toolbar .tab-select,
-html.nexus-landscape91 .workspace .document-toolbar .tab-close{height:25px;min-height:25px}
-html.nexus-landscape91 .workspace .document-toolbar>.panel-tab-toggle{
- flex:0 0 27px;width:27px!important;height:27px!important;min-height:27px;
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-tabs,
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-tab{height:var(--nexo-tab-height);min-height:var(--nexo-tab-height)}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-toolbar .tab-select,
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-toolbar .tab-close{height:calc(var(--nexo-tab-height) - 2px);min-height:calc(var(--nexo-tab-height) - 2px)}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-toolbar>.panel-tab-toggle{
+ flex:0 0 var(--nexo-tab-height);width:var(--nexo-tab-height)!important;height:var(--nexo-tab-height)!important;min-height:var(--nexo-tab-height);
  margin:0;padding:3px!important;align-self:flex-start;
  border:0;border-radius:0;background:transparent;
 }
-html.nexus-landscape91 .workspace .document-toolbar>#devicesButton{order:-1;border-right:1px solid var(--border)}
-html.nexus-landscape91 .workspace .document-toolbar>#detailsButton{order:3;border-left:1px solid var(--border)}
-html.nexus-landscape91 .workspace .document-toolbar>#detailsButton svg{transform:none}
-html.nexus-landscape91 .workspace .document-toolbar>.panel-tab-toggle:hover{background:#d9e5ed}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-toolbar>#devicesButton{order:-1;border-right:1px solid var(--border)}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-toolbar>#detailsButton{order:3;border-left:1px solid var(--border)}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-toolbar>#detailsButton svg{transform:none}
+html:is(.nexus-landscape91,.nexo-pwa94) .workspace .document-toolbar>.panel-tab-toggle:hover{background:#d9e5ed}

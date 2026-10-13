@@ -41,6 +41,10 @@
  html.nexus-native-shell input:not([type=button]):not([type=submit]):not([type=reset]):not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]),html.nexus-native-shell textarea,html.nexus-native-shell [contenteditable=true],html.nexus-native-shell [contenteditable=true] *,html.nexus-native-shell [data-allow-selection],html.nexus-native-shell [data-allow-selection] *{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
  html.nexus-native-shell img,html.nexus-native-shell canvas,html.nexus-native-shell svg{-webkit-user-drag:none}
 }
+/* A board gesture is never native text selection, even when Safari reports a
+   desktop-like pointer in an installed or scaled view. Inputs keep their own
+   text-selection rules; this guard is deliberately limited to the board. */
+#boardCanvas{touch-action:none;-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important;-webkit-user-drag:none}
 
 /* One label scale across the ribbon; wrap complete buttons, never their words. */
 .nexus-toolbar45 .ribbon-button{font:400 10.5px/1.15 'Segoe UI',Arial,sans-serif;box-sizing:border-box}

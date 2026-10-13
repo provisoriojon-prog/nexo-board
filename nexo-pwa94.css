@@ -48,14 +48,6 @@ html.nexo-pwa94 .workspace .document-toolbar {
   padding-left: var(--nexo-safe-left);
   padding-right: var(--nexo-safe-right);
 }
-/* Portrait keeps its overlay controls. Their reserved tab spaces must remain
-   while the landscape controls are docked directly alongside the tabs. */
-@media (max-width:900px) {
-  html.nexo-pwa94:not(.nexus-landscape91) .workspace .document-toolbar {
-    padding-left: calc(41px + var(--nexo-safe-left));
-    padding-right: calc(41px + var(--nexo-safe-right));
-  }
-}
 html.nexo-pwa94 .workspace:not(.devices-hidden) .device-sidebar {
   padding-left: var(--nexo-safe-left);
 }
@@ -78,32 +70,46 @@ html.nexo-pwa94 .workspace:not(.tools-hidden) .inspector {
   html.nexo-pwa94 .workspace:not(.tools-hidden) .selection-footer { padding-right: 8px; }
 }
 html.nexo-pwa94 .selection-footer {
-  padding-block: 5px;
+  min-height: 37px;
+  padding-block: 3px;
   padding-left: calc(8px + var(--nexo-safe-left));
   padding-right: calc(8px + var(--nexo-safe-right));
   flex-shrink: 0;
 }
+html.nexo-pwa94 .selection-footer input {
+  height: 30px;
+  padding-block: 3px;
+}
+html.nexo-pwa94 .selection-footer .net-clear { height: 26px; }
 /* The bar background reaches the screen edge; only its contents are inset.
    This replaces the former empty body padding below the whole application. */
 html.nexo-pwa94 .nexus-app-status {
   flex: 0 0 auto;
-  min-height: calc(38px + var(--nexo-safe-bottom));
-  padding: 3px 12px calc(3px + var(--nexo-safe-bottom));
-  padding-left: calc(12px + var(--nexo-safe-left));
-  padding-right: calc(12px + var(--nexo-safe-right));
-  gap: 8px;
+  min-height: 0;
+  /* The low indication row replaces the former full-height empty safe-area
+     band. Inset its edge controls for the rounded corners instead. */
+  padding: 2px 30px 10px;
+  padding-left: max(30px, calc(8px + var(--nexo-safe-left)));
+  padding-right: max(30px, calc(8px + var(--nexo-safe-right)));
+  gap: 6px;
   align-items: center;
   background: #edf2f6;
 }
 html.nexo-pwa94 .nexus-app-status #nexusAppState {
   min-width: 0;
-  line-height: 20px;
+  line-height: 18px;
 }
 html.nexo-pwa94 .nexus-app-status .nexus-focus-button {
   margin: 0;
-  flex: 0 0 36px;
-  width: 36px;
-  min-width: 36px;
-  height: 32px;
-  min-height: 32px;
+  flex: 0 0 30px;
+  width: 30px;
+  min-width: 30px;
+  height: 24px;
+  min-height: 24px;
+  padding: 3px;
+}
+/* Landscape uses the native .6 scale: retain a proportional clearance rather
+   than shrinking portrait's 10px gap to 6 physical CSS pixels. */
+html.nexo-pwa94.nexus-landscape91 .nexus-app-status {
+  padding-bottom: max(10px, calc(var(--nexo-safe-bottom) * .6));
 }
