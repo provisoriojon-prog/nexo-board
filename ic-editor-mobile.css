@@ -1,0 +1,48 @@
+/* The editor owns its scroll area; the board keeps its existing viewport. */
+.ic-values-panel{overflow:auto;overscroll-behavior:contain;scroll-padding:8px}
+.ic-values-panel .ic-matrix{flex:1 0 140px;min-height:100px}
+.ic-values-panel>.ic-values-status{position:sticky;bottom:0;z-index:3}
+.ic-matrix-scroll{touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;scroll-padding:24px}
+.ic-smb-dialog .ic-matrix{flex:1 0 140px;min-height:100px}
+.ic-smb-dialog>.ic-values-status{position:sticky;bottom:0;z-index:3}
+@media(max-width:900px),(orientation:landscape) and (pointer:coarse){
+  #inspector.ic-keyboard-panel,.ic-smb-dialog.ic-keyboard-dialog{
+    position:fixed;top:var(--ic-vv-top);left:var(--ic-vv-left);right:auto;bottom:auto;
+    width:var(--ic-vv-width);height:var(--ic-vv-height);max-width:none;max-height:none;
+    margin:0;box-sizing:border-box;z-index:120;border:1px solid #93acbc;border-radius:5px;
+    box-shadow:0 5px 24px #12263744;overflow:hidden;
+  }
+  #inspector.ic-keyboard-panel .tool-menu{flex:0 0 auto}
+  #inspector.ic-keyboard-panel .ic-values-panel{flex:1;min-height:0;overflow:auto}
+  .ic-smb-dialog.ic-keyboard-dialog{overflow:auto}
+  .ic-keyboard-panel .ic-values-context{padding:3px 8px}
+  .ic-keyboard-panel .ic-values-context>strong{display:none}
+  .ic-keyboard-panel .ic-values-form,.ic-keyboard-dialog .ic-values-form{padding:4px 8px;gap:4px}
+  .ic-keyboard-panel .ic-values-field,.ic-keyboard-dialog .ic-values-field{display:none}
+  .ic-keyboard-panel .ic-values-hint,.ic-keyboard-dialog .ic-values-hint{font-size:10px}
+  .ic-keyboard-panel .ic-values-status,.ic-keyboard-dialog .ic-values-status{padding:3px 8px;font-size:11px}
+  .ic-keyboard-panel .ic-matrix,.ic-keyboard-dialog .ic-matrix{flex:1 0 100px;min-height:100px}
+  .ic-keyboard-short .ic-values-net{display:none}
+  .ic-keyboard-short .ic-values-readout{display:none}
+  .ic-keyboard-short .ic-values-address{font-size:12px;line-height:16px;margin:0}
+  .ic-keyboard-short .ic-smb-target{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ic-keyboard-panel.ic-keyboard-short .ic-values-panel{position:relative}
+  .ic-keyboard-panel.ic-keyboard-short .ic-values-context{min-height:32px;padding:7px 116px 4px 8px}
+  .ic-keyboard-panel.ic-keyboard-short .ic-values-heading{position:absolute;top:2px;right:7px}
+  .ic-keyboard-panel.ic-keyboard-short .ic-values-heading>strong{display:none}
+  .ic-keyboard-short .tool-menu .tool-tab{height:24px;min-height:24px}
+  .ic-keyboard-short .tool-menu .panel-icon{height:28px!important;min-height:28px!important}
+  .ic-keyboard-short .ic-values-heading{min-height:26px}
+  .ic-keyboard-short .ic-values-heading button,.ic-keyboard-short .ic-values-actions button{min-height:27px;padding:2px 5px}
+  .ic-keyboard-short .ic-values-entry input,.ic-keyboard-short .ic-values-entry button{min-height:32px}
+  .ic-keyboard-short .ic-values-hint{display:none}
+  .ic-keyboard-short .ic-matrix{flex-basis:80px;min-height:80px}
+  .ic-smb-dialog.ic-keyboard-dialog{container-type:inline-size}
+  @container(min-width:500px){
+    .ic-keyboard-dialog.ic-keyboard-short .ic-values-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 8px}
+    .ic-keyboard-dialog.ic-keyboard-short .ic-smb-target{grid-column:1/-1}
+    .ic-keyboard-dialog.ic-keyboard-short .ic-values-entry{grid-column:1;grid-row:2}
+    .ic-keyboard-dialog.ic-keyboard-short .ic-values-actions{grid-column:2;grid-row:2;align-self:center;flex-wrap:nowrap}
+    .ic-keyboard-dialog.ic-keyboard-short .ic-edit-scope{grid-column:1/-1}
+  }
+}

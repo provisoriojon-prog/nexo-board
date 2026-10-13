@@ -1,0 +1,26 @@
+/* App focus mode only hides application chrome. Window controls remain native. */
+body.nexus-focus-mode>.workbench-ribbon,body.nexus-focus-mode>#layersPanel{display:none!important}
+.nexus-focus-button{display:inline-flex;align-items:center;justify-content:center;flex:0 0 26px;width:26px;min-width:26px;height:23px;min-height:23px;margin:0;padding:3px;border:1px solid transparent;border-radius:3px;background:transparent;color:#486274;touch-action:manipulation;cursor:pointer}
+.nexus-focus-button[hidden]{display:none!important}
+.nexus-focus-button svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nexus-focus-button .focus-restore{display:none}
+.nexus-focus-button[aria-pressed=true]{color:#14677c;background:#dfedf3}
+.nexus-focus-button[aria-pressed=true] .focus-expand{display:none}
+.nexus-focus-button[aria-pressed=true] .focus-restore{display:block}
+.nexus-focus-button:focus-visible{outline:2px solid #168f9f;outline-offset:-2px}
+.nexus-focus-button:active{background:#c8e1ec}
+@media(min-width:901px) and (hover:hover),(min-width:901px) and (pointer:fine){
+ .document-toolbar .nexus-focus-button{height:var(--desktop-button,23px);min-height:var(--desktop-button,23px);padding:3px;margin:0 3px 0 0}
+ .nexus-focus-button:hover{background:#e1edf2;border-color:#b7cbd6;color:#1c647b}
+}
+@media(max-width:900px),(hover:none) and (pointer:coarse){
+ .nexus-focus-button{display:inline-flex;align-items:center;justify-content:center;flex:0 0 36px;width:36px;min-width:36px;height:32px;min-height:32px;margin:-2px 0;padding:6px;border:1px solid transparent;border-radius:4px;background:transparent;color:#486274;touch-action:manipulation}
+ .nexus-focus-button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+ .nexus-focus-button .focus-restore{display:none}
+ .nexus-focus-button[aria-pressed=true]{color:#14677c;background:#dfedf3}
+ .nexus-focus-button[aria-pressed=true] .focus-expand{display:none}
+ .nexus-focus-button[aria-pressed=true] .focus-restore{display:block}
+ .nexus-focus-button:focus-visible{outline:2px solid #168f9f;outline-offset:-2px}
+ .nexus-focus-button:active{background:#c8e1ec}
+ .nexus-focus-button--tabs{margin:0;height:35px;min-height:35px}
+}

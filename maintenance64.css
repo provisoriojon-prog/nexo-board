@@ -1,0 +1,7 @@
+.maintenance-actions{display:flex;flex-wrap:wrap;gap:8px;padding:10px 14px 12px;border-top:1px solid #d6e0e7;background:#f4f7f9}
+.maintenance-actions button{flex:1 1 auto;font:12px "Segoe UI",Arial;min-height:32px;padding:6px 9px}
+.maintenance-actions button[aria-pressed=true]{background:#ffe8e7;border-color:#c86562;color:#83312e}
+.maintenance-actions p{flex:1 1 100%;font-size:12px;margin:0;color:#873b32}.maintenance-actions p:empty{display:none}
+.maintenance-dialog{width:min(420px,calc(100vw - 28px));max-height:calc(100dvh - 36px);overflow:auto;border:1px solid #a4b6c2;border-radius:6px;padding:18px;background:#f8fbfd;color:#243b4c;font:13px/1.5 "Segoe UI",Arial;box-shadow:0 12px 50px #102d4155}
+.maintenance-dialog::backdrop{background:#102d4166}.maintenance-dialog h2{font-size:15px;margin:0 0 12px}.maintenance-dialog p{margin:0 0 12px}.maintenance-preserved{background:#eaf3f6;padding:10px;border-radius:4px}.maintenance-dialog form{display:flex;justify-content:flex-end;gap:8px}.maintenance-dialog button{font:inherit;min-height:34px;padding:6px 11px}.maintenance-dialog #confirmTemporary64{background:#156883;border-color:#156883;color:white}.maintenance-dialog #clearTemporaryStatus64{color:#93392d}
+@media(max-width:900px),(pointer:coarse){.maintenance-actions button{min-height:40px}.maintenance-dialog button{min-height:42px}}

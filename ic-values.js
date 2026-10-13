@@ -1,0 +1,135 @@
+(() => {
+ 'use strict';
+ const $=id=>document.getElementById(id),board=window.JCIDBoardView,store=window.JCIDICValues;
+ const inspector=$('inspector'),menu=inspector?.querySelector('.tool-menu');
+ if(!board||!store||!window.JCIDPadMatrix||!window.JCIDICPadScene||!menu)return;
+ const tool=document.createElement('button');tool.id='icValuesTool';tool.type='button';tool.className='tool-tab';tool.textContent='Valores IC';tool.setAttribute('aria-controls','icValuesPane');menu.append(tool);
+ const pane=document.createElement('section');pane.id='icValuesPane';pane.className='ic-values-panel';pane.hidden=true;pane.setAttribute('aria-label','Editar valores de IC');
+ pane.innerHTML='<div class="ic-values-context"><strong id="icValueModel">—</strong><div class="ic-values-address"><span id="icValueComponent">Selecione um CI</span><span id="icValuePad"></span></div><div id="icValueNet" class="ic-values-net"></div></div><form id="icDiodeForm" class="ic-values-form" novalidate><div class="ic-values-heading"><strong>Diodo</strong><button type="button" id="icValuesSmbOpen" aria-haspopup="dialog" aria-controls="icSmbDialog">SMB</button></div><div class="ic-values-readout"><span>Atual: <output id="icDiodeCurrent">—</output></span><span>Original: <span id="icDiodeOriginal">—</span></span></div><label class="ic-values-field" for="icDiodeValue">Aplicar valor</label><div class="ic-values-entry"><button type="button" id="icDiodePrevious" title="Pad anterior · Shift + Enter" aria-label="Pad anterior">‹</button><input id="icDiodeValue" type="text" maxlength="32" autocomplete="off" spellcheck="false" enterkeyhint="next" placeholder="Número ou OL" aria-describedby="icDiodeHint" disabled><button type="button" id="icDiodeNext" title="Próximo pad · Enter" aria-label="Próximo pad">›</button></div><div class="ic-values-actions"><button type="submit" id="icDiodeSave" disabled>Salvar</button><button type="button" id="icDiodeReset" disabled>Restaurar original</button><button type="button" id="icDiodeDiscard" hidden>Descartar</button></div><p id="icDiodeHint" class="ic-values-hint">Enter salva e avança · Shift + Enter volta</p></form><section id="icDiodeMatrix" class="ic-matrix" aria-label="Matriz de pads do CI"></section><p id="icValuesStatus" class="ic-values-status" role="status" aria-live="polite"></p>';
+ pane.querySelector('.ic-values-heading').insertBefore(pane.querySelector('.ic-values-readout'),pane.querySelector('#icValuesSmbOpen'));
+ inspector.append(pane);
+ const dialog=document.createElement('dialog');dialog.id='icSmbDialog';dialog.className='ic-smb-dialog';dialog.setAttribute('aria-labelledby','icSmbTitle');
+ dialog.innerHTML='<div class="ic-smb-head"><h2 id="icSmbTitle">Valores SMB</h2><button type="button" id="icSmbClose" title="Fechar" aria-label="Fechar editor SMB">×</button></div><form id="icSmbForm" class="ic-values-form" novalidate><p id="icSmbTarget" class="ic-smb-target"></p><div class="ic-values-readout">Atual: <output id="icSmbCurrent">—</output></div><label class="ic-values-field" for="icSmbValue">Aplicar valor</label><div class="ic-values-entry"><button type="button" id="icSmbPrevious" title="Pad anterior · Shift + Enter" aria-label="Pad anterior">‹</button><input id="icSmbValue" type="text" maxlength="32" autocomplete="off" spellcheck="false" enterkeyhint="next" placeholder="1545/1" aria-describedby="icSmbHint"><button type="button" id="icSmbNext" title="Próximo pad · Enter" aria-label="Próximo pad">›</button></div><div class="ic-values-actions"><button type="submit" id="icSmbSave">Salvar</button><button type="button" id="icSmbReset">Remover valor</button><button type="button" id="icSmbCancel">Fechar</button></div><p id="icSmbHint" class="ic-values-hint">Enter: salvar e avançar · Exemplo: 456/3.14</p></form><section id="icSmbMatrix" class="ic-matrix" aria-label="Matriz de valores SMB"></section><p id="icSmbStatus" class="ic-values-status" role="status" aria-live="polite"></p>';
+ document.body.append(dialog);
+ const fields={diode:{input:$('icDiodeValue'),status:$('icValuesStatus'),save:$('icDiodeSave'),reset:$('icDiodeReset'),current:$('icDiodeCurrent'),previous:$('icDiodePrevious'),next:$('icDiodeNext')},smb:{input:$('icSmbValue'),status:$('icSmbStatus'),save:$('icSmbSave'),reset:$('icSmbReset'),current:$('icSmbCurrent'),previous:$('icSmbPrevious'),next:$('icSmbNext')}};
+ const edits={diode:{target:null,draft:'',dirty:false,message:'',error:false,protected:false,storageError:''},smb:{target:null,draft:'',dirty:false,message:'',error:false,protected:false,storageError:''}};
+ const indexes=new WeakMap(),grouping={diode:true,smb:true};let changing=false;
+ // Drafts have their own bounded store: unvalidated input never enters the readings store.
+ const DRAFT_KEY='nexus-ic-drafts-v1',DRAFT_LIMIT=262144,DRAFT_COUNT=128;
+ const editorStateChanged=()=>window.dispatchEvent(new CustomEvent('jcid:editorstate'));
+ function pinIdentity(target,id=target?.pinId){const pin=target?.index.pins.get(id),part=pin&&target.index.parts.get(pin.part);return pin&&part?JSON.stringify([String(('sourceView' in part?part.sourceView:part.view)??''),String(part.sourceComponentName??part.name??''),String(part.sourceX??part.x??''),String(part.sourceY??part.y??''),String(pin.name??''),String(pin.sourceX??pin.x??''),String(pin.sourceY??pin.y??''),target.index.nets.get(pin.net)?.sourceName??target.index.nets.get(pin.net)?.name??'']):null;}
+ function draftKey(kind,target){const identity=pinIdentity(target);return identity?JSON.stringify([String(target.boardId),kind,identity]):null;}
+ function readDrafts(){
+  let text;try{text=localStorage.getItem(DRAFT_KEY);}catch{throw Error('O armazenamento de rascunhos não está disponível.');}
+  if(!text)return {version:1,entries:{}};
+  if(text.length>DRAFT_LIMIT)throw Error('O arquivo de rascunhos excede o limite. Os dados foram preservados.');
+  let saved;try{saved=JSON.parse(text);}catch{throw Error('Não foi possível ler os rascunhos. Os dados foram preservados.');}
+  if(saved?.version!==1||!saved.entries||typeof saved.entries!=='object'||Array.isArray(saved.entries)||Object.keys(saved.entries).length>DRAFT_COUNT)throw Error('O formato dos rascunhos é incompatível. Os dados foram preservados.');
+  return saved;
+ }
+ function writeDrafts(saved){const text=JSON.stringify(saved);if(Object.keys(saved.entries).length>DRAFT_COUNT||text.length>DRAFT_LIMIT)throw Error('O espaço reservado aos rascunhos está cheio. Salve ou descarte um rascunho antes de continuar.');try{if(Object.keys(saved.entries).length)localStorage.setItem(DRAFT_KEY,text);else localStorage.removeItem(DRAFT_KEY);}catch{throw Error('Não foi possível guardar o rascunho neste aparelho. Mantenha esta página aberta e tente novamente.');}}
+ function clearDraft(kind,target=edits[kind].target){const edit=edits[kind],key=draftKey(kind,target);if(!key)return true;try{const saved=readDrafts();if(Object.prototype.hasOwnProperty.call(saved.entries,key)){delete saved.entries[key];writeDrafts(saved);}edit.protected=false;edit.storageError='';return true;}catch(error){edit.storageError=error.message;return false;}}
+ function persistDraft(kind){const edit=edits[kind],key=draftKey(kind,edit.target);if(!edit.dirty||!key)return true;try{const saved=readDrafts();saved.entries[key]={draft:edit.draft,grouped:grouping[kind],scope:idsFor(kind).map(id=>pinIdentity(edit.target,id)).sort(),updated:Date.now()};writeDrafts(saved);edit.protected=true;edit.storageError='';return true;}catch(error){edit.protected=false;edit.storageError=error.message;return false;}}
+ function recoverDraft(kind){const edit=edits[kind],target=edit.target,key=draftKey(kind,target);if(!key)return;try{const record=readDrafts().entries[key];if(!record)return;if(typeof record.draft!=='string'||record.draft.length>32||typeof record.grouped!=='boolean'||!Array.isArray(record.scope))throw Error('Este rascunho não pôde ser recuperado. Os dados foram preservados.');const ids=record.grouped?target.layout.electrical.byPin.get(target.pinId)?.ids||[target.pinId]:[target.pinId],scope=ids.map(id=>pinIdentity(target,id)).sort();if(JSON.stringify(scope)!==JSON.stringify(record.scope))throw Error('A seleção de pads deste rascunho mudou. Os dados foram preservados.');grouping[kind]=record.grouped;scopeControls[kind].check.checked=record.grouped;edit.draft=record.draft;edit.dirty=true;edit.protected=true;edit.message='Rascunho recuperado neste aparelho. Use Salvar para aplicar.';}catch(error){edit.storageError=error.message;}}
+ const display=value=>value==null?'Sem valor':value===''?'Oculto':value;
+ const same=(a,b)=>a?.data===b?.data&&a?.boardId===b?.boardId&&a?.pinId===b?.pinId;
+ const activeData=target=>!!target&&!document.body.classList.contains('source-mode')&&!document.body.classList.contains('board-loading')&&window.JCID_BOARD===target.data&&window.JCID_ACTIVE_BOARD?.id===target.boardId;
+ function getIndex(data){let saved=indexes.get(data);if(!saved){saved={pins:new Map(data.pins.map(p=>[p.id,p])),parts:new Map(data.components.map(p=>[p.id,p])),nets:new Map(data.nets.map(n=>[n.id,n])),layouts:new Map()};indexes.set(data,saved);}return saved;}
+ function live(){
+  if(document.body.classList.contains('source-mode')||document.body.classList.contains('board-loading'))return null;
+  const data=window.JCID_BOARD;if(!data)return null;const index=getIndex(data),state=board.getState(),pin=index.pins.get(state.pin),part=index.parts.get(pin?.part??state.component);if(!part)return null;
+  let layout=index.layouts.get(part.id);if(!layout){const matrix=window.JCIDPadMatrix.build(data,part.id,window.JCID_NC_DISPLAY);layout={...matrix,positions:new Map(matrix.order.map((id,i)=>[id,i])),electrical:window.JCIDEditGroups.build(data,matrix)};index.layouts.set(part.id,layout);}
+  const meta=window.JCID_ACTIVE_BOARD||{id:'iphone-11-motherboard',modelId:'iphone-11'},doc=window.JCIDDesktop?.currentDocument(),model=window.JCID_DEVICES?.models?.find(m=>m.id===meta.modelId);
+  const context={data,index,layout,componentId:part.id,componentName:part.name,boardId:meta.id,modelLabel:model?.label||doc?.modelLabel||meta.modelId,handle:store.forBoard(meta.id,data,window.JCID_READINGS),pinId:null,padName:'',netName:''};
+  return pin&&layout.positions.has(pin.id)?forPin(context,pin.id):context;
+ }
+ function forPin(context,id){const pin=context?.index.pins.get(id);if(!pin||!context.layout.positions.has(id))return null;return {...context,pinId:id,padName:String(pin.name??pin.id),netName:context.index.nets.get(pin.net)?.name||''};}
+ function chooseLive(selectFirst=false){const next=live();if(!next||next.pinId!==null)return next;const first=forPin(next,next.layout.order[0]);if(!first)return next;if(selectFirst){changing=true;const selected=board.selectReadingPin(first.pinId);changing=false;if(!selected)return next;}return first;}
+ function idsFor(kind,target=edits[kind].target){if(target?.pinId==null)return [];return grouping[kind]?target.layout.electrical.byPin.get(target.pinId)?.ids||[target.pinId]:[target.pinId];}
+ function readingSummary(kind,target=edits[kind].target,field='value'){return target?window.JCIDEditGroups.summarize(target.handle,idsFor(kind,target),kind,field):{mixed:false,value:null,overridden:false};}
+ function nextPin(kind,direction){const t=edits[kind].target;if(t?.pinId==null)return undefined;if(grouping[kind]){const g=t.layout.electrical.byPin.get(t.pinId);return t.layout.electrical.groups[g.index+direction]?.ids[0];}return t.layout.order[t.layout.positions.get(t.pinId)+direction];}
+ function setTarget(kind,target,recover=true){const edit=edits[kind];edit.target=target;const summary=readingSummary(kind,target);edit.draft=summary.mixed?'':summary.value??'';edit.dirty=false;edit.protected=false;edit.storageError='';edit.message='';edit.error=false;if(recover)recoverDraft(kind);}
+ const scopeControls={};
+ for(const kind of ['diode','smb']){const row=document.createElement('div');row.className='ic-edit-scope';const label=document.createElement('label'),check=document.createElement('input'),count=document.createElement('span');check.type='checkbox';check.checked=true;check.id=kind==='diode'?'icDiodeGroup':'icSmbGroup';label.append(check,' Mesma linha neste CI');row.append(label,count);fields[kind].input.closest('form').append(row);scopeControls[kind]={check,count};check.addEventListener('change',()=>{if(!save(kind)){check.checked=grouping[kind];return;}grouping[kind]=check.checked;setTarget(kind,edits[kind].target);render(kind);editorStateChanged();});}
+ function note(kind,message,error=false){const edit=edits[kind];edit.message=message;edit.error=error;fields[kind].status.textContent=message;fields[kind].status.classList.toggle('is-error',error);}
+ function focus(kind){const input=fields[kind].input;if(input.disabled)return;input.focus({preventScroll:true});input.select();}
+ function makeMatrix(host,kind){
+  const toolbar=document.createElement('div');toolbar.className='ic-matrix-toolbar';
+  const matrixButton=document.createElement('button'),listButton=document.createElement('button'),fitButton=document.createElement('button'),padButton=document.createElement('button');
+  matrixButton.type=listButton.type=fitButton.type=padButton.type='button';padButton.textContent='Pad';padButton.className='ic-scene-focus';padButton.title='Ampliar o pad selecionado';matrixButton.textContent='Circuito';listButton.textContent='Linhas';fitButton.textContent='Enquadrar';fitButton.className='ic-scene-fit';fitButton.title='Enquadrar circuito · tecla 0';matrixButton.dataset.icView='circuit';listButton.dataset.icView='lines';
+  matrixButton.setAttribute('aria-pressed','true');listButton.setAttribute('aria-pressed','false');toolbar.append(matrixButton,listButton,padButton,fitButton);host.append(toolbar);
+  const list=document.createElement('div');list.className='ic-lines-scroll';list.hidden=true;host.append(list);
+  const physical=document.createElement('div');host.append(physical);
+  const view={context:null,active:null,lineCells:new Map(),mode:'circuit'};
+  const scene=window.JCIDICPadScene.create(physical,{kind,onSelect:(id,forceFocus=false)=>moveTo(kind,id,forceFocus||document.activeElement===fields[kind].input||!matchMedia('(pointer:coarse)').matches)});
+  function lineValue(group){const summary=window.JCIDEditGroups.summarize(view.context.handle,group.ids,kind);return summary.mixed?'Valores diferentes':display(summary.value);}
+  function patch(id){const group=view.context?.layout.electrical.byPin.get(id),row=group&&view.lineCells.get(group.key);if(row)row.value.textContent=lineValue(group);scene.refresh();}
+  function setView(lines){view.mode=lines?'lines':'circuit';list.hidden=!lines;physical.hidden=lines;fitButton.hidden=padButton.hidden=lines;matrixButton.setAttribute('aria-pressed',String(!lines));listButton.setAttribute('aria-pressed',String(lines));if(!lines)scene.resize();reveal();}
+  matrixButton.addEventListener('click',()=>setView(false));listButton.addEventListener('click',()=>setView(true));fitButton.addEventListener('click',()=>scene.fit());padButton.addEventListener('click',()=>scene.focusSelected());
+  function reveal(){if(view.mode==='circuit'){scene.reveal();return;}const group=view.context?.layout.electrical.byPin.get(view.active),row=group&&view.lineCells.get(group.key)?.button;if(row){const box=list.getBoundingClientRect(),r=row.getBoundingClientRect();if(r.top<box.top)list.scrollTop+=r.top-box.top;else if(r.bottom>box.bottom)list.scrollTop+=r.bottom-box.bottom;}}
+  function render(context){
+   const changed=view.context?.data!==context?.data||view.context?.componentId!==context?.componentId;
+   view.context=context;
+   if(changed){list.replaceChildren();view.lineCells.clear();for(const group of context?.layout.electrical.groups||[]){const button=document.createElement('button'),name=document.createElement('strong'),pads=document.createElement('span'),value=document.createElement('b');button.type='button';button.className='ic-line-row';button.dataset.pinId=group.ids[0];name.textContent=group.netName||'Sem linha identificada';pads.textContent=group.ids.map(id=>String(context.index.pins.get(id)?.name??id)).join(', ');pads.title=pads.textContent;value.className='ic-line-value';value.textContent=lineValue(group);button.append(name,pads,value);list.append(button);view.lineCells.set(group.key,{button,value});}}
+   const group=context?.layout.electrical.byPin.get(context.pinId);for(const [key,row] of view.lineCells)row.button.classList.toggle('is-current',key===group?.key);
+   const old=view.active;view.active=context?.pinId??null;scene.render(context,context?.layout.electrical.byPin.get(context.pinId)?.ids||[]);fitButton.disabled=!context;padButton.disabled=context?.pinId==null;if(old!==view.active&&!changed)requestAnimationFrame(reveal);
+  }
+  list.addEventListener('click',event=>{const button=event.target.closest('button[data-pin-id]');if(button)moveTo(kind,Number(button.dataset.pinId),document.activeElement===fields[kind].input||!matchMedia('(pointer:coarse)').matches);});
+  return {render,patch,reveal,getState:()=>({...scene.getState(),mode:view.mode}),refreshValues:()=>{for(const group of view.context?.layout.electrical.groups||[])patch(group.ids[0]);scene.refresh();},get context(){return view.context;}};
+ }
+ const matrices={diode:makeMatrix($('icDiodeMatrix'),'diode'),smb:makeMatrix($('icSmbMatrix'),'smb')};
+ function render(kind){
+  const edit=edits[kind],target=edit.target,f=fields[kind],value=target?.pinId!=null?target.handle.get(target.pinId)?.[kind]:null;
+  const summary=readingSummary(kind),ids=idsFor(kind);f.input.disabled=!value;if(f.input.value!==edit.draft)f.input.value=edit.draft;f.input.placeholder=summary.mixed?'Digite para aplicar a todos':kind==='diode'?'Número ou OL':'1545/1';f.current.textContent=value?(summary.mixed?'Valores diferentes':display(summary.value)):'—';f.save.disabled=!value||!edit.dirty;f.reset.disabled=!value||(!summary.overridden&&!edit.dirty);scopeControls[kind].count.textContent=ids.length>1?ids.length+' pads':'1 pad';scopeControls[kind].count.title=ids.map(id=>target?.index.pins.get(id)?.name).join(', ');
+  f.previous.disabled=nextPin(kind,-1)===undefined;f.next.disabled=nextPin(kind,1)===undefined;
+  if(kind==='diode'){$('icValueModel').textContent=target?.modelLabel||window.JCIDDesktop?.currentDocument()?.modelLabel||'—';$('icValueComponent').textContent=target?.componentName||'Selecione um CI';$('icValuePad').textContent=target?.pinId!=null?'Pad '+target.padName:'';$('icValueNet').textContent=target?.netName||'';$('icValueNet').title=target?.netName||'';const original=readingSummary(kind,target,'original');$('icDiodeOriginal').textContent=value?(original.mixed?'Valores diferentes':display(original.value)):'—';$('icDiodeDiscard').hidden=!edit.dirty;$('icValuesSmbOpen').disabled=!value;}
+  else {$('icSmbTarget').textContent=target?target.componentName+' · Pad '+target.padName+' · '+target.netName:'';$('icSmbCancel').textContent=edit.dirty?'Descartar e fechar':'Fechar';}
+  if(edit.storageError)note(kind,edit.storageError,true);
+  else if(target?.handle.problem())note(kind,target.handle.problem(),true);
+  else if(edit.dirty&&!same(target,live()))note(kind,'Rascunho de '+target.componentName+' / '+target.padName+'. Salve ou descarte antes de trocar.');
+  else note(kind,edit.message||(edit.dirty?'Rascunho salvo automaticamente. Use Salvar para aplicar.':!target?'Selecione um pad ou CI no mapa.':!value?'Este componente não tem pads editáveis.':'Leituras salvas neste aparelho.'),edit.error);
+  if(kind==='smb'?dialog.open:!pane.hidden)matrices[kind].render(target);
+ }
+ function refresh(){if(changing)return;const next=chooseLive(!pane.hidden&&!dialog.open),edit=edits.diode;if(!edit.dirty||(!same(edit.target,next)&&persistDraft('diode')))setTarget('diode',next);render('diode');if(dialog.open){if(!activeData(edits.smb.target)&&persistDraft('smb')){dialog.close();setTarget('smb',null);}else render('smb');}}
+ function save(kind){
+  const edit=edits[kind],target=edit.target;if(target?.pinId==null)return false;if(!edit.dirty)return true;
+  try{store.validate(kind,fields[kind].input.value);if(!clearDraft(kind)){render(kind);return false;}changing=true;target.handle.setMany(idsFor(kind,target),kind,fields[kind].input.value);changing=false;edit.draft=target.handle.get(target.pinId)?.[kind].value??'';edit.dirty=false;for(const matrix of Object.values(matrices))if(matrix.context?.boardId===target.boardId)for(const id of idsFor(kind,target))matrix.patch(id);note(kind,idsFor(kind,target).length>1?'Linha salva nos pads deste CI.':'Pad '+target.padName+' salvo.');render(kind);return true;}
+  catch(error){changing=false;persistDraft(kind);note(kind,error.message,true);render(kind);focus(kind);return false;}
+ }
+ function canNavigate(kind){const target=edits[kind].target,current=live();if(activeData(target)&&current?.componentId===target.componentId)return true;note(kind,'Selecione '+(target?.componentName||'o CI')+' no mapa para continuar.',true);return false;}
+ function moveTo(kind,id,keepFocus=true){
+  const edit=edits[kind],context=edit.target;if(!context||!context.layout.positions.has(id)||!canNavigate(kind)||!save(kind))return false;
+  changing=true;let selected;try{selected=board.selectReadingPin(id);}finally{changing=false;}if(!selected){note(kind,'Este pad está fora da seleção disponível.',true);focus(kind);return false;}
+  setTarget(kind,forPin(context,id));if(!edits[kind].dirty)note(kind,'Pad '+edits[kind].target.padName+' · Enter para avançar.');
+  if(kind==='smb'&&!edits.diode.dirty){setTarget('diode',forPin(context,id));render('diode');}
+  render(kind);if(keepFocus)focus(kind);return true;
+ }
+ function advance(kind,direction){
+  const edit=edits[kind],target=edit.target;if(target?.pinId==null||!canNavigate(kind)||!save(kind))return;
+  const next=nextPin(kind,direction);if(next===undefined){note(kind,direction>0?'Fim deste CI.':'Início deste CI.');render(kind);focus(kind);return;}
+  moveTo(kind,next);
+ }
+ for(const kind of ['diode','smb']){
+  const f=fields[kind],edit=edits[kind];f.input.addEventListener('input',()=>{edit.draft=f.input.value;const summary=readingSummary(kind);edit.dirty=summary.mixed||edit.draft!==(summary.value??'');edit.message='';edit.error=false;if(edit.dirty)persistDraft(kind);else if(!clearDraft(kind)){edit.dirty=true;edit.protected=false;}render(kind);});
+  f.input.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.isComposing&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();if(!event.repeat)advance(kind,event.shiftKey?-1:1);}});
+  f.previous.addEventListener('click',()=>advance(kind,-1));f.next.addEventListener('click',()=>advance(kind,1));
+  $(kind==='diode'?'icDiodeForm':'icSmbForm').addEventListener('submit',event=>{event.preventDefault();if(event.submitter===f.save){if(save(kind)){render(kind);focus(kind);}}else advance(kind,1);});
+  f.reset.addEventListener('click',()=>{if(edit.target?.pinId==null)return;if(!clearDraft(kind)){render(kind);return;}try{changing=true;edit.target.handle.resetMany(idsFor(kind),kind);changing=false;setTarget(kind,edit.target,false);for(const matrix of Object.values(matrices))if(matrix.context?.boardId===edit.target.boardId)for(const id of idsFor(kind))matrix.patch(id);note(kind,kind==='diode'?'Diodo original restaurado.':'Valor SMB removido.');render(kind);focus(kind);}catch(error){changing=false;persistDraft(kind);note(kind,error.message,true);render(kind);}});
+ }
+ $('icDiodeDiscard').addEventListener('click',()=>{if(!clearDraft('diode')){render('diode');return;}setTarget('diode',chooseLive(!pane.hidden&&!dialog.open));note('diode','Rascunho descartado.');render('diode');focus('diode');});
+ function openSmb(){const target=edits.diode.target;if(target?.pinId==null||!activeData(target))return;if(dialog.open&&same(edits.smb.target,target))return;if(edits.smb.dirty&&!persistDraft('smb')){render('smb');return;}setTarget('smb',target);if(!dialog.open)dialog.showModal();render('smb');editorStateChanged();requestAnimationFrame(()=>matrices.smb.reveal());if(!matchMedia('(pointer:coarse)').matches)focus('smb');}
+ function closeSmb(){if(!clearDraft('smb')){render('smb');return;}dialog.close();setTarget('smb',null);editorStateChanged();$('icValuesSmbOpen').focus({preventScroll:true});}
+ function requestCloseSmb(){if(edits.smb.dirty){note('smb','Salve a alteração ou use Descartar e fechar.');$('icSmbCancel').focus();}else closeSmb();}
+ $('icValuesSmbOpen').addEventListener('click',openSmb);$('icSmbClose').addEventListener('click',requestCloseSmb);$('icSmbCancel').addEventListener('click',closeSmb);dialog.addEventListener('cancel',event=>{event.preventDefault();requestCloseSmb();});
+ for(const element of [pane,dialog])element.addEventListener('keydown',event=>event.stopPropagation());
+ function open(){board.openTools();pane.hidden=false;tool.setAttribute('aria-pressed','true');tool.setAttribute('aria-expanded','true');window.dispatchEvent(new CustomEvent('jcid:tool',{detail:'icvalues'}));refresh();requestAnimationFrame(()=>matrices.diode.reveal());if(!matchMedia('(pointer:coarse)').matches)focus('diode');}
+ function close(){pane.hidden=true;tool.setAttribute('aria-pressed','false');tool.setAttribute('aria-expanded','false');}
+ tool.addEventListener('click',()=>pane.hidden?open():close());window.addEventListener('jcid:tool',event=>{if(event.detail!=='icvalues')close();});
+ for(const name of ['jcid:selection','jcid:document','jcid:boardchange','jcid:boardloadstate','jcid:netnames-changed'])window.addEventListener(name,refresh);
+ window.addEventListener('jcid:icvalues-changed',event=>{if(changing)return;for(const matrix of Object.values(matrices))if(matrix.context?.boardId===event.detail?.boardId){if(event.detail.pinIds)for(const id of event.detail.pinIds)matrix.patch(id);else if(event.detail.pinId!=null)matrix.patch(event.detail.pinId);else matrix.refreshValues();}refresh();});
+ function flushDrafts(){for(const kind of ['diode','smb'])if(edits[kind].dirty&&!persistDraft(kind))render(kind);}
+ window.addEventListener('pagehide',flushDrafts);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushDrafts();});
+ window.addEventListener('beforeunload',event=>{flushDrafts();if(Object.values(edits).some(edit=>edit.dirty&&!edit.protected)){event.preventDefault();event.returnValue='';}});
+ function restoreSession(saved){if(!saved||typeof saved!=='object')return;for(const kind of ['diode','smb'])if(typeof saved.grouping?.[kind]==='boolean'&&!edits[kind].dirty){grouping[kind]=saved.grouping[kind];scopeControls[kind].check.checked=grouping[kind];}refresh();if(saved.smbOpen&&edits.diode.target?.pinId!=null)openSmb();}
+ window.JCIDICEditor=Object.freeze({open,close,refresh,openSmb,restoreSession,getSession:()=>({smbOpen:dialog.open&&same(edits.smb.target,live()),grouping:{...grouping}}),getViewport:(kind='diode')=>matrices[kind]?.getState(),getTarget:()=>{const t=edits.diode.target;return t?{boardId:t.boardId,pinId:t.pinId,componentName:t.componentName,padName:t.padName,dirty:edits.diode.dirty}:null;}});close();refresh();
+})();

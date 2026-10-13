@@ -1,0 +1,72 @@
+/* Compact controls around an independent physical circuit viewport. */
+.ic-values-panel,.ic-smb-dialog{--ic-accent:#137c99;--ic-line:#c1d0d9;background:#edf3f6}
+.ic-values-panel .ic-values-context{padding:6px 9px 5px;border-bottom:1px solid var(--ic-line)}
+.ic-values-panel .ic-values-context>strong{display:block;font-size:10px;line-height:14px;font-weight:500;letter-spacing:.01em}
+.ic-values-address{margin:0;justify-content:space-between;min-height:21px;font-size:14px}
+.ic-values-address>span:last-child{color:#176a82;background:#dcecf1;padding:1px 6px;border-radius:3px;font-size:11px}
+.ic-values-address>span:last-child:empty{display:none}
+.ic-values-panel .ic-values-net{display:block;font-size:11px;min-height:15px;line-height:15px;margin-top:1px}
+.ic-values-panel .ic-values-form,.ic-smb-dialog .ic-values-form{padding:6px 9px;gap:4px}
+.ic-values-panel .ic-values-heading strong{font-size:12px;font-weight:600}
+.ic-values-panel .ic-values-heading button{font-size:11px;min-height:23px;padding:2px 11px;border-color:#90b5c5;color:#21657e}
+.ic-values-panel .ic-values-field,.ic-smb-dialog .ic-values-field{display:none}
+.ic-values-panel .ic-values-entry{grid-template-columns:30px minmax(0,1fr) 30px}
+.ic-values-panel .ic-values-entry input{min-height:33px;background:white;font-variant-numeric:tabular-nums}
+.ic-values-panel .ic-values-actions{gap:5px}
+.ic-values-panel .ic-values-actions button{min-height:24px;font-size:11px}
+.ic-values-panel .ic-values-hint,.ic-smb-dialog .ic-values-hint{font-size:10px;line-height:13px}
+.ic-values-panel .ic-edit-scope,.ic-smb-dialog .ic-edit-scope{font-size:11px;padding-top:2px}
+.ic-values-panel .ic-matrix,.ic-smb-dialog .ic-matrix{border:1px solid #acc0cb;border-radius:5px;margin:0 8px 6px;min-height:150px;flex:1 1 200px;box-shadow:0 1px 3px #2544580c;overflow:hidden}
+.ic-matrix-toolbar{background:#f4f8fa;border-color:#c4d4dc;padding:4px;gap:3px;align-items:center}
+.ic-matrix-toolbar button{min-height:25px;padding:3px 9px;font-size:11px;line-height:16px;border-radius:3px;border-color:transparent;background:transparent}
+.ic-matrix-toolbar button[aria-pressed=true]{background:#d9edf2;border-color:#88bdcc;color:#145f77;font-weight:600}
+.ic-matrix-toolbar .ic-scene-focus{margin-left:auto}.ic-matrix-toolbar .ic-scene-fit,.ic-matrix-toolbar .ic-scene-focus{background:#fff;border-color:#b6cbd6;font-size:10px;padding:3px 7px}
+.ic-scene{position:relative;flex:1 1 auto;min-width:0;min-height:90px;background:#10181f;overflow:hidden;isolation:isolate}
+.ic-scene[hidden]{display:none!important}
+.ic-scene-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:grab;outline:none}
+.ic-scene-canvas:focus-visible{outline:2px solid #55bbd6;outline-offset:-3px}
+.ic-scene-empty{position:absolute;inset:0;display:grid;align-content:center;text-align:center;padding:24px;color:#98b3c4;font-size:12px;line-height:1.6;pointer-events:none}
+.ic-scene-empty[hidden]{display:none}
+.ic-scene-hint{position:absolute;top:6px;left:7px;right:7px;text-align:center;font-size:10px;line-height:14px;color:#a7bfcd;pointer-events:none;user-select:none}
+
+
+
+.ic-scene-tip{position:absolute;z-index:4;max-width:min(260px,calc(100% - 12px));border:1px solid #6e92a5;border-radius:4px;background:#ecf5fa;color:#15384b;box-shadow:0 3px 12px #0004;padding:6px 8px;font-size:11px;line-height:16px;overflow-wrap:anywhere;pointer-events:none}
+.ic-values-panel>.ic-values-status,.ic-smb-dialog>.ic-values-status{font-size:10px;line-height:14px;padding:4px 8px;background:#e8f0f4;min-height:22px}
+.ic-values-panel>.ic-values-status.is-error,.ic-smb-dialog>.ic-values-status.is-error{background:#fff0f0;color:#a12731}
+.ic-smb-dialog{border-radius:8px;width:780px;height:690px;max-height:calc(100dvh - 24px)}
+.ic-smb-dialog .ic-smb-head{padding:6px 10px;background:#e4eef3}
+.ic-smb-dialog .ic-smb-head h2{font-size:13px}
+.ic-smb-dialog .ic-values-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 12px}
+.ic-smb-target{grid-column:1/-1}.ic-smb-dialog .ic-values-readout{grid-column:1/-1}
+.ic-smb-dialog .ic-values-entry{grid-column:1}.ic-smb-dialog .ic-values-actions{grid-column:2;align-self:center;flex-wrap:nowrap}
+.ic-smb-dialog .ic-values-hint,.ic-smb-dialog .ic-edit-scope{grid-column:1/-1}
+/* The drawing and entry field take priority over pad metadata. */
+.ic-values-panel .ic-values-context{display:flex;align-items:center;gap:8px;padding:4px 9px;min-height:26px}
+.ic-values-panel .ic-values-context>strong{display:none}
+.ic-values-panel .ic-values-address{flex:0 0 auto;gap:7px;font-size:12px;min-height:17px}
+.ic-values-panel .ic-values-address>span:last-child{font-size:10px;padding:0;background:transparent;color:#537487}
+.ic-values-panel .ic-values-net{flex:1;min-width:0;margin:0;font-size:10px;font-weight:400;min-height:13px;line-height:13px}
+.ic-values-panel .ic-values-heading .ic-values-readout{gap:7px;flex:1;justify-content:center;font-size:10px;line-height:13px}
+.ic-values-panel .ic-values-heading .ic-values-readout output{font-size:11px}
+.ic-values-panel .ic-values-hint,.ic-smb-dialog .ic-values-hint{display:none}
+
+
+.ic-smb-dialog .ic-smb-target{font-size:11px;font-weight:400;line-height:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:900px){
+ .ic-values-panel .ic-matrix,.ic-smb-dialog .ic-matrix{min-height:145px;margin:0 6px 5px}
+ .ic-values-panel .ic-values-entry{grid-template-columns:34px minmax(0,1fr) 34px}
+ .ic-values-panel .ic-values-entry input,.ic-values-panel .ic-values-entry button{min-height:36px}
+ .ic-values-panel .ic-values-actions button,.ic-values-panel .ic-values-heading button,.ic-matrix-toolbar button{min-height:30px}
+ .ic-smb-dialog .ic-values-form{display:flex;gap:4px}.ic-smb-dialog{height:700px;max-width:calc(100vw - 12px)}
+ 
+ .ic-keyboard-short .ic-values-context>strong,.ic-keyboard-short .ic-values-hint{display:none}
+ .ic-keyboard-short .ic-values-context{padding:3px 8px}
+ .ic-keyboard-panel.ic-keyboard-short .ic-values-context{padding:3px 8px;min-height:24px}
+ .ic-keyboard-short .ic-values-net{display:block;font-size:10px;min-height:12px;line-height:12px}
+ .ic-keyboard-short .ic-values-readout{display:flex;font-size:10px;line-height:12px}
+ .ic-keyboard-panel.ic-keyboard-short .ic-values-heading{position:static;min-height:24px}
+ .ic-keyboard-panel.ic-keyboard-short .ic-values-heading>strong{display:block}
+ .ic-keyboard-short .ic-matrix{min-height:125px;flex-basis:125px}
+ .ic-keyboard-short .ic-scene-hint{display:none}
+}

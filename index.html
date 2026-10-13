@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="mobile-landscape91.js?v=0ed90b5627"></script>
+<title>NEXO BOARD · SB APPLE</title>
+<meta name="application-name" content="NEXO BOARD"><meta name="apple-mobile-web-app-title" content="NEXO MOBILE">
+<meta name="description" content="Consulte os componentes, pinos, redes e camadas da placa do iPhone 11.">
+<meta name="theme-color" content="#153c55">
+<link rel="stylesheet" href="desktop.css?v=4634446d73">
+<link rel="stylesheet" href="desktop-refinements.css?v=39231e4f6b">
+<link rel="stylesheet" href="responsive.css?v=6bf783adcf">
+<link rel="stylesheet" href="tree.css?v=b9c4f54756">
+<link rel="stylesheet" href="workbench.css?v=70c8f62739">
+<link rel="stylesheet" href="panels.css?v=432585dfa1">
+<link rel="stylesheet" href="netcolor.css?v=c99df85414">
+<link rel="stylesheet" href="netcolor-color.css?v=fcfec9fa38">
+<link rel="stylesheet" href="rffe.css?v=a4d7cf4110"><link rel="stylesheet" href="rffe-connection.css?v=8ec4ea6d91">
+<link rel="icon" type="image/svg+xml" href="nexo-board.svg">
+<link rel="alternate icon" href="nexo-board.ico">
+<link rel="stylesheet" href="nexus.css?v=d6d8f62095"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#172331"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" href="nexus-180.png">
+<link rel="stylesheet" href="nexus-layout.css?v=99e05fe71d">
+<link rel="stylesheet" href="ic-values.css?v=93ace7cec0"><script src="ic-values-data.js?v=62a3da56ed"></script>
+<script src="ic-pad-kinds.js?v=03baf6a25c"></script><link rel="stylesheet" href="ic-editor-mobile.css?v=75e79c660f">
+<link rel="stylesheet" href="toolbar45.css?v=9a75cd5ff1">
+<link rel="stylesheet" href="tools45.css?v=05c7119891">
+<link rel="stylesheet" href="capacitor-search.css?v=0966abfa22">
+<link rel="stylesheet" href="mobile-focus.css?v=2c2a803c5f">
+<link rel="stylesheet" href="board-editor59.css?v=5fa24fc4d8">
+<link rel="stylesheet" href="nexus-individual61.css?v=b3119b8f5e"><script src="board-composite-images62.js?v=1b3444a13e"></script><link rel="stylesheet" href="maintenance64.css?v=ca0cb2baf8">
+<link rel="stylesheet" href="library-manager64.css?v=00c5366680">
+<link rel="stylesheet" href="nexus-sync65.css?v=91caf0e3c9">
+<link rel="stylesheet" href="nexus-sync66.css?v=be42915429"><link rel="stylesheet" href="ic-pad-scene69.css?v=c58ddb4041">
+<link rel="stylesheet" href="studies74.css?v=bcb903d225">
+<link rel="stylesheet" href="desktop-density75.css?v=17dfe55317">
+<link rel="stylesheet" href="i2c.css?v=4dec8f41e7">
+<link rel="stylesheet" href="tools76.css?v=e181087f84">
+<link rel="stylesheet" href="studies77.css?v=8d0fade3a5">
+<link rel="stylesheet" href="study-story83.css?v=5ad14f004f">
+<link rel="stylesheet" href="study-research86.css?v=d2ac50b44b">
+<link rel="stylesheet" href="tools77.css?v=78d19deea4">
+<link rel="stylesheet" href="mobile-landscape91.css?v=c7f50f1e84">
+<link rel="stylesheet" href="tools83.css?v=393be788da">
+<script src="bootstrap83.js?v=98efbf8c1c"></script>
+<script src="nexo-brand92.js?v=b32c26d66d"></script>
+</head>
+<body>
+<header class="workbench-ribbon" aria-label="Ferramentas da placa"><div class="ribbon-scroll"><button type="button" class="ribbon-button" id="imageButton" aria-pressed="false" aria-controls="boardCanvas" title="Exibir desenhos dos componentes no mapa"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><circle cx="8" cy="9" r="1.5"/><path d="m3 17 6-5 4 4 3-3 5 5"/></svg><span>Imagem</span></button><button type="button" class="ribbon-button" id="nexusFilesButton" aria-haspopup="dialog" aria-controls="nexusFilesDialog" title="Adicionar pacotes de placas ao aparelho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7l2 3h9v11H3ZM3 6V3h7l2 3h9v3M12 11v6m-3-3h6"/></svg><span>Arquivos</span></button><div class="ribbon-group board-controls" role="group" aria-label="Dados da placa"><button type="button" class="ribbon-button" id="diodeButton" data-object="readings" aria-pressed="true" title="Ocultar ou exibir valores de diodo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h5m10 0h5M7 6v12l10-6-10-6Zm10 0v12"/></svg><span><span id="readingToggleLabel">Diodo</span></span></button><button type="button" class="ribbon-button" id="smbButton" data-object="smb" aria-pressed="false" title="Exibir valores SMB no lugar do diodo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="8" height="14" rx="1"/><rect x="14" y="4" width="8" height="14" rx="1"/><path d="M4 8h4m8 0h4M6 18v3h12v-3M10 12h4"/></svg><span>SMB</span></button><button type="button" class="ribbon-button" id="namesButton" data-object="names" aria-pressed="true" title="Ocultar ou exibir nomes dos componentes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 18 5-12 5 12M6 14h6m4-6h6m-3 0v10"/></svg><span>Nomes</span></button></div><button type="button" class="ribbon-button board-controls" id="componentsButton" data-object="components" aria-pressed="true" title="Ocultar ou exibir componentes, pads e seus valores; manter as trilhas"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4"/></svg><span>Componentes</span></button><button type="button" class="ribbon-button board-controls" id="netNamesButton" data-object="netNames" aria-pressed="true" title="Exibir os nomes das linhas nos pads"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="4" cy="12" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="20" cy="18" r="2"/><path d="M6 12h5l7-6m-7 6 7 6"/></svg><span>Linhas</span></button><div class="ribbon-group board-controls" role="group" aria-label="Posição da placa"><button type="button" class="ribbon-button" id="rotateLeftButton" title="Girar 90° para a esquerda"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg><span>Girar</span></button><button type="button" class="ribbon-button" id="rotateButton" title="Girar 90° para a direita"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10a8 8 0 1 0-1 8m0-14v6h-6"/></svg><span>Girar</span></button><button type="button" class="ribbon-button" id="mirrorButton" aria-pressed="false" title="Espelhar horizontalmente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M3 7v10l6-5-6-5Zm18 0v10l-6-5 6-5Z"/></svg><span>Espelhar H</span></button><button type="button" class="ribbon-button" id="mirrorVerticalButton" aria-pressed="false" title="Espelhar verticalmente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h20M7 3h10l-5 6-5-6Zm0 18h10l-5-6-5 6Z"/></svg><span>Espelhar V</span></button><button type="button" class="ribbon-button" id="fitView" title="Ajustar a placa à área disponível"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9V3h6m6 0h6v6m0 6v6h-6M9 21H3v-6"/><rect x="8" y="8" width="8" height="8"/></svg><span>Enquadrar</span></button></div><div class="ribbon-group board-controls" role="group" aria-label="Navegar pelas conexões da linha"><button type="button" class="ribbon-button" id="previousConnection" disabled title="Anterior conexão · Ctrl + seta esquerda" aria-label="Anterior conexão da linha"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg><span>Anterior</span></button><button type="button" class="ribbon-button" id="nextConnection" disabled title="Próximo conexão · Ctrl + seta direita" aria-label="Próximo conexão da linha"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg><span>Próximo</span></button></div><button type="button" class="ribbon-button" id="layersButton" aria-expanded="false" aria-pressed="false" aria-controls="layersPanel" title="Exibir ou recolher camadas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8l10-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg><span>Camadas</span></button><button type="button" class="ribbon-button" id="settingsButton" aria-haspopup="dialog" aria-controls="appearanceDialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3v6m0 4v8m7-18v11m0 4v3m7-18v3m0 4v11M2 9h6m1 5h6m1-8h6"/></svg><span>Ajustes</span></button></div><form class="search-form board-controls" id="searchForm" role="search"><input id="searchInput" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="searchOptions" autocomplete="off" spellcheck="false" placeholder="Componente, rede ou pino" aria-label="Buscar componente, rede ou pino"><div id="searchOptions" class="search-options" role="listbox" aria-label="Resultados da busca" hidden></div><p class="search-error" id="searchError" role="status" hidden></p></form></header>
+<section class="layer-shelf" id="layersPanel" aria-label="Seleção de camadas" hidden><div class="layer-list board-controls" id="layerList" role="group" aria-label="Ativar ou desativar camadas"></div><div class="layer-presets board-controls"><button id="allLayers">Todas</button><button id="noLayers">Nenhuma</button></div></section>
+<div class="workspace devices-hidden tools-hidden" id="workspace"><button class="panel-backdrop" id="panelBackdrop" aria-label="Fechar painel" hidden></button>
+<aside class="device-sidebar" id="deviceSidebar" aria-label="Aparelhos disponíveis"><div class="device-search-row"><label class="device-search"><input id="deviceSearch" type="search" placeholder="Buscar aparelho" aria-label="Buscar aparelho"></label><button class="panel-icon" id="devicesButton" aria-expanded="false" aria-controls="deviceSidebar" aria-label="Exibir aparelhos" title="Exibir aparelhos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM9 4v16M16 9l-3 3 3 3"/></svg></button></div><nav class="device-list" id="deviceList" aria-label="Lista de aparelhos"><button class="device-item" aria-current="true"><span class="device-glyph" aria-hidden="true"></span><span class="device-item-text"><strong>iPhone 11</strong><small>Mapa disponível</small></span></button></nav></aside>
+<div id="leftPanelResize" class="panel-resizer left-resizer" role="separator" tabindex="0" aria-orientation="vertical" aria-label="Largura da lista de aparelhos" aria-controls="deviceSidebar" title="Arraste para ajustar a largura"></div>
+<div id="rightPanelResize" class="panel-resizer right-resizer" role="separator" tabindex="0" aria-orientation="vertical" aria-label="Largura das ferramentas" aria-controls="inspector" title="Arraste para ajustar a largura"></div>
+<main class="main" aria-label="Área de trabalho da placa">
+<div class="toolbar document-toolbar"><div class="document-tabs" id="documentTabs" role="tablist" aria-label="Placas e documentos abertos"></div></div><div id="tabLimitMessage" class="tab-limit-message" role="status" hidden>Você já abriu 8 abas. Feche uma para abrir outro arquivo.</div>
+<div class="map-stage" id="documentPanel" role="tabpanel" aria-label="Documento ativo"><div class="canvas-wrap" id="canvasWrap"><canvas class="board-canvas" id="boardCanvas" tabindex="0" role="img" aria-label="Mapa interativo da placa. Arraste para mover, clique para selecionar e use a roda do mouse para ampliar."></canvas><div class="tooltip" id="tooltip" hidden></div><div class="board-image-notice" id="boardImageNotice" role="status" hidden></div><div class="loading" id="loading" role="status">Preparando o mapa da placa…</div></div>
+<section class="asset-pane" id="assetPane" hidden><div class="asset-head"><strong id="assetTitle"></strong><button id="assetSize" aria-pressed="false">Tamanho real</button><a id="assetExternal" target="_blank" rel="noopener">Abrir arquivo <svg class="nexus-window-icon87" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 3h7v7M21 3 10 14M10 4H4v16h16v-6"/></svg></a></div><div class="asset-content"><img id="assetImage" alt=""><iframe id="assetDocument" title="Documento recuperado"></iframe></div></section>
+<section class="source-placeholder" id="sourcePlaceholder" hidden><div class="source-card"><span class="eyebrow">FONTES REUNIDAS</span><h2 id="sourceName"></h2><p id="sourceDescription"></p><ul id="sourceTypes"></ul><details id="sourceFilesDetails"><summary>Arquivos deste item</summary><ul id="sourceFiles"></ul></details><p id="sourceQualifier" hidden></p><p id="sourcePreparation">Este item ainda precisa ser preparado para visualização.</p><button id="returnToBoard">Abrir mapa do iPhone 11</button></div></section></div>
+<footer class="selection-footer" aria-label="Componente, pad e linha selecionados"><label class="footer-part"><input id="statusPart" readonly aria-label="Componente selecionado" value="" spellcheck="false"></label><label class="footer-pad"><span>Pad</span><input id="statusPad" readonly aria-label="Pad selecionado" value="" spellcheck="false"></label><div class="footer-net"><label for="statusNet">Linha</label><div class="net-field"><input id="statusNet" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="netResults" aria-label="Linha selecionada ou busca de linha" placeholder="Digite e pressione Enter" autocomplete="off" spellcheck="false"><button id="clearNet" type="button" class="net-clear" aria-label="Limpar seleção e buscar outra linha" title="Limpar seleção e buscar outra linha" hidden>×</button><div id="netResults" class="net-results" role="listbox" aria-label="Linhas encontradas" hidden></div><p id="netSearchMessage" class="net-search-message" role="status" hidden></p></div></div></footer>
+</main>
+<aside class="inspector schematic-tools" id="inspector" aria-label="Ferramentas"><div class="tool-menu" role="toolbar" aria-label="Ferramentas disponíveis"><button class="panel-icon" id="detailsButton" aria-expanded="false" aria-controls="inspector" aria-label="Exibir ferramentas" title="Exibir ferramentas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM9 4v16M16 9l-3 3 3 3"/></svg></button><button id="schematicTool" class="tool-tab" aria-pressed="false" aria-expanded="false" aria-controls="schematicPane">Esquemático</button><button id="studiesTool" class="tool-tab" aria-pressed="false" aria-expanded="false" aria-controls="studiesPane">Notas</button><button id="netcolorTool" class="tool-tab" aria-pressed="false" aria-expanded="false" aria-controls="netcolorPane">Netcolor</button><button id="rffeTool" class="tool-tab" aria-pressed="false" aria-expanded="false" aria-controls="rffePane">RFFE</button></div><section id="studiesPane" class="studies-panel" aria-label="Notas da placa" hidden></section><section id="rffePane" class="rffe-panel" aria-label="Barramentos RFFE" hidden>
+<label class="rffe-model"><span>Modelo</span><input id="rffeModel" readonly aria-label="Modelo do aparelho ativo" value="—"></label>
+<div class="rffe-connection"><button type="button" id="rffeConnect" title="Conectar ao NEX-32" aria-haspopup="dialog" aria-controls="rffeEspDialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v5m8-5v5M6 7h12v4a6 6 0 0 1-12 0Zm6 10v5"/></svg><span>Conectar</span></button><button type="button" id="rffeRefreshConnection" class="rffe-refresh" disabled title="Atualizar os dados do NEX-32" aria-label="Atualizar conexão RFFE"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M19 11a7 7 0 0 0-12-5M5 13a7 7 0 0 0 12 5"/></svg></button><button type="button" id="rffeClearMarks" class="rffe-refresh" disabled title="Limpar as marcações de PA desta placa" aria-label="Limpar marcações de PA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 14 9-10 7 7-9 10H7l-3-4Zm4-4 7 7M11 21h10"/></svg></button><span id="rffeCommunicationState" class="rffe-communication-state" role="status" hidden></span><span id="rffeConnectionState" class="rffe-connection-state" role="status">Não conectado</span></div>
+<div class="rffe-browser"><div class="rffe-buses"><span class="rffe-caption">RFFE</span><div id="rffeBusList" class="rffe-bus-list" role="listbox" aria-label="Barramentos RFFE deste mapa"></div></div><div class="rffe-signals"><span class="rffe-caption">Localizar na placa</span><div class="rffe-signal"><button type="button" id="rffeLocateall" disabled aria-pressed="false" title="Destacar SDA, SCL e 1,8 V ao mesmo tempo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h12M7 12h12M7 19h12"/><circle cx="3" cy="5" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="19" r="1"/></svg><span>Todos</span></button></div><div class="rffe-signal"><button type="button" id="rffeLocatesda" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><path d="M12 2v5m0 10v5M2 12h5m10 0h5"/></svg><span>SDA</span></button></div><div class="rffe-signal"><button type="button" id="rffeLocatescl" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><path d="M12 2v5m0 10v5M2 12h5m10 0h5"/></svg><span>SCL</span></button></div><div class="rffe-signal"><button type="button" id="rffeLocatevdd" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><path d="M12 2v5m0 10v5M2 12h5m10 0h5"/></svg><span>1,8 V</span></button></div></div></div>
+<div class="rffe-table-title"><span>PAs e CIs</span><strong id="rffeSelected"></strong></div><div class="rffe-table-wrap"><table class="rffe-table" aria-label="PAs e comparação do RFFE selecionado"><colgroup><col><col><col><col><col></colgroup><thead><tr><th scope="col">No</th><th scope="col">PA / CI</th><th scope="col">Notas</th><th scope="col">Status</th><th scope="col">Resultado</th></tr></thead><tbody id="rffeRows"></tbody></table></div><p id="rffeStatus" class="rffe-status" role="status" aria-live="polite"></p></section><section id="netcolorPane" class="netcolor-panel" aria-label="Cores das linhas" hidden><div class="netcolor-add"><span id="netcolorCurrent">Selecione uma linha na placa</span><div class="netcolor-buttons"><button id="netcolorAdd" disabled title="Adicionar a linha selecionada · A">Adicionar <kbd>A</kbd></button><button id="netcolorIsolate" disabled aria-pressed="false" title="Mostrar somente os componentes ligados às linhas marcadas nas caixas · S">Só componentes <kbd>S</kbd></button><button id="netcolorIsolateAll" disabled aria-pressed="false" title="Mostrar os componentes de todas as linhas da lista · W">Toda a lista <kbd>W</kbd></button></div></div><label class="netcolor-autocolor" title="Colorir as três linhas com mais pads repetidos apenas no componente selecionado"><input id="netcolorAutoColor" type="checkbox" checked> Autocolor</label><div id="netcolorList" class="netcolor-list" aria-label="Linhas coloridas"></div><div class="netcolor-actions"><label><input id="netcolorAll" type="checkbox"> Todas</label><button id="netcolorGroup" type="button" disabled title="Agrupar linhas com exatamente a mesma cor" aria-label="Agrupar linhas por cores idênticas">Por cor</button><button id="netcolorRemove" disabled>Remover</button><button id="netcolorClear" disabled>Limpar</button></div><div class="netcolor-palette" id="netcolorPalette" role="group" aria-label="Aplicar cor às linhas marcadas"></div><button id="netcolorCustom" class="netcolor-custom" disabled aria-haspopup="dialog" aria-controls="netcolorColorDialog">Outros…</button></section><section id="schematicPane" class="schematic-panel" aria-label="Visualizador do esquemático" hidden><div id="schematicWindowBar" class="schematic-window-bar"><span id="schematicWindowTitle">Esquemático · iPhone 11</span><div class="window-actions"><button id="floatSchematic" title="Abrir janela flutuante" aria-label="Abrir janela flutuante"><svg class="nexus-window-icon87" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 8h18M13 12h5v5h-5Z"/></svg></button><button id="separateSchematic" title="Abrir em janela própria" aria-label="Abrir esquemático em janela própria"><svg class="nexus-window-icon87" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 3h7v7M21 3 10 14M10 4H4v16h16v-6"/></svg></button><button id="closeSchematic" title="Fechar esquemático" aria-label="Fechar esquemático"><svg class="nexus-window-icon87" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div></div><div class="schematic-controls"><select id="schematicDocument" aria-label="Escolher esquemático"></select><button id="syncSchematic" aria-pressed="true" title="Sincronizar a seleção entre a placa e o esquema">Vincular</button><span id="schematicPaneStatus" role="status"></span></div><iframe id="schematicFrame" title="Esquemático contínuo do iPhone 11"></iframe></section></aside>
+</div>
+<dialog id="rffeEspDialog" class="rffe-esp-dialog" aria-labelledby="rffeEspTitle"><form id="rffeEspForm"><header><strong id="rffeEspTitle">Parear NEX-32</strong><button type="button" id="rffeEspClose" aria-label="Fechar">×</button></header><p>Conecte o NEX-32 e este aparelho ao mesmo Wi-Fi. Use o endereço mostrado nos ajustes do NEX-32.</p><label>Endereço do NEX-32<input id="rffeEspHost" type="text" placeholder="astra-rffe.local" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="253" required></label><section id="rffeEspPairing" hidden><p id="rffeEspPairHint"></p><label>Código do NEX-32<input id="rffeEspCode" type="text" inputmode="numeric" autocomplete="off" pattern="[0-9]{4}" maxlength="4" placeholder="0000" aria-describedby="rffeEspPairHint"></label></section><p>Selecione o RFFE na ferramenta. No NEX-32, inicie a busca e toque em <b>ENVIAR</b> para comparar.</p><p class="rffe-esp-browser-note">No iPhone, escolha Internet e use o ID mostrado nos AJUSTES do NEX-32 atualizado, na opção de pareamento. No PC, você também pode usar o Wi-Fi local.</p><p id="rffeEspFeedback" role="status" aria-live="polite"></p><footer><button type="button" id="rffeEspForget" hidden>Desparear</button><button type="button" id="rffeEspDisconnect" hidden>Desconectar</button><button type="submit" id="rffeEspSubmit">Conectar</button></footer></form></dialog>
+<dialog id="netcolorColorDialog" class="netcolor-color-dialog" aria-labelledby="netcolorColorTitle"><form id="netcolorColorForm">
+<div class="netcolor-color-head"><strong id="netcolorColorTitle">Cores</strong><button type="button" id="netcolorColorClose" aria-label="Fechar" title="Fechar">×</button></div>
+<div class="color-window-body"><div class="color-workspace"><div class="color-tabs" role="tablist" aria-label="Seleção de cores"><button type="button" id="netcolorColorStandardTab" role="tab" aria-selected="true" aria-controls="netcolorColorStandardPanel">Padrão</button><button type="button" id="netcolorColorCustomTab" role="tab" aria-selected="false" aria-controls="netcolorColorCustomPanel" tabindex="-1">Personalizado</button></div>
+<div id="netcolorColorStandardPanel" class="color-tab-panel" role="tabpanel" aria-labelledby="netcolorColorStandardTab"><span class="color-field-caption">Cores:</span><svg id="netcolorColorHoneycomb" viewBox="0 0 300 315" role="listbox" aria-label="Paleta de cores"></svg></div>
+<div id="netcolorColorCustomPanel" class="color-tab-panel" role="tabpanel" aria-labelledby="netcolorColorCustomTab" hidden><div id="netcolorColorSaturation" tabindex="0" role="slider" aria-label="Saturação e brilho da cor" aria-valuemin="0" aria-valuemax="100"><span id="netcolorColorCursor"></span></div><label class="color-hue-label">Matiz<input id="netcolorColorHue" type="range" min="0" max="359" value="0"></label><div class="color-rgb-fields"><label>Vermelho<input id="netcolorColorRed" type="number" min="0" max="255" value="255"></label><label>Verde<input id="netcolorColorGreen" type="number" min="0" max="255" value="0"></label><label>Azul<input id="netcolorColorBlue" type="number" min="0" max="255" value="0"></label></div></div>
+<label class="color-hex-field">Hexadecimal<input type="text" id="netcolorColorHex" value="#FF0000" pattern="#[0-9a-fA-F]{6}" maxlength="7" autocomplete="off" spellcheck="false" required aria-label="Cor hexadecimal"></label><input id="netcolorColorPicker" type="hidden" value="#ff0000"></div>
+<div class="color-window-actions"><button type="submit" id="netcolorColorApply">OK</button><button type="button" id="netcolorColorCancel">Cancelar</button><button type="button" id="netcolorColorEyedropper" class="color-eyedropper"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 4 6 6m-5-7 6 6-3 3-2-2-8 8-5 2 2-5 8-8-2-2z"/></svg>Selecionar…</button><div class="color-comparison"><span>Nova</span><div id="netcolorColorNew"></div><div id="netcolorColorCurrent"></div><span>Atual</span></div></div></div><p id="netcolorColorStatus" class="color-dialog-status" role="status"></p></form></dialog>
+<dialog id="appearanceDialog" class="appearance-dialog" aria-labelledby="appearanceTitle"><form method="dialog" class="appearance-head"><h2 id="appearanceTitle">Ajustes da placa</h2><button aria-label="Fechar ajustes" title="Fechar ajustes">×</button></form><div class="appearance-profiles"><div class="profile-select-row"><label for="appearanceProfile">Perfil de cores</label><select id="appearanceProfile"></select><button id="addAppearanceProfile" type="button" title="Criar uma cópia do Perfil 1">Adicionar</button></div><div class="profile-edit-row"><input id="appearanceProfileName" maxlength="40" aria-label="Nome do perfil" placeholder="Nome do perfil"><button id="saveAppearanceProfile" type="button">Salvar</button><button id="deleteAppearanceProfile" type="button">Excluir</button></div><p id="appearanceProfileStatus" role="status"></p></div><div class="appearance-content"><fieldset><legend>Cores</legend><div id="appearanceColors" class="appearance-colors"></div></fieldset><fieldset><legend>Camadas</legend><div id="appearanceLayers" class="appearance-colors"></div></fieldset><fieldset><legend>Exibição</legend><div class="appearance-visibility"><button data-object="boards" aria-pressed="true">Placa</button><button data-object="outlines" aria-pressed="true">Bordas</button><button data-object="pads" aria-pressed="true">Pads</button><button data-object="vias" aria-pressed="true" title="Vias das camadas habilitadas">Vias</button><button id="selectionTracks" aria-pressed="true">Trilhas da seleção</button></div></fieldset></div><div class="appearance-footer"><button id="resetAppearance">Copiar cores do Perfil 1</button><form method="dialog"><button class="appearance-done">Concluir</button></form></div></dialog>
+<script src="appearance-profiles.js?v=02b861e9fa"></script>
+<script src="board-topology59.js?v=692ee751f2"></script><script src="board-geometry59.js?v=ca1611796c"></script><script src="board-composition62.js?v=1da871f544"></script><script src="board-draft59.js?v=fdbb004a82"></script><script src="board-edits59.js?v=f2d491aa70"></script>
+<script src="board-dados.js?v=5064cbedc6"></script>
+<script src="leituras-dados.js?v=d7a5dcb072"></script>
+<script src="pinos-nc.js?v=f23e088689"></script>
+<script>
+'use strict';
+// Autocolor is an application preference, not part of a board or tab snapshot.
+// Keeping it outside the renderer also preserves it when boards are recreated.
+window.NexusAutoColor ||= (()=>{
+ const key='nexus-netcolor-autocolor-v1';let enabled=true;
+ try{enabled=localStorage.getItem(key)!=='false';}catch{}
+ const announce=()=>window.dispatchEvent(new CustomEvent('jcid:autocolor',{detail:{enabled}}));
+ function set(value){const next=!!value;if(next===enabled)return enabled;enabled=next;try{localStorage.setItem(key,String(enabled));}catch{}announce();return enabled;}
+ window.addEventListener('storage',event=>{if(event.key!==key&&event.key!==null)return;const next=event.key===null||event.newValue!=='false';if(next!==enabled){enabled=next;announce();}});
+ return Object.freeze({get:()=>enabled,set});
+})();
+// Retain compiled, immutable geometry for open documents; view state remains separate.
+window.NexusRenderCache64 ||= (()=>{const entries=new Map(),mobile=matchMedia('(max-width:900px), (pointer:coarse)').matches,maxEntries=mobile?3:8,maxWeight=mobile?250000:750000;let primitives=new Map(),hits=0,misses=0,weight=0;return Object.freeze({primitive(kind,key,build){if(!key||typeof key!=="object")return build();let map=primitives.get(kind);if(!map){map=new WeakMap();primitives.set(kind,map);}let value=map.get(key);if(!value){value=build();map.set(key,value);}return value;},get(data){const item=entries.get(data);if(!item){misses++;return null;}entries.delete(data);entries.set(data,item);hits++;return item.geometry;},inherit(source,target){const item=entries.get(source);if(item)this.put(target,item.geometry);},put(data,geometry){const cost=data.pins.length+geometry.trackList.length;if(entries.has(data)){weight-=entries.get(data).cost;entries.delete(data);}entries.set(data,{geometry,cost});weight+=cost;while(entries.size>maxEntries||weight>maxWeight&&entries.size>1){const key=entries.keys().next().value;weight-=entries.get(key).cost;entries.delete(key);}},clear(){entries.clear();primitives=new Map();weight=0;},stats(){return{entries:entries.size,weight,hits,misses,maxEntries,maxWeight};}});})();
+(window.createJCIDBoardView = function(D=window.JCID_BOARD, READINGS=window.JCID_READINGS, NC=window.JCID_NC_DISPLAY, options={}) {
+const $=id=>document.getElementById(id);
+let destroyed=false;const cleanups=[];function on(target,type,listener,options){target.addEventListener(type,listener,options);cleanups.push(()=>target.removeEventListener(type,listener,options));}
+window.NexusBoardEdits?.apply(window.JCID_ACTIVE_BOARD?.id||'iphone-11-motherboard',D);
+window.NexusBoardDraft?.prepare(window.JCID_ACTIVE_BOARD?.id||'iphone-11-motherboard',D,READINGS,NC);READINGS=D.readings||READINGS;NC=D.ncDisplay||NC;window.JCID_READINGS=READINGS;window.JCID_NC_DISPLAY=NC;
+const readings=READINGS?.pins||{},readingLabel=READINGS?.label||'Referência JCID';
+const readingFor=p=>{if(!p)return;const kind=state.objects.smb?'smb':'diode',record=icReadings?.get(p.id)?.[kind],value=record?record.value:kind==='diode'?readings[p.id]?.value:null;return value!=null&&String(value)!==''?{value:String(value),label:kind==='smb'?'SMB':readingLabel,overridden:!!record?.overridden}:undefined;};
+if(!D||D.version!==2){$('loading').textContent='Os dados da placa não foram encontrados. Mantenha board-dados.js junto deste arquivo.';return;}
+const readingBoardId=window.JCID_ACTIVE_BOARD?.id||'iphone-11-motherboard',icReadings=window.JCIDICValues?.forBoard(readingBoardId,D,READINGS);let readingsRevision=0,namesRevision=0;
+const canvas=$('boardCanvas'),ctx=canvas.getContext('2d',{alpha:false}),hitCtx=document.createElement('canvas').getContext('2d'),wrap=$('canvasWrap');
+const TAU=Math.PI*2,rad=x=>x*Math.PI/180,nf=new Intl.NumberFormat('pt-BR'),bounds=D.bounds;
+const comps=new Map(D.components.map(c=>[c.id,c])),compNames=new Map(D.components.map(c=>[c.name.toUpperCase(),c])),nets=new Map(D.nets.map(n=>[n.id,n])),netNames=new Map(D.nets.map(n=>[n.name.toUpperCase(),n]));
+const boardMap=new Map(D.boards.map(b=>[String(b.id),b])), layerMap=new Map(D.layers.map(l=>[l.id,l]));
+const state={w:1,h:1,dpr:1,cx:(bounds[0]+bounds[2])/2,cy:(bounds[1]+bounds[3])/2,scale:1,base:1,rotation:0,mirror:false,mirrorVertical:false,hoverComponent:null,view:'all',component:null,pin:null,net:null,hover:null,layers:new Set(),selectionTracks:true,objects:{components:true,boards:true,outlines:true,pads:true,vias:true,names:true,netNames:true,readings:true,smb:false,markers:false,image:false},pending:false,drag:null,fit:true};
+const physicalLayers=[12,40,41,42,43,44,45,46,47,13],padClassifier=window.JCIDPadKinds.create(D,NC);
+const defaultAppearance={background:'#e7e9ec',board:'#080a0c',signal:'#eac96c',ground:'#989ca3',nc:'#2456b8',outline:'#eac96c',component:'#279caa',selectedPad:'#ff3b40',orientation:'#39bfd6',layers:Object.fromEntries(D.layers.map(l=>[l.id,l.color]))};
+const appearance=window.JCIDAppearanceProfiles.configure(defaultAppearance);let appearanceRevision=0;
+function validColor(value){return typeof value==='string'&&/^#[0-9a-f]{6}$/i.test(value);}
+const padColors=appearance,padKindCache=new Map();
+function layerColor(id){return appearance.layers[id]||layerMap.get(id)?.color||'#b88acb';}
+const ringComponents=new Set(D.components.filter(c=>/^ringslot\d*$/i.test(c.sourceComponentName??c.name)).map(c=>c.id));
+function ringPin(p){return !p.via&&ringComponents.has(p.part);}
+function saveAppearance(){Object.assign(appearance,window.JCIDAppearanceProfiles.get());appearanceRevision++;for(const key of ['signal','ground','nc']){const swatch=document.querySelector('[data-pad-color="'+key+'"]');if(swatch)swatch.style.background=appearance[key];}renderLayers();requestDraw();}
+function setAppearance(key,value){return window.JCIDAppearanceProfiles.set(key,value);}
+function resetAppearance(){return window.JCIDAppearanceProfiles.reset();}
+on(window,'nexo:appearance',saveAppearance);
+
+function padKind(p){return padClassifier.kind(p);}
+function pinNetName(p){return nets.get(p.net)?.name||(padKind(p)==='nc'?'NC':'Sem rede indicada');}
+const compositionPinLayers=new Map();for(const part of D.nexusComposition?.parts||[]){const layers=part.layerIds.map(id=>D.layers.find(l=>l.id===id)).filter(Boolean);for(const id of part.pinIds)compositionPinLayers.set(id,layers);}
+function viaOnLayers(p){if(!state.objects.vias||!state.layers.size)return false;const partLayers=compositionPinLayers.get(p.id),source=id=>partLayers?.find(l=>l.id===id)?.sourceLayerId??id,a=physicalLayers.indexOf(source(p.startLayer)),b=physicalLayers.indexOf(source(p.endLayer));if(a<0||b<0)return false;for(let i=Math.min(a,b);i<=Math.max(a,b);i++){const id=partLayers?partLayers.find(l=>(l.sourceLayerId??l.id)===physicalLayers[i])?.id:physicalLayers[i];if(id!==undefined&&state.layers.has(id))return true;}return false;}
+const compiled=window.NexusRenderCache64.get(D);
+const componentImageMask=compiled?.componentImageMask||new Path2D();
+const holePaths=compiled?.holePaths||new Map(),padBatches=compiled?.padBatches||[],pinPaths=compiled?.pinPaths||new Map(),partPaths=compiled?.partPaths||new Map(),boardPaths=compiled?.boardPaths||new Map(),trackList=compiled?.trackList||[],netTracks=compiled?.netTracks||new Map(),netBatchCache=compiled?.netBatchCache||new Map(),pinGrid=compiled?.pinGrid||new Map(),partGrid=compiled?.partGrid||new Map(),trackGrid=compiled?.trackGrid||new Map(),physicalImageMasks=compiled?.physicalImageMasks||new Map();
+
+const CELL=Math.max(bounds[2]-bounds[0],bounds[3]-bounds[1])/100;
+const validBox=b=>Array.isArray(b)&&b.length===4&&b.every(Number.isFinite);
+const boxOfPoint=(p,r=0)=>[p.x-r,p.y-r,p.x+r,p.y+r];
+const intersects=(a,b)=>a[2]>=b[0]&&a[0]<=b[2]&&a[3]>=b[1]&&a[1]<=b[3];
+const union=boxes=>boxes.reduce((a,b)=>[Math.min(a[0],b[0]),Math.min(a[1],b[1]),Math.max(a[2],b[2]),Math.max(a[3],b[3])],[Infinity,Infinity,-Infinity,-Infinity]);
+// Limit queries to occupied cells, including any geometry beyond the board outline.
+function gridAdd(grid,id,b){if(!validBox(b))return;const loX=Math.floor(b[0]/CELL),loY=Math.floor(b[1]/CELL),hiX=Math.floor(b[2]/CELL),hiY=Math.floor(b[3]/CELL);if(!grid.limits)grid.limits=[loX,loY,hiX,hiY];else{const a=grid.limits;a[0]=Math.min(a[0],loX);a[1]=Math.min(a[1],loY);a[2]=Math.max(a[2],hiX);a[3]=Math.max(a[3],hiY);}for(let x=loX;x<=hiX;x++)for(let y=loY;y<=hiY;y++){const k=x+','+y;if(!grid.has(k))grid.set(k,[]);grid.get(k).push(id);}}
+function gridQuery(grid,b){const result=new Set(),a=grid.limits;if(!a)return result;const loX=Math.max(a[0],Math.floor(b[0]/CELL)),loY=Math.max(a[1],Math.floor(b[1]/CELL)),hiX=Math.min(a[2],Math.floor(b[2]/CELL)),hiY=Math.min(a[3],Math.floor(b[3]/CELL));for(let x=loX;x<=hiX;x++)for(let y=loY;y<=hiY;y++)for(const id of grid.get(x+','+y)||[])result.add(id);return result;}
+function polygon(points,closed=true){const path=new Path2D();if(points?.length){path.moveTo(points[0][0],points[0][1]);for(let i=1;i<points.length;i++)path.lineTo(points[i][0],points[i][1]);if(closed)path.closePath();}return path;}
+function copperPath(s){const path=new Path2D(),w=Number(s.width),h=Number(s.height);if(!(w>0&&h>0))return path;const x=-w/2,y=-h/2;
+ if(s.kind==='circle'){path.arc(0,0,w/2,0,TAU);path.closePath();}
+ else if(s.kind==='rect')path.rect(x,y,w,h);
+ else if(s.kind==='roundrect'||s.kind==='oval'){const r=s.kind==='oval'?Math.min(w,h)/2:Math.max(0,Math.min(Number(s.radius)||0,w/2,h/2));path.moveTo(x+r,y);path.lineTo(x+w-r,y);path.arcTo(x+w,y,x+w,y+r,r);path.lineTo(x+w,y+h-r);path.arcTo(x+w,y+h,x+w-r,y+h,r);path.lineTo(x+r,y+h);path.arcTo(x,y+h,x,y+h-r,r);path.lineTo(x,y+r);path.arcTo(x,y,x+r,y,r);path.closePath();}
+ else if(s.kind==='diamond'){path.moveTo(0,-h/2);path.lineTo(w/2,0);path.lineTo(0,h/2);path.lineTo(-w/2,0);path.closePath();}
+ else if(s.kind==='octagon'){const q=Math.min(w,h)*(1-1/Math.sqrt(2));const p=[[x+q,y],[x+w-q,y],[x+w,y+q],[x+w,y+h-q],[x+w-q,y+h],[x+q,y+h],[x,y+h-q],[x,y+q]];path.moveTo(...p[0]);for(const t of p.slice(1))path.lineTo(...t);path.closePath();}
+ const a=rad(s.angle||0),co=Math.cos(a),si=Math.sin(a),global=new Path2D();global.addPath(path,new DOMMatrix([co,si,-si,co,s.x,s.y]));return global;}
+// Bound the short arc that is drawn, not its entire circle. Nearly straight arcs
+// can have very distant centers; full-circle bounds would create millions of grid cells.
+function trackArcBox(r){const start=Math.atan2(r[3]-r[1],r[2]-r[0]),end=Math.atan2(r[5]-r[1],r[4]-r[0]),delta=((end-start+Math.PI*3)%TAU)-Math.PI,points=[start,start+delta];for(const angle of [0,Math.PI/2,Math.PI,Math.PI*1.5]){const travel=((delta>=0?angle-start:start-angle)%TAU+TAU)%TAU;if(travel<=Math.abs(delta)+1e-10)points.push(angle);}const xs=points.map(a=>r[0]+r[6]*Math.cos(a)),ys=points.map(a=>r[1]+r[6]*Math.sin(a)),pad=(r[7]||0)/2;return[Math.min(...xs)-pad,Math.min(...ys)-pad,Math.max(...xs)+pad,Math.max(...ys)+pad];}
+function makeTrack(layer,raw,arc){const t={layer:layer.id,raw,arc,net:raw[arc?8:5],width:raw[arc?7:4]||0,path:null};t.bbox=arc?trackArcBox(raw):[Math.min(raw[0],raw[2])-t.width/2,Math.min(raw[1],raw[3])-t.width/2,Math.max(raw[0],raw[2])+t.width/2,Math.max(raw[1],raw[3])+t.width/2];t.id=trackList.length;trackList.push(t);gridAdd(trackGrid,t.id,t.bbox);if(t.net!==null&&t.net!==undefined){if(!netTracks.has(t.net))netTracks.set(t.net,[]);netTracks.get(t.net).push(t);}}
+function trackPath(t){if(t.path)return t.path;return t.path=window.NexusRenderCache64.primitive(t.arc?"arc":"track",t.raw,()=>{const r=t.raw,p=new Path2D();if(!t.arc){p.moveTo(r[0],r[1]);p.lineTo(r[2],r[3]);}else{const start=Math.atan2(r[3]-r[1],r[2]-r[0]),end=Math.atan2(r[5]-r[1],r[4]-r[0]);let delta=((end-start+Math.PI*3)%TAU)-Math.PI;p.arc(r[0],r[1],r[6],start,start+delta,delta<0);}return p;});}
+if(!compiled){
+for(const b of D.boards)boardPaths.set(String(b.id),window.NexusRenderCache64.primitive("board",b.points,()=>polygon(b.points)));
+// Certain imported round test points have a generated square bounding outline.
+// Replace only that exact placeholder; real rectangular pads/outlines stay intact.
+function roundTestPointPath(c){
+ if(!/^(?:PP|TP)\d/i.test(c.sourceComponentName??c.name)||c.pins?.length!==1||!c.outlines?.length)return null;
+ const p=D.pins[c.pins[0]],shape=p?.copper?.[0];
+ if(!p||p.via||p.hole>0||p.copper?.length!==1||shape?.kind!=='circle'||!validBox(p.bbox))return null;
+ const b=p.bbox,tolerance=Math.max(.02,Math.max(b[2]-b[0],b[3]-b[1])*1e-5);
+ const same=(a,b)=>Math.abs(a-b)<=tolerance;
+ for(const outline of c.outlines){
+  if(outline.arc||!outline.closed||outline.width||outline.role==='explicit_orientation_mark')return null;
+  const points=(outline.points||[]).slice();
+  if(points.length===5&&same(points[0][0],points[4][0])&&same(points[0][1],points[4][1]))points.pop();
+  if(points.length!==4)return null;
+  const corners=new Set();
+  for(const point of points){const x=same(point[0],b[0])?0:same(point[0],b[2])?1:-1,y=same(point[1],b[1])?0:same(point[1],b[3])?1:-1;if(x<0||y<0)return null;corners.add(x+','+y);}
+  if(corners.size!==4)return null;
+ }
+ return copperPath(shape);
+}
+for(const c of D.components){
+ const shape=window.NexusRenderCache64.primitive("part",c.outlines,()=>{const circle=roundTestPointPath(c),strokes=circle?[{path:circle,width:0,orientation:false}]:(c.outlines||[]).map(o=>({path:o.arc?trackPath({arc:true,raw:o.arc}):polygon(o.points,o.closed),width:o.width||0,orientation:o.role==='explicit_orientation_mark'}));const area=circle||new Path2D();if(!circle)for(const o of c.outlines||[])if(o.closed&&!o.arc)area.addPath(polygon(o.points,true));return{strokes,area,hasArea:!!circle||(c.outlines||[]).some(o=>o.closed&&!o.arc)};});
+ partPaths.set(c.id,shape);gridAdd(partGrid,c.id,c.bbox);
+}
+for(const [id,shape] of partPaths)if(shape.hasArea&&!ringComponents.has(id))componentImageMask.addPath(shape.area);
+if(D.nexusGeometry)for(const [id,shape] of partPaths){const owner=D.nexusGeometry.owners.components[id]??'__unassigned';if(shape.hasArea&&!ringComponents.has(id)){if(!physicalImageMasks.has(owner))physicalImageMasks.set(owner,new Path2D());physicalImageMasks.get(owner).addPath(shape.area);}}
+for(const p of D.pins){const path=window.NexusRenderCache64.primitive("pin",p.copper,()=>{const path=new Path2D();for(const s of p.copper||[])path.addPath(copperPath(s));return path;});pinPaths.set(p.id,path);gridAdd(pinGrid,p.id,validBox(p.bbox)?p.bbox:boxOfPoint(p));}
+// Keep compound paths small and cache them: a viewport never rebuilds thousands of subpaths.
+const padBuckets=new Map();
+for(const p of D.pins){const kind=padKind(p),key=(ringPin(p)?'ring':p.via?'v'+p.startLayer+':'+p.endLayer:'p')+'|'+kind+'|'+Math.floor(p.x/(CELL*4))+','+Math.floor(p.y/(CELL*4));let batch=padBuckets.get(key);if(!batch||batch.count>=64){batch={path:new Path2D(),holes:new Path2D(),bbox:[Infinity,Infinity,-Infinity,-Infinity],via:p.via,ring:ringPin(p),startLayer:p.startLayer,endLayer:p.endLayer,kind,count:0,pins:[]};padBuckets.set(key,batch);padBatches.push(batch);}batch.path.addPath(pinPaths.get(p.id));batch.pins.push(p);batch.count++;const b=validBox(p.bbox)?p.bbox:boxOfPoint(p);for(let i=0;i<4;i++)batch.bbox[i]=i<2?Math.min(batch.bbox[i],b[i]):Math.max(batch.bbox[i],b[i]);if(p.hole>0){const hole=new Path2D();hole.arc(p.x,p.y,p.hole/2,0,TAU);hole.closePath();holePaths.set(p.id,hole);batch.holes.addPath(hole);}}
+for(const l of D.layers){for(const r of l.segments||[])makeTrack(l,r,false);for(const r of l.arcs||[])makeTrack(l,r,true);}
+}
+function makeTrackBatches(tracks){const buckets=new Map(),batches=[];for(const t of tracks){const b=t.bbox,key=t.layer+'|'+t.width+'|'+Math.floor((b[0]+b[2])/(CELL*8))+','+Math.floor((b[1]+b[3])/(CELL*8));let batch=buckets.get(key);if(!batch||batch.tracks.length>=128){batch={path:new Path2D(),bbox:[Infinity,Infinity,-Infinity,-Infinity],layer:t.layer,width:t.width,tracks:[]};buckets.set(key,batch);batches.push(batch);}batch.path.addPath(trackPath(t));batch.tracks.push(t);for(let i=0;i<4;i++)batch.bbox[i]=i<2?Math.min(batch.bbox[i],b[i]):Math.max(batch.bbox[i],b[i]);}return batches;}
+// Most edits show pads only. Compile track paths only for layers the user opens.
+const layerBatchCache=compiled?.layerBatchCache||new Map();
+function visibleLayerTrackBatches(){const batches=[];for(const id of state.layers){if(!layerBatchCache.has(id))layerBatchCache.set(id,makeTrackBatches(trackList.filter(t=>t.layer===id)));batches.push(...layerBatchCache.get(id));}return batches;}
+if(!compiled)window.NexusRenderCache64.put(D,{componentImageMask,holePaths,padBatches,pinPaths,partPaths,boardPaths,trackList,netTracks,netBatchCache,pinGrid,partGrid,trackGrid,physicalImageMasks,layerBatchCache});
+function selectedTrackBatches(id){if(!netBatchCache.has(id))netBatchCache.set(id,makeTrackBatches(netTracks.get(id)||[]).map(b=>({...b,net:id})));return netBatchCache.get(id);}
+// Only the active selected net receives a contour; enabled layers retain their colors.
+// The retained scene caches both strokes, so panning does not rebuild geometry.
+function strokeTraceBatch(ctx,b,color,minPixels,selected=false){if(studyTraceColors.has(b.net)){color=studyTraceColors.get(b.net);selected=false;}const width=Math.max(b.width,minPixels/state.scale);if(selected){ctx.strokeStyle='#ff3b40';ctx.lineWidth=width+1.2/state.scale;ctx.stroke(b.path);}ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke(b.path);}
+function visibleTrackCount(batch,view){const b=batch.bbox;if(b[0]>=view[0]&&b[1]>=view[1]&&b[2]<=view[2]&&b[3]<=view[3])return batch.tracks.length;let count=0;for(const t of batch.tracks)if(intersects(t.bbox,view))count++;return count;}
+
+function matrix(){const a=rad(state.rotation),co=Math.cos(a),si=Math.sin(a),m=state.mirror?-1:1,v=state.mirrorVertical?-1:1,s=state.scale,A=m*co*s,C=m*si*s,B=v*si*s,E=-v*co*s;return{a:A,b:B,c:C,d:E,e:state.w/2-A*state.cx-C*state.cy,f:state.h/2-B*state.cx-E*state.cy,det:A*E-B*C};}
+function toScreen(x,y){const m=matrix();return{x:m.a*x+m.c*y+m.e,y:m.b*x+m.d*y+m.f};}
+function toWorld(x,y){const m=matrix(),dx=x-m.e,dy=y-m.f;return{x:(m.d*dx-m.c*dy)/m.det,y:(-m.b*dx+m.a*dy)/m.det};}
+function viewport(){const p=[[0,0],[state.w,0],[0,state.h],[state.w,state.h]].map(q=>toWorld(...q));return[Math.min(...p.map(q=>q.x)),Math.min(...p.map(q=>q.y)),Math.max(...p.map(q=>q.x)),Math.max(...p.map(q=>q.y))];}
+const selectionInk={get body(){return appearance.component;},get pad(){return appearance.selectedPad;}};
+function makeSelectedPadBatches(pins){const buckets=new Map(),batches=[];for(const p of pins){const key=(p.via?'v'+p.startLayer+':'+p.endLayer:'p')+'|'+Math.floor(p.x/(CELL*4))+','+Math.floor(p.y/(CELL*4));let b=buckets.get(key);if(!b||b.pins.length>=64){b={path:new Path2D(),bbox:[Infinity,Infinity,-Infinity,-Infinity],via:p.via,startLayer:p.startLayer,endLayer:p.endLayer,pins:[]};buckets.set(key,b);batches.push(b);}b.path.addPath(pinPaths.get(p.id));b.pins.push(p);const box=p.bbox||boxOfPoint(p);for(let i=0;i<4;i++)b.bbox[i]=i<2?Math.min(b.bbox[i],box[i]):Math.max(b.bbox[i],box[i]);}return batches;}
+
+// Two independent lists share one cached pad projection. The active list wins
+// only when the same net exists in both; selecting a pad still paints it red.
+const freshNetColorGroup=()=>({entries:new Map(),checked:new Set(),sequence:0,isolation:{enabled:false,scope:'all'}});
+const netColorGroups={normal:freshNetColorGroup(),alternative:freshNetColorGroup()};
+let netColorGroup='normal',netColors=netColorGroups.normal.entries,effectiveNetColors=new Map(),netColorStateRestoring=false;
+let netColorRevision=0,netColorIsolation=false,netColorIsolationScope='all',netColorSequence=0;let netColorChecked=new Set(),isolatedNets=new Set(),isolatedColorPads=new Map();
+function rememberNetColorGroup(){Object.assign(netColorGroups[netColorGroup],{entries:netColors,checked:netColorChecked,sequence:netColorSequence,isolation:{enabled:netColorIsolation,scope:netColorIsolationScope}});}
+function activateNetColorGroup(name){netColorGroup=name;const group=netColorGroups[name];netColors=group.entries;netColorChecked=group.checked;netColorSequence=group.sequence;netColorIsolation=group.isolation.enabled;netColorIsolationScope=group.isolation.scope;}
+function setNetColorGroup(name,{checked}={}){if(!['normal','alternative'].includes(name))return false;if(name===netColorGroup){if(Array.isArray(checked))setNetColorChecked(checked);return true;}rememberNetColorGroup();activateNetColorGroup(name);if(Array.isArray(checked))netColorChecked=new Set(checked.filter(id=>netColors.has(id)));colorsChanged();return true;}
+function getNetColorGroups({names=false}={}){rememberNetColorGroup();return Object.fromEntries(Object.entries(netColorGroups).map(([name,group])=>[name,{entries:[...group.entries].map(([id,item])=>({id,...(names?{name:nets.get(id)?.name||''}:{}),color:item.color})),checked:[...group.checked].map(id=>names?{id,name:nets.get(id)?.name||''}:id),sequence:group.sequence,isolation:{...group.isolation}}]));}
+function restoreNetColorGroups(groups,active='normal'){
+ for(const name of ['normal','alternative']){const input=groups?.[name]||{},group=freshNetColorGroup();for(const item of (Array.isArray(input.entries)?input.entries:[]).slice(0,5000)){if(!nets.has(item?.id)||blockedCanvasNet(item.id)||!validColor(item.color))continue;const pins=nets.get(item.id).pins.map(id=>D.pins[id]).filter(p=>selectablePin(p)&&!p.via&&!ringPin(p));if(pins.length)group.entries.set(item.id,{color:item.color.toLowerCase(),batches:makeSelectedPadBatches(pins)});}group.checked=new Set((Array.isArray(input.checked)?input.checked:[]).filter(id=>group.entries.has(id)));group.sequence=Math.max(group.entries.size,Number.isSafeInteger(input.sequence)?Math.max(0,Math.min(1000000,input.sequence)):0);group.isolation={enabled:!!input.isolation?.enabled&&group.entries.size>0,scope:input.isolation?.scope==='checked'?'checked':'all'};netColorGroups[name]=group;}
+ netColorStateRestoring=true;try{activateNetColorGroup(active==='alternative'?'alternative':'normal');rebuildIsolation();netColorRevision++;}finally{netColorStateRestoring=false;}
+}
+let isolatedParts=new Set(),isolatedBasePads=[],isolatedSelectionPads=[],isolatedLayerTracks=[],isolatedSelectionTracks=[],isolatedImageMask=new Path2D();
+const automaticTracks=()=>state.selectionTracks&&(!effectiveNetColors.size||toolNets.size>0);
+function getNetColors(group=netColorGroup){const entries=group===netColorGroup?netColors:netColorGroups[group]?.entries;return [...(entries||[])].map(([id,item])=>({id,name:nets.get(id)?.name||'',color:item.color}));}
+
+function studyIsolationActive(){return netColorIsolation&&!studyComponents.size;}
+function componentAllowed(id){return !studyIsolationActive()||isolatedParts.has(id);}
+function networkAllowed(id){return !netColorIsolation||nets.get(id)?.pins.some(pid=>D.pins[pid]&&pinAllowed(D.pins[pid]));}
+function hiddenSelection(){error('Componente oculto. Desative “Só componentes” no Netcolor para localizá-lo.');return false;}
+function trackNetAllowed(id){return !studyIsolationActive()||isolatedNets.has(id);}
+function pinAllowed(p){return !studyIsolationActive()||(p.via?isolatedNets.has(p.net):isolatedParts.has(p.part)||!comps.has(p.part)&&isolatedNets.has(p.net));}
+function isolateBatches(batches){const result=[];for(const b of batches){const pins=b.pins.filter(pinAllowed);if(!pins.length)continue;if(pins.length===b.pins.length){result.push(b);continue;}const path=new Path2D(),holes=b.holes?new Path2D():undefined;for(const p of pins){path.addPath(pinPaths.get(p.id));if(holes&&holePaths.has(p.id))holes.addPath(holePaths.get(p.id));}result.push({...b,pins,path,holes,bbox:union(pins.map(p=>p.bbox||boxOfPoint(p))),count:pins.length});}return result;}
+function refreshIsolatedSelection(){isolatedSelectionPads=netColorIsolation?isolateBatches(selectionLinks.pads):[];isolatedSelectionTracks=netColorIsolation?[...selectionLinks.nets].filter(id=>isolatedNets.has(id)).flatMap(selectedTrackBatches):[];}
+function getNetColorIsolation(){return {enabled:netColorIsolation,scope:netColorIsolationScope,ids:[...isolatedNets]};}
+function rebuildIsolation(){
+ effectiveNetColors=new Map([...netColorGroups[netColorGroup==='normal'?'alternative':'normal'].entries,...netColors]);
+ for(const id of netColorChecked)if(!netColors.has(id))netColorChecked.delete(id);
+ isolatedParts=new Set();isolatedNets=new Set();isolatedColorPads=new Map();
+ if(!netColors.size){netColorIsolation=false;netColorSequence=0;}
+ if(netColorIsolation){
+  isolatedNets=new Set(netColorIsolationScope==='checked'?netColorChecked:netColors.keys());
+  for(const id of isolatedNets)for(const pid of nets.get(id).pins){const p=D.pins[pid];if(p&&comps.has(p.part))isolatedParts.add(p.part);}
+  // Reuse per-net paths; isolation changes never rebuild track geometry per frame.
+  isolatedLayerTracks=[...isolatedNets].flatMap(selectedTrackBatches);
+  isolatedBasePads=isolateBatches(padBatches);isolatedImageMask=new Path2D();
+  for(const id of isolatedParts){const shape=partPaths.get(id);if(shape?.hasArea&&!ringComponents.has(id))isolatedImageMask.addPath(shape.area);}
+  for(const [id,item] of effectiveNetColors)if(isolatedNets.has(id))isolatedColorPads.set(id,isolateBatches(item.batches));
+ }else{isolatedBasePads=[];isolatedLayerTracks=[];isolatedImageMask=new Path2D();}
+ refreshIsolatedSelection();if(state.hover!==null&&!pinAllowed(D.pins[state.hover]))state.hover=null;if(state.hoverComponent!==null&&!componentAllowed(state.hoverComponent))state.hoverComponent=null;if(state.pin!==null&&!pinAllowed(D.pins[state.pin])||state.component!==null&&!componentAllowed(state.component)||state.net!==null&&!networkAllowed(state.net))clear();
+}
+function setNetColorChecked(ids){const next=new Set((ids||[]).filter(id=>netColors.has(id)));if(next.size===netColorChecked.size&&[...next].every(id=>netColorChecked.has(id)))return [...netColorChecked];netColorChecked=next;if(netColorIsolation&&netColorIsolationScope==='checked'){rebuildIsolation();netColorRevision++;requestDraw();}window.dispatchEvent(new CustomEvent('jcid:netcolors'));return [...netColorChecked];}
+function setNetColorIsolation(enabled,{scope='all'}={}){scope=scope==='checked'?'checked':'all';const next=!!enabled&&netColors.size>0;if(next===netColorIsolation&&scope===netColorIsolationScope)return netColorIsolation;netColorIsolation=next;netColorIsolationScope=scope;rebuildIsolation();netColorRevision++;requestDraw();window.dispatchEvent(new CustomEvent('jcid:netcolors'));return netColorIsolation;}
+function colorsChanged(){rebuildIsolation();netColorRevision++;requestDraw();window.dispatchEvent(new CustomEvent('jcid:netcolors'));}
+function setNetColor(id,color){if(!nets.has(id)||blockedCanvasNet(id)||!validColor(color))return false;const existing=netColors.get(id);if(existing){if(existing.color.toLowerCase()===color.toLowerCase())return true;existing.color=color;}else{const pins=nets.get(id).pins.map(id=>D.pins[id]).filter(p=>selectablePin(p)&&!p.via&&!ringPin(p));if(!pins.length)return false;netColors.set(id,{color,batches:makeSelectedPadBatches(pins)});netColorSequence++;}colorsChanged();return true;}
+function removeNetColors(ids){let changed=false;for(const id of ids)changed=netColors.delete(id)||changed;if(changed)colorsChanged();}
+function recolorNetColors(ids,color,group=netColorGroup){if(!validColor(color))return false;const entries=group===netColorGroup?netColors:netColorGroups[group]?.entries;if(!entries)return false;let changed=false;for(const id of ids){const item=entries.get(id);if(item&&item.color.toLowerCase()!==color.toLowerCase()){item.color=color.toLowerCase();changed=true;}}if(changed)colorsChanged();return changed;}
+function groupNetColorsByColor(){
+ const groups=new Map();for(const entry of netColors){const key=entry[1].color.toLowerCase();if(!groups.has(key))groups.set(key,[]);groups.get(key).push(entry);}
+ const ordered=[...groups.values()].sort((a,b)=>b.length-a.length).flat(),previous=[...netColors.keys()];
+ if(ordered.every(([id],index)=>id===previous[index]))return false;
+ netColors.clear();for(const [id,item] of ordered)netColors.set(id,item);
+ window.dispatchEvent(new CustomEvent('jcid:netcolors'));return true;
+}
+function clearNetColors(){if(netColors.size){netColors.clear();colorsChanged();}}
+
+function getStudyVisualState({defaults=false}={}){
+ const identity=id=>({id,name:nets.get(id)?.name||''}),empty=()=>({entries:[],checked:[],isolation:{enabled:false,scope:'all'},sequence:0});
+ return {netcolor:defaults?{...empty(),autoColor:true,group:'normal',groups:{normal:empty(),alternative:empty()}}:{entries:getNetColors(),checked:[...netColorChecked].map(identity),isolation:{enabled:netColorIsolation,scope:netColorIsolationScope},sequence:netColorSequence,autoColor:window.NexusAutoColor.get(),group:netColorGroup,groups:getNetColorGroups({names:true})},appearance:defaults?window.JCIDAppearanceProfiles.getDefaults():{...appearance,layers:{...appearance.layers}}};
+}
+function applyStudyVisualState(value){
+ if(!value||typeof value!=='object')throw Error('As notas não contêm uma configuração válida.');
+ const input=value.netcolor||{},missing=[],byName=new Map();
+ for(const net of nets.values()){const list=byName.get(net.name)||[];list.push(net);byName.set(net.name,list);}
+ const resolve=entry=>typeof entry?.name==='string'?(byName.get(entry.name)?.length===1?byName.get(entry.name)[0]:null):nets.get(typeof entry==='number'?entry:entry?.id);
+ const sources=input.groups&&typeof input.groups==='object'?input.groups:{normal:input},groups={};
+ for(const name of ['normal','alternative']){const source=sources[name]||{},entries=[];for(const entry of (Array.isArray(source.entries)?source.entries:[])){const net=resolve(entry);if(!net||blockedCanvasNet(net.id)||!validColor(entry?.color)){missing.push(entry?.name||String(entry?.id??''));continue;}entries.push({id:net.id,color:entry.color});}groups[name]={entries,checked:(Array.isArray(source.checked)?source.checked:[]).map(resolve).filter(Boolean).map(n=>n.id),sequence:source.sequence,isolation:source.isolation};}
+ restoreNetColorGroups(groups,input.groups?input.group:'normal');window.NexusAutoColor.set(input.autoColor!==false);
+ if(value.appearance)window.JCIDAppearanceProfiles.applyStudy(value.appearance);
+ requestDraw();window.dispatchEvent(new CustomEvent('jcid:netcolors',{detail:{transient:true}}));
+ return {applied:netColorGroups.normal.entries.size+netColorGroups.alternative.entries.size,missing};
+}
+
+// Measurement hints are local to the selected component, never to the whole net.
+// Cache geometry once per component; pan/zoom keep using retained canvas scenes.
+const repeatedPadCache=new Map(),repeatedPadColors=['#b266ff','#54ed77','#529dff'],repeatedPadAlpha=.68;
+function componentRepeatedPads(id){
+ if(!comps.has(id)||ringComponents.has(id))return [];
+ if(!repeatedPadCache.has(id)){
+  const groups=new Map();
+  for(const pid of new Set(comps.get(id).pins||[])){
+   const p=D.pins[pid];
+   if(!p||p.part!==id||p.via||ringPin(p)||!selectablePin(p)||!nets.has(p.net)||!(p.copper||[]).length)continue;
+   if(!groups.has(p.net))groups.set(p.net,[]);groups.get(p.net).push(p);
+  }
+  const ranked=[...groups].filter(([,pins])=>pins.length>=2).sort((a,b)=>b[1].length-a[1].length||nets.get(a[0]).name.localeCompare(nets.get(b[0]).name,'en',{numeric:true})||a[0]-b[0]).slice(0,3);
+  repeatedPadCache.set(id,ranked.map(([net,pins],rank)=>({net,color:repeatedPadColors[rank],pins: pins.map(p=>p.id),batches:makeSelectedPadBatches(pins)})));
+ }
+ return repeatedPadCache.get(id);
+}
+function getRepeatedPadGroups(){return (window.NexusAutoColor.get()?componentRepeatedPads(state.component):[]).map(g=>({component:state.component,net:g.net,name:nets.get(g.net).name,color:g.color,alpha:repeatedPadAlpha,count:g.pins.length,pins:[...g.pins]}));}
+let selectionLinks={nets:new Set(),parts:new Set(),tracks:[],pads:[]};
+let markedComponents=new Set(),toolPins=new Set(),studyComponents=new Set(),studyPins=new Set(),studyPinColors=new Map(),studyTraceColors=new Map(),studyFocusComponent=null;
+// Educational highlights have their own transient state: no selection, notes,
+// RFFE marking, Netcolor setting or exported geometry is changed.
+function setStudyComponents(ids){const next=new Set((ids||[]).filter(id=>comps.has(id)&&!ringComponents.has(id))),focus=next.has(studyFocusComponent)?studyFocusComponent:null;if(next.size!==studyComponents.size||[...next].some(id=>!studyComponents.has(id))||focus!==studyFocusComponent){studyComponents=next;studyFocusComponent=focus;toolRevision++;requestDraw();}return [...studyComponents];}
+function setStudyFocusComponent(id){const next=id!==null&&studyComponents.has(id)&&comps.has(id)&&!ringComponents.has(id)?id:null;if(next!==studyFocusComponent){studyFocusComponent=next;toolRevision++;requestDraw();}return studyFocusComponent;}
+function setStudyPins(items){const next=new Set(),colors=new Map();for(const item of Array.isArray(items)?items:[]){const descriptor=item&&typeof item==='object'?item:null,id=descriptor?descriptor.id:item,p=D.pins[id];if(p?.id!==id||!selectablePin(p)||p.via||ringPin(p)||!pinPaths.has(id))continue;next.add(id);const color=descriptor?.color;if(typeof color==='string'&&/^#[0-9a-f]{6}$/i.test(color))colors.set(id,color.toLowerCase());else colors.delete(id);}if(next.size!==studyPins.size||[...next].some(id=>!studyPins.has(id))||colors.size!==studyPinColors.size||[...colors].some(([id,color])=>studyPinColors.get(id)!==color)){studyPins=next;studyPinColors=colors;toolRevision++;requestDraw();}return [...studyPins];}
+function getStudyTraceColors(){return [...studyTraceColors].map(([id,color])=>({id,color}));}
+function setStudyTraceColors(items){const next=new Map();for(const item of Array.isArray(items)?items:[]){if(!item||!nets.has(item.id)||typeof item.color!=='string'||!/^#[0-9a-f]{6}$/i.test(item.color))continue;next.set(item.id,item.color.toLowerCase());}if(next.size!==studyTraceColors.size||[...next].some(([id,color])=>studyTraceColors.get(id)!==color)){studyTraceColors=next;toolRevision++;requestDraw();}return getStudyTraceColors();}
+on(window,'jcid:tool',event=>{if(event.detail!=='function-studies'){setStudyComponents([]);setStudyFocusComponent(null);setStudyPins([]);setStudyTraceColors([]);}});
+on(window,'jcid:boardloadstate',()=>{if(document.body.classList.contains('board-loading')){setStudyComponents([]);setStudyFocusComponent(null);setStudyPins([]);setStudyTraceColors([]);}});
+const markedComponentColor='#d77c84';
+function setMarkedComponents(ids){const next=new Set((ids||[]).filter(id=>comps.has(id)&&!ringComponents.has(id)));if(next.size!==markedComponents.size||[...next].some(id=>!markedComponents.has(id))){markedComponents=next;toolRevision++;requestDraw();}return [...markedComponents];}
+function setToolPins(ids){const next=new Set((ids||[]).filter(id=>selectablePin(D.pins[id])&&!D.pins[id].via));if(next.size!==toolPins.size||[...next].some(id=>!toolPins.has(id))){toolPins=next;toolRevision++;requestDraw();}return [...toolPins];}
+let toolComponents=new Set(),toolNets=new Set(),toolRevision=0,toolNetColors=new Map(),toolNetBatches=[],toolHighlightComponents=true;const toolBodyMasks=new Map();
+function setToolComponents(ids,{clearSelection=false}={}){
+ const next=new Set((ids||[]).filter(id=>comps.has(id)&&!ringComponents.has(id)));
+ const changed=next.size!==toolComponents.size||[...next].some(id=>!toolComponents.has(id));
+ toolComponents=next;if(changed)toolRevision++;
+ if(clearSelection)clear();else if(changed)requestDraw();return [...toolComponents];
+}
+function clearToolComponents(){return setToolComponents([]);}
+// Tool highlights are transient and share the existing selection batches/cache.
+// No persistent Netcolor entry, zoom change or reading-label recalculation here.
+function setToolNets(ids,{clearSelection=false,colors={},highlightComponents=true}={}){
+ const next=new Set((Array.isArray(ids)?ids:[]).filter(id=>nets.has(id)&&!blockedCanvasNet(id)));
+ const nextColors=new Map([...next].filter(id=>/^#[0-9a-f]{6}$/i.test(colors[id]||'')).map(id=>[id,colors[id]]));
+ const changed=next.size!==toolNets.size||[...next].some(id=>!toolNets.has(id))||JSON.stringify([...nextColors])!==JSON.stringify([...toolNetColors])||toolHighlightComponents!==highlightComponents;
+ if(changed){toolNets=next;toolNetColors=nextColors;toolHighlightComponents=highlightComponents;toolNetBatches=[...nextColors].map(([id,color])=>({id,color,pads:makeSelectedPadBatches((nets.get(id)?.pins||[]).map(pin=>D.pins[pin]).filter(selectablePin)),tracks:makeTrackBatches(netTracks.get(id)||[])}));toolRevision++;}
+ if(clearSelection)clear();else if(changed){refreshSelectionLinks();requestDraw();}
+ return [...toolNets];
+}
+function clearToolNets(){return setToolNets([]);}
+on(window,'jcid:tool',event=>{if(event.detail!=='rffe')clearToolNets();});
+on(window,'jcid:document',clearToolNets);
+on(window,'jcid:boardloadstate',()=>{if(document.body.classList.contains('board-loading'))clearToolNets();});
+
+function toolBodyMask(c){if(!toolBodyMasks.has(c.id)){const mask=new Path2D();mask.rect(c.bbox[0],c.bbox[1],c.bbox[2]-c.bbox[0],c.bbox[3]-c.bbox[1]);for(const id of c.pins||[]){const path=pinPaths.get(id);if(path)mask.addPath(path);}toolBodyMasks.set(c.id,mask);}return toolBodyMasks.get(c.id);}
+function focusComponentById(id){const c=comps.get(id);if(document.body.classList.contains('source-mode')||document.body.classList.contains('board-loading')||!c)return false;if(!componentAllowed(id))return hiddenSelection();selectComponent(id,true);return state.component===id;}
+function focusPinById(id){const p=D.pins[id];if(document.body.classList.contains('source-mode')||document.body.classList.contains('board-loading')||!p||p.via||!comps.has(p.part)||!selectablePin(p))return false;if(!pinAllowed(p))return hiddenSelection();selectPin(id,true);return state.pin===id;}
+
+function selectablePin(p){return !!p&&padKind(p)==='signal';}
+function refreshSelectionLinks(){const networkIds=new Set(toolNets),parts=new Set();if(state.component!==null)parts.add(state.component);if(state.net!==null&&!blockedCanvasNet(state.net))networkIds.add(state.net);for(const id of networkIds){if(!toolHighlightComponents&&id!==state.net)continue;for(const pin of nets.get(id)?.pins||[]){const p=D.pins[pin];if(p&&comps.has(p.part))parts.add(p.part);}}const tracks=[...networkIds].flatMap(selectedTrackBatches);const pins=[];for(const id of networkIds)for(const pin of nets.get(id)?.pins||[]){const p=D.pins[pin];if(selectablePin(p))pins.push(p);}selectionLinks={nets:networkIds,parts,tracks,pads:makeSelectedPadBatches(pins)};refreshIsolatedSelection();}
+function activeBounds(){return bounds;}
+// Calibrate magnification to physical pads so accessories and full boards share a useful range.
+const zoomPadSizes=D.pins.filter(p=>!p.via&&validBox(p.bbox)).map(p=>Math.min(p.bbox[2]-p.bbox[0],p.bbox[3]-p.bbox[1])).filter(n=>Number.isFinite(n)&&n>0).sort((a,b)=>a-b);
+const zoomPadSize=zoomPadSizes[Math.floor((zoomPadSizes.length-1)*.1)]||0;
+function fittedScale(b=activeBounds()){const a=rad(state.rotation),co=Math.abs(Math.cos(a)),si=Math.abs(Math.sin(a)),w=Math.max(b[2]-b[0],5),h=Math.max(b[3]-b[1],5);return Math.min(Math.max(80,state.w-50)/(co*w+si*h),Math.max(80,state.h-50)/(si*w+co*h));}
+function zoomLimits(){return {min:Math.min(state.base*.45,fittedScale()*.9),max:Math.max(state.base*4,Math.min(state.base*160,zoomPadSize?64/zoomPadSize:state.base*64))};}
+function clampZoom(value){const {min,max}=zoomLimits();return Math.max(min,Math.min(max,value));}
+let studyCameraFrame=0,studyCameraDone=null;
+function cancelStudyCamera(){if(studyCameraFrame)cancelAnimationFrame(studyCameraFrame);studyCameraFrame=0;const done=studyCameraDone;studyCameraDone=null;if(done)done(false);}
+function animateFocusBounds(box,{duration=800,insets={}}={}){
+ cancelStudyCamera();stopPanMomentum();
+ if(!validBox(box)||destroyed||document.body.classList.contains('board-loading')||document.body.classList.contains('source-mode'))return Promise.resolve(false);
+ const left=Math.max(0,Number(insets.left)||0),right=Math.max(0,Number(insets.right)||0),top=Math.max(0,Number(insets.top)||0),bottom=Math.max(0,Number(insets.bottom)||0);
+ const angle=rad(state.rotation),co=Math.cos(angle),si=Math.sin(angle),w=Math.max(5,box[2]-box[0]),h=Math.max(5,box[3]-box[1]);
+ // Fit the space actually left above the study bubble, including short landscape screens.
+ // This camera fit may go below the manual zoom floor; normal wheel/pinch limits stay unchanged.
+ const availableW=Math.max(1,state.w-left-right),availableH=Math.max(1,state.h-top-bottom),margin=Math.min(25,availableW*.1,availableH*.1);
+ const scale=Math.min(zoomLimits().max,(availableW-2*margin)/(Math.abs(co)*w+Math.abs(si)*h),(availableH-2*margin)/(Math.abs(si)*w+Math.abs(co)*h));
+ const m=state.mirror?-1:1,v=state.mirrorVertical?-1:1,A=m*co*scale,C=m*si*scale,B=v*si*scale,E=-v*co*scale,det=A*E-B*C,dx=(left-right)/2,dy=(top-bottom)/2;
+ const from={x:state.cx,y:state.cy,scale:state.scale},to={x:(box[0]+box[2])/2-(E*dx-C*dy)/det,y:(box[1]+box[3])/2-(-B*dx+A*dy)/det,scale};
+ const milliseconds=matchMedia('(prefers-reduced-motion: reduce)').matches?0:Math.max(0,Math.min(1600,Number(duration)||0));
+ return new Promise(resolve=>{studyCameraDone=resolve;let started=null;state.fit=false;
+  const step=time=>{studyCameraFrame=0;if(destroyed){cancelStudyCamera();return;}if(started===null)started=time;const t=milliseconds?Math.min(1,(time-started)/milliseconds):1,e=t*t*(3-2*t);
+   state.cx=from.x+(to.x-from.x)*e;state.cy=from.y+(to.y-from.y)*e;state.scale=Math.exp(Math.log(from.scale)+(Math.log(to.scale)-Math.log(from.scale))*e);requestDraw();
+   if(t<1)studyCameraFrame=requestAnimationFrame(step);else{studyCameraDone=null;resolve(true);}
+  };studyCameraFrame=requestAnimationFrame(step);
+ });
+}
+on(canvas,'pointerdown',cancelStudyCamera,{capture:true,passive:true});
+on(canvas,'wheel',cancelStudyCamera,{capture:true,passive:true});
+on(window,'jcid:orientation',cancelStudyCamera);
+on(window,'jcid:tool',event=>{if(event.detail!=='function-studies')cancelStudyCamera();});
+on(window,'pagehide',cancelStudyCamera);
+function fit(b=activeBounds(),limit=false){cancelStudyCamera();stopPanMomentum();if(!validBox(b))return;state.cx=(b[0]+b[2])/2;state.cy=(b[1]+b[3])/2;state.scale=clampZoom(fittedScale(b));state.fit=!limit;requestDraw();}
+function zoom(factor,point={x:state.w/2,y:state.h/2}){cancelStudyCamera();stopPanMomentum();state.zoomUntil=Date.now()+120;const before=toWorld(point.x,point.y);state.scale=clampZoom(state.scale*factor);const after=toWorld(point.x,point.y);state.cx+=before.x-after.x;state.cy+=before.y-after.y;state.fit=false;if(state.drag&&pointers.has(state.drag.id)){beginDrag(state.drag.id,pointers.get(state.drag.id),true);if(pointers.size>=2)beginPinch();}requestDraw();}
+function pinFocusBox(p){const b=validBox(p.bbox)?p.bbox:boxOfPoint(p,50),w=Math.max(2500,8*(b[2]-b[0])),h=Math.max(2500,8*(b[3]-b[1]));return[p.x-w/2,p.y-h/2,p.x+w/2,p.y+h/2];}
+function componentFocusBox(c){const b=c.bbox,cx=(b[0]+b[2])/2,cy=(b[1]+b[3])/2,w=Math.max(2500,(b[2]-b[0])*1.25),h=Math.max(2500,(b[3]-b[1])*1.25);return[cx-w/2,cy-h/2,cx+w/2,cy+h/2];}
+function focusSelection(){if(state.pin!==null){fit(pinFocusBox(D.pins[state.pin]),true);}else if(state.component!==null)fit(componentFocusBox(comps.get(state.component)),true);else if(state.net!==null)focusNetwork();}
+function focusNetwork(){const n=nets.get(state.net);if(!n)return;const boxes=n.pins.map(id=>D.pins[id]).filter(p=>p&&pinAllowed(p)).map(p=>p.bbox).filter(validBox);if(boxes.length){const b=union(boxes),cx=(b[0]+b[2])/2,cy=(b[1]+b[3])/2,w=Math.max(4000,(b[2]-b[0])*1.5),h=Math.max(4000,(b[3]-b[1])*1.5);fit([cx-w/2,cy-h/2,cx+w/2,cy+h/2],true);}}
+function componentLabel(c,m){if(!partPaths.get(c.id)?.hasArea)return null;const g=D.labelGeometry?.[c.id];if(g?.available&&g.center?.every(Number.isFinite)&&g.local_width>0&&g.local_height>0){const a=rad((g.angle||0)+(g.local_height>g.local_width?90:0)),co=Math.cos(a),si=Math.sin(a);let angle=Math.atan2(m.b*co+m.d*si,m.a*co+m.c*si);while(angle>Math.PI/2)angle-=Math.PI;while(angle< -Math.PI/2)angle+=Math.PI;return{x:m.a*g.center[0]+m.c*g.center[1]+m.e,y:m.b*g.center[0]+m.d*g.center[1]+m.f,width:Math.max(g.local_width,g.local_height)*state.scale,height:Math.min(g.local_width,g.local_height)*state.scale,angle};}const b=c.bbox,bw=b[2]-b[0],bh=b[3]-b[1],vertical=bh>bw,cx=(b[0]+b[2])/2,cy=(b[1]+b[3])/2;let angle=Math.atan2(vertical?m.d:m.b,vertical?m.c:m.a);while(angle>Math.PI/2)angle-=Math.PI;while(angle< -Math.PI/2)angle+=Math.PI;return{x:m.a*cx+m.c*cy+m.e,y:m.b*cx+m.d*cy+m.f,width:Math.max(bw,bh)*state.scale,height:Math.min(bw,bh)*state.scale,angle};}
+// Names depend only on their component's geometry, never on changing pad captions.
+// The continuous fade at overview scale avoids abrupt appearance/disappearance.
+function componentLabelSpec(c,m,ctx){
+ if(c.nameVisible===false)return null;
+ const box=componentLabel(c,m);if(!box||!c.name)return null;
+ const inset=Math.min(2,box.height*.1),width=Math.max(0,box.width-inset*2),height=Math.max(0,box.height-inset*2);
+ const unitWidth=annotationWidth(ctx,c.name,'400 10px Segoe UI,Arial')/10;
+ const font=Math.min(13,height*.7,width/Math.max(1,unitWidth));
+ const visibility=Math.max(0,Math.min(1,(font-3)/3)),opacity=visibility*visibility*(3-2*visibility);
+ if(opacity<=0)return null;
+ return{id:c.id,name:c.name,box,width,font,opacity,reserved:annotationBounds(box,unitWidth*font+2,font*1.2+2),fontSpec:'400 '+font.toFixed(1)+'px Segoe UI,Arial'};
+}
+function paintComponentLabel(label,ctx){const {box,width,fontSpec,name,opacity}=label;ctx.save();ctx.translate(box.x,box.y);ctx.rotate(box.angle);ctx.beginPath();ctx.rect(-box.width/2,-box.height/2,box.width,box.height);ctx.clip();ctx.font=fontSpec;ctx.globalAlpha=opacity;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#ffffff';ctx.fillText(name,0,0,width);ctx.restore();}
+function componentNameVisible(id){return id!==state.component&&id!==state.hoverComponent;}
+function drawComponentLabel(c,m,ctx,annotations){const label=componentLabelSpec(c,m,ctx,annotations);if(label&&componentNameVisible(c.id))paintComponentLabel(label,ctx);}
+
+function pinVisible(p){return (p.id===undefined||pinAllowed(p))&&(p.via?viaOnLayers(p):state.objects.components&&state.objects.pads);}
+function requestDraw(){if(destroyed||state.pending)return;state.pending=true;requestAnimationFrame(draw);}
+on(window,'jcid:autocolor',requestDraw);
+// Reuse a full-resolution scene during pan and hover. Only camera translation changes.
+// The margin covers nearby movement; every content/scale/orientation change rebuilds it.
+const sceneCanvas=document.createElement('canvas'),sceneCtx=sceneCanvas.getContext('2d',{alpha:false});
+const namesCanvas=document.createElement('canvas'),namesCtx=namesCanvas.getContext('2d');let namesCache=null;
+let sceneCache=null;
+const imageCanvas=document.createElement('canvas'),imageCtx=imageCanvas.getContext('2d');let imageCache=null;
+const compositeImages=D.nexusComposition?window.NexusCompositeImages.create(D,partPaths,ringComponents):null;
+const imageSource=compositeImages?(compositeImages.available?'composition':null):options.imageSource===undefined?'fontes-previas/iphone11-placa-principal.jpg':options.imageSource;
+const boardImage=document.createElement('img');let boardImageStatus='empty',imageRevision=0,imageLoadToken=0,imageObjectUrl=null;
+function releaseImageUrl(){if(imageObjectUrl){URL.revokeObjectURL(imageObjectUrl);imageObjectUrl=null;}}
+function syncImageControl(){const button=$('imageButton');button.disabled=!imageSource||document.body.classList.contains('source-mode');button.setAttribute('aria-pressed',String(state.objects.image));button.title=!imageSource?'Desenhos ainda não disponíveis para esta placa':state.objects.image?'Ocultar desenhos dos componentes':'Exibir desenhos dos componentes no mapa';}
+function failBoardImage(message){if(destroyed)return;boardImageStatus='error';state.objects.image=false;imageRevision++;releaseImageUrl();$('boardImageNotice').textContent=message||'Não foi possível carregar os desenhos. Clique em Imagem para tentar novamente.';$('boardImageNotice').hidden=false;syncImageControl();requestDraw();}
+async function loadBoardImage(){const token=++imageLoadToken;try{if(compositeImages){await compositeImages.load();if(destroyed||token!==imageLoadToken)return;boardImageStatus='ready';imageRevision++;$('boardImageNotice').hidden=true;requestDraw();return;}if(options.loadImage){const blob=await options.loadImage();if(destroyed||token!==imageLoadToken)return;if(!(blob instanceof Blob)||!blob.size)throw Error('Não foi possível ler os desenhos desta placa.');releaseImageUrl();imageObjectUrl=URL.createObjectURL(blob);boardImage.src=imageObjectUrl;}else boardImage.src=imageSource;}catch(error){if(!destroyed&&token===imageLoadToken)failBoardImage((error.message||'Não foi possível carregar os desenhos.')+' Clique em Imagem para tentar novamente.');}}
+function setImageEnabled(enabled,{revealComponents=true}={}){state.objects.image=!!enabled&&!!imageSource;if(state.objects.image&&revealComponents&&!state.objects.components)setComponentsVisible(true);if(state.objects.image&&boardImageStatus!=='ready'&&boardImageStatus!=='loading'){boardImageStatus='loading';loadBoardImage();}$('boardImageNotice').textContent='Carregando desenhos…';$('boardImageNotice').hidden=!state.objects.image||boardImageStatus==='ready';syncImageControl();requestDraw();return state.objects.image;}
+on(boardImage,'load',()=>{if(destroyed)return;boardImageStatus='ready';imageRevision++;releaseImageUrl();$('boardImageNotice').hidden=true;requestDraw();});
+on(boardImage,'error',()=>failBoardImage());
+on(window,'jcid:document',syncImageControl);
+function drawComponentImages(ctx){ctx.save();ctx.clip(studyIsolationActive()?isolatedImageMask:componentImageMask);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';const atlas=D.nexusGeometry?.imageBounds||bounds;function image(){ctx.translate(atlas[0],atlas[3]);ctx.scale(1,-1);ctx.drawImage(boardImage,0,0,atlas[2]-atlas[0],atlas[3]-atlas[1]);}if(compositeImages)compositeImages.draw(ctx,physicalImageMasks);else if(D.nexusGeometry){for(const b of D.boards){ctx.save();ctx.clip(physicalImageMasks.get(String(b.id))||new Path2D());ctx.transform(...(D.nexusGeometry.boardTransforms[String(b.id)]||[1,0,0,1,0,0]));image();ctx.restore();}if(physicalImageMasks.has('__unassigned')){ctx.save();ctx.clip(physicalImageMasks.get('__unassigned'));image();ctx.restore();}}else image();ctx.restore();}
+
+function worldViewport(m,w,h){const points=[[0,0],[w,0],[0,h],[w,h]].map(([x,y])=>{const dx=x-m.e,dy=y-m.f;return{x:(m.d*dx-m.c*dy)/m.det,y:(-m.b*dx+m.a*dy)/m.det};});return[Math.min(...points.map(p=>p.x)),Math.min(...points.map(p=>p.y)),Math.max(...points.map(p=>p.x)),Math.max(...points.map(p=>p.y))];}
+function sceneKey(){return[state.w,state.h,state.dpr,state.scale,state.rotation,state.mirror,state.mirrorVertical,appearanceRevision,imageRevision,netColorRevision,readingsRevision,namesRevision,toolRevision,window.NexusAutoColor.get(),state.view,state.selectionTracks,[...state.layers].sort((a,b)=>a-b).join(','),...Object.values(state.objects)].join('|');}
+function renderScene(ctx,m,view,width,height,separateNames=false){const started=performance.now(),phases={};let phaseAt=started;const mark=name=>{const now=performance.now();phases[name]=Math.round((now-phaseAt)*10)/10;phaseAt=now;},dpr=state.dpr;
+ ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle=appearance.background;ctx.fillRect(0,0,width,height);ctx.setTransform(dpr*m.a,dpr*m.b,dpr*m.c,dpr*m.d,dpr*m.e,dpr*m.f);
+ const allVisible=view[0]<=bounds[0]&&view[1]<=bounds[1]&&view[2]>=bounds[2]&&view[3]>=bounds[3];const visiblePins=allVisible?D.pins.filter(pinVisible):[...gridQuery(pinGrid,view)].map(id=>D.pins[id]).filter(p=>p&&pinVisible(p)&&intersects(p.bbox||boxOfPoint(p),view));const visibleParts=!state.objects.components?[]:allVisible?D.components.filter(c=>componentAllowed(c.id)):[...gridQuery(partGrid,view)].map(id=>comps.get(id)).filter(c=>c&&componentAllowed(c.id)&&intersects(c.bbox,view));
+ // Stable ordering makes overlapping geometry and captions independent of tile queries.
+ visiblePins.sort((a,b)=>a.id-b.id);visibleParts.sort((a,b)=>a.id-b.id);
+ mark('lookup');
+ if(state.objects.boards){ctx.fillStyle=appearance.board;ctx.strokeStyle=appearance.outline;ctx.lineWidth=.8/state.scale;for(const b of D.boards)if(intersects(b.bbox,view)){ctx.fill(boardPaths.get(String(b.id)),'evenodd');ctx.stroke(boardPaths.get(String(b.id)));}}
+ mark('boards');
+ let drawnTracks=0,selectedTracks=0;ctx.lineCap='round';ctx.lineJoin='round';ctx.globalAlpha=.75;
+ if(state.layers.size)for(const b of (studyIsolationActive()?isolatedLayerTracks:visibleLayerTrackBatches())){if(!state.layers.has(b.layer)||!intersects(b.bbox,view))continue;strokeTraceBatch(ctx,b,layerColor(b.layer),.6);drawnTracks+=visibleTrackCount(b,view);}ctx.globalAlpha=1;
+ if(!studyComponents.size&&selectionLinks.nets.size&&(automaticTracks()||state.layers.size)){for(const b of (netColorIsolation?isolatedSelectionTracks:selectionLinks.tracks)){if((!automaticTracks()&&!state.layers.has(b.layer))||!intersects(b.bbox,view))continue;strokeTraceBatch(ctx,b,layerColor(b.layer),1.35,b.net===state.net);if(automaticTracks())selectedTracks+=visibleTrackCount(b,view);}}
+ mark('tracks');
+ if(state.objects.outlines){for(const c of visibleParts){const selected=studyComponents.size?studyComponents.has(c.id):selectionLinks.parts.has(c.id)||toolComponents.has(c.id)||markedComponents.has(c.id),shape=partPaths.get(c.id);if(selected&&shape.hasArea&&!ringComponents.has(c.id)){ctx.fillStyle=studyComponents.size?(c.id===studyFocusComponent?'rgba(181,137,255,0.68)':selectionInk.body):markedComponents.has(c.id)?markedComponentColor:selectionInk.body;ctx.fill(shape.area);}}}
+ mark('outlines');
+ const visibleBatches=(studyIsolationActive()?isolatedBasePads:padBatches).filter(b=>pinVisible(b)&&intersects(b.bbox,view));let litPins=0;
+ const relatedBatches=(studyComponents.size?[]:netColorIsolation?isolatedSelectionPads:selectionLinks.pads).filter(b=>pinVisible(b)&&intersects(b.bbox,view));for(const b of relatedBatches)for(const p of b.pins)if(intersects(p.bbox||boxOfPoint(p),view))litPins++;
+ mark('buildPads');
+ for(const kind of ['signal','ground','nc']){ctx.fillStyle=padColors[kind];for(const b of visibleBatches)if(b.kind===kind){if(b.ring){ctx.strokeStyle=padColors[kind];ctx.lineWidth=2/state.scale;ctx.stroke(b.path);}else ctx.fill(b.path);}}
+ mark('fillPads');
+ // Selections and annotations remain in the geometry scene. The optional
+ // original-image plane is composed after every map annotation in draw().
+ // Selections retain their geometry-mode priorities below the image plane.
+ if(!studyComponents.size&&window.NexusAutoColor.get()&&state.objects.components&&state.objects.pads&&componentAllowed(state.component)){
+  ctx.save();ctx.globalAlpha=repeatedPadAlpha;
+  for(const group of componentRepeatedPads(state.component)){
+   ctx.fillStyle=group.color;for(const batch of group.batches)if(intersects(batch.bbox,view))ctx.fill(batch.path);
+  }
+  ctx.restore();
+ }
+ if(!studyComponents.size&&state.objects.components&&state.objects.pads)for(const [id,item] of effectiveNetColors){ctx.fillStyle=item.color;for(const b of (netColorIsolation?isolatedColorPads.get(id)||[]:item.batches))if(intersects(b.bbox,view))ctx.fill(b.path);}
+ // The active network is red across all its pads, above saved Netcolor colors.
+ // This is a transient highlight; clearing selection restores each saved color.
+ ctx.fillStyle=selectionInk.pad;for(const b of relatedBatches)ctx.fill(b.path);
+ // Transient RFFE colors keep their dedicated palette above network selection.
+ if(!studyComponents.size)for(const item of toolNetBatches){if(trackNetAllowed(item.id)&&(automaticTracks()||state.layers.size))for(const b of item.tracks){if((!automaticTracks()&&!state.layers.has(b.layer))||!intersects(b.bbox,view))continue;strokeTraceBatch(ctx,b,item.color,1.35,item.id===state.net);}ctx.fillStyle=item.color;for(const b of (netColorIsolation?isolateBatches(item.pads):item.pads))if(pinVisible(b)&&intersects(b.bbox,view))ctx.fill(b.path);}
+ // Passive RFFE test pads: no network selection or camera movement.
+ if(!studyComponents.size&&state.objects.components&&state.objects.pads){ctx.fillStyle=selectionInk.pad;ctx.strokeStyle=selectionInk.pad;for(const id of toolPins){const p=D.pins[id],path=pinPaths.get(id);if(p&&path&&pinVisible(p)&&intersects(p.bbox||boxOfPoint(p),view)){if(!ringPin(p))ctx.fill(path);ctx.lineWidth=1.25/state.scale;ctx.stroke(path);}}}
+ if(state.pin!==null){const p=D.pins[state.pin];if(p&&pinVisible(p)){const chosen=pinPaths.get(p.id);ctx.fillStyle=selectionInk.pad;if(!ringPin(p))ctx.fill(chosen);ctx.strokeStyle=selectionInk.pad;ctx.lineWidth=1.25/state.scale;ctx.stroke(chosen);}}
+ // Explicit study IN/OUT colors remain visible even on the active pad/net.
+ // Holes and yellow outlines are restored later, after every pad highlight.
+ if(state.objects.components&&state.objects.pads){for(const id of studyPins){const p=D.pins[id],path=pinPaths.get(id);if(p&&path&&pinVisible(p)&&intersects(p.bbox||boxOfPoint(p),view)){const color=studyPinColors.get(id)||selectionInk.pad;ctx.fillStyle=color;ctx.strokeStyle=color;ctx.fill(path);ctx.lineWidth=1.25/state.scale;ctx.stroke(path);}}}
+ ctx.fillStyle=state.objects.boards?appearance.board:appearance.background;for(const b of visibleBatches)ctx.fill(b.holes);
+ // Keep the component boundary above pad fills and selection strokes. This leaves
+ // highlighted terminals inside their yellow outline, including rotated parts.
+ if(state.objects.outlines){for(const c of visibleParts){ctx.strokeStyle=appearance.outline;for(const o of partPaths.get(c.id).strokes){if(o.orientation)continue;ctx.lineWidth=Math.max(o.width||0,1.5/state.scale);ctx.stroke(o.path);}}ctx.lineCap='round';for(const c of visibleParts)for(const o of partPaths.get(c.id).strokes)if(o.orientation){ctx.strokeStyle=appearance.orientation;ctx.lineWidth=2/state.scale;ctx.stroke(o.path);}ctx.lineCap='butt';}
+ if(state.objects.markers){ctx.strokeStyle='#748791';ctx.lineWidth=1/state.scale;for(const p of visiblePins)if(!(p.copper||[]).length){const r=3/state.scale;ctx.beginPath();ctx.moveTo(p.x-r,p.y-r);ctx.lineTo(p.x+r,p.y+r);ctx.moveTo(p.x-r,p.y+r);ctx.lineTo(p.x+r,p.y-r);ctx.stroke();}}
+ mark('highlights');
+ ctx.setTransform(dpr,0,0,dpr,0,0);
+ const componentLabels=state.objects.names?visibleParts.map(c=>componentLabelSpec(c,m,ctx)).filter(Boolean):[],nameRegions=new Map(componentLabels.map(label=>[label.id,label]));
+ const annotations=new Map();if(state.objects.names||state.objects.netNames||state.objects.readings||state.objects.smb)for(const p of visiblePins){const label=padAnnotation(p,m,ctx,nameRegions.get(p.part));if(label)annotations.set(p.id,label);}
+ if(!separateNames)for(const label of componentLabels)if(componentNameVisible(label.id))paintComponentLabel(label,ctx);
+ for(const label of annotations.values())drawPadAnnotation(ctx,label);
+ mark('labels');
+ return{phases,drawnPins:visiblePins.length,highlightedPins:litPins,drawnTracks,selectedTracks,componentLabels};
+}
+// Fixed device-pixel tiles retain full-resolution geometry through long pans.
+// A cache miss paints only newly visible tiles; no full canvas is copied or scrolled.
+const panTileSize=512,panTileBleed=4;let panTiles=null,panTileTick=0,panTileWarmTimer=0;
+function releasePanTile(tile){for(const plane of [tile.canvas,tile.names,tile.image])if(plane)plane.width=plane.height=1;}
+function clearPanTiles(){if(panTiles){for(const tile of panTiles.tiles.values())releasePanTile(tile);panTiles=null;}}
+function makePanTile(ix,iy,imageVisible){
+ const dpr=state.dpr,size=panTileSize,css=size/dpr,bleed=panTileBleed/dpr,planeSize=size+2*panTileBleed,planeCss=planeSize/dpr,m={...panTiles.m,e:panTiles.m.e-ix*css+bleed,f:panTiles.m.f-iy*css+bleed};
+ const plane=()=>{const c=document.createElement('canvas');c.width=c.height=planeSize;return c;},canvas=plane(),context=canvas.getContext('2d',{alpha:false});
+ // Queries include the maximum caption reach. Raster clipping stays at the tile edge.
+ const halo=CELL*state.scale+4,query={...m,e:m.e+halo,f:m.f+halo},view=worldViewport(query,planeCss+halo*2,planeCss+halo*2);
+ const {componentLabels,...metrics}=renderScene(context,m,view,planeCss,planeCss,true),tile={canvas,m,componentLabels,metrics,names:plane(),namesHover:undefined,namesComponent:undefined,image:null,used:++panTileTick};
+ if(imageVisible){tile.image=plane();const c=tile.image.getContext('2d');c.setTransform(dpr*m.a,dpr*m.b,dpr*m.c,dpr*m.d,dpr*m.e,dpr*m.f);drawComponentImages(c);}
+ return tile;
+}
+function paintPanTileNames(tile){
+ if(tile.namesHover===state.hoverComponent&&tile.namesComponent===state.component)return;
+ const c=tile.names.getContext('2d'),dpr=state.dpr;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,tile.names.width,tile.names.height);c.setTransform(dpr,0,0,dpr,0,0);
+ for(const label of tile.componentLabels)if(componentNameVisible(label.id))paintComponentLabel(label,c);
+ tile.namesHover=state.hoverComponent;tile.namesComponent=state.component;
+}
+function panViewportMetrics(view){
+ const pins=[...gridQuery(pinGrid,view)].map(id=>D.pins[id]).filter(p=>p&&pinVisible(p)&&intersects(p.bbox||boxOfPoint(p),view));
+ let drawnTracks=0,selectedTracks=0,highlightedPins=0;
+ if(state.layers.size)for(const b of (studyIsolationActive()?isolatedLayerTracks:visibleLayerTrackBatches()))if(state.layers.has(b.layer)&&intersects(b.bbox,view))drawnTracks+=visibleTrackCount(b,view);
+ if(selectionLinks.nets.size&&automaticTracks())for(const b of (netColorIsolation?isolatedSelectionTracks:selectionLinks.tracks))if(intersects(b.bbox,view))selectedTracks+=visibleTrackCount(b,view);
+ for(const b of (netColorIsolation?isolatedSelectionPads:selectionLinks.pads))if(pinVisible(b)&&intersects(b.bbox,view))for(const p of b.pins)if(intersects(p.bbox||boxOfPoint(p),view))highlightedPins++;
+ return{drawnPins:pins.length,drawnTracks,selectedTracks,highlightedPins};
+}
+function drawTiledScene(){
+ const dpr=state.dpr,m=matrix(),pixelWidth=Math.max(1,Math.round(state.w*dpr)),pixelHeight=Math.max(1,Math.round(state.h*dpr)),size=panTileSize,imageVisible=state.objects.components&&state.objects.image&&boardImageStatus==='ready';
+ const boardWidth=(Math.abs(m.a)*(bounds[2]-bounds[0])+Math.abs(m.c)*(bounds[3]-bounds[1]))*dpr,boardHeight=(Math.abs(m.b)*(bounds[2]-bounds[0])+Math.abs(m.d)*(bounds[3]-bounds[1]))*dpr;
+ // Overview fits remain one cheap complete-scene snapshot. Extreme viewport sizes
+ // use the original bounded renderer rather than evicting tiles still on screen.
+ const budget=imageVisible?5333333:8000000,planePixels=(size+2*panTileBleed)**2,capacity=Math.floor(budget/planePixels),maxVisible=(Math.ceil(pixelWidth/size)+1)*(Math.ceil(pixelHeight/size)+1);
+ if(Date.now()<(state.zoomUntil||0)){clearPanTiles();clearTimeout(panTileWarmTimer);panTileWarmTimer=setTimeout(()=>{panTileWarmTimer=0;requestDraw();},state.zoomUntil-Date.now()+16);return false;}
+ if((boardWidth<=pixelWidth-16&&boardHeight<=pixelHeight-16)||maxVisible>capacity){clearPanTiles();return false;}
+ const started=performance.now(),key=sceneKey();
+ if(!panTiles||panTiles.key!==key||panTiles.selection!==selectionLinks){clearPanTiles();panTiles={key,selection:selectionLinks,m,tiles:new Map()};sceneCache=namesCache=imageCache=null;sceneCanvas.width=sceneCanvas.height=namesCanvas.width=namesCanvas.height=imageCanvas.width=imageCanvas.height=1;}
+ if(canvas.width!==pixelWidth)canvas.width=pixelWidth;if(canvas.height!==pixelHeight)canvas.height=pixelHeight;
+ const tx=Math.round((m.e-panTiles.m.e)*dpr),ty=Math.round((m.f-panTiles.m.f)*dpr),x0=Math.floor(-tx/size),y0=Math.floor(-ty/size),x1=Math.floor((pixelWidth-1-tx)/size),y1=Math.floor((pixelHeight-1-ty)/size),wanted=new Set();
+ for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++)wanted.add(x+','+y);
+ const visible=[];let rebuilt=0;const phases={};
+ for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){
+  const id=x+','+y;let tile=panTiles.tiles.get(id);
+  if(!tile){
+   while(panTiles.tiles.size>=capacity){let victim=null;for(const [k,t] of panTiles.tiles)if(!wanted.has(k)&&(!victim||t.used<victim[1].used))victim=[k,t];if(!victim)break;releasePanTile(victim[1]);panTiles.tiles.delete(victim[0]);}
+   tile=makePanTile(x,y,imageVisible);panTiles.tiles.set(id,tile);rebuilt++;for(const [name,time] of Object.entries(tile.metrics.phases))phases[name]=(phases[name]||0)+time;
+  }
+  tile.used=++panTileTick;paintPanTileNames(tile);visible.push({tile,x:x*size+tx,y:y*size+ty});
+ }
+ ctx.setTransform(1,0,0,1,0,0);ctx.imageSmoothingEnabled=false;ctx.fillStyle=appearance.background;ctx.fillRect(0,0,pixelWidth,pixelHeight);
+ const compose=plane=>{for(const item of visible)ctx.drawImage(item.tile[plane],panTileBleed,panTileBleed,size,size,item.x,item.y,size,size);};
+ compose('canvas');compose('names');
+ if(state.objects.components&&state.hoverComponent!==null&&componentAllowed(state.hoverComponent)&&state.objects.outlines){const shape=partPaths.get(state.hoverComponent);if(shape){ctx.setTransform(dpr*m.a,dpr*m.b,dpr*m.c,dpr*m.d,dpr*m.e,dpr*m.f);ctx.strokeStyle='#ff3b40';ctx.lineWidth=2/state.scale;for(const o of shape.strokes)if(!o.orientation)ctx.stroke(o.path);}}
+ if(state.hover!==null&&state.hover!==state.pin){const p=D.pins[state.hover];if(p&&pinVisible(p)){ctx.setTransform(dpr*m.a,dpr*m.b,dpr*m.c,dpr*m.d,dpr*m.e,dpr*m.f);ctx.strokeStyle='#ff3b40';ctx.lineWidth=1.7/state.scale;ctx.stroke(pinPaths.get(p.id));}}
+ if(imageVisible){ctx.setTransform(1,0,0,1,0,0);compose('image');}
+ if(rebuilt||!panTiles.metrics)panTiles.metrics=panViewportMetrics(worldViewport(m,state.w,state.h));
+ const metrics=panTiles.metrics,frameMs=Math.round((performance.now()-started)*10)/10;
+ window.__boardMetrics={canvasWidth:canvas.width,canvasHeight:canvas.height,viewport:[state.w,state.h],...metrics,layers:[...state.layers],component:state.component,pin:state.pin,net:state.net,rotation:state.rotation,mirrored:state.mirror,mirroredVertical:state.mirrorVertical,frameMs,metricsScope:'last-tile-rebuild-viewport',sceneRebuilt:!!rebuilt,scenePanReused:rebuilt<visible.length,imageOverlay:imageVisible,imageOverlayRebuilt:imageVisible&&!!rebuilt,retainedTiles:panTiles.tiles.size,paintedTiles:rebuilt,retainedPlanePixels:panTiles.tiles.size*planePixels};
+ Object.assign(canvas.dataset,{framePhases:JSON.stringify(rebuilt?phases:{cachedScene:frameMs}),frameMs:String(frameMs),drawnTracks:String(metrics.drawnTracks),selectedTracks:String(metrics.selectedTracks),highlightedPins:String(metrics.highlightedPins),activeLayers:JSON.stringify([...state.layers].sort((a,b)=>a-b))});
+ return true;
+}
+
+function draw(){if(destroyed)return;state.pending=false;if(drawTiledScene())return;const started=performance.now(),dpr=state.dpr,m=matrix(),key=sceneKey(),imageVisible=state.objects.components&&state.objects.image&&boardImageStatus==='ready',pixelWidth=Math.max(1,Math.round(state.w*dpr)),pixelHeight=Math.max(1,Math.round(state.h*dpr));
+ // Resize and replace the displayed bitmap in the same frame, avoiding blank flashes.
+ if(canvas.width!==pixelWidth)canvas.width=pixelWidth;if(canvas.height!==pixelHeight)canvas.height=pixelHeight;
+ let dx=sceneCache?(m.e-sceneCache.m.e)*dpr:0,dy=sceneCache?(m.f-sceneCache.m.f)*dpr:0;
+ const matches=sceneCache&&sceneCache.key===key&&sceneCache.selection===selectionLinks;
+ const covered=matches&&(sceneCache.complete||(dx<=0&&dy<=0&&dx+sceneCanvas.width>=pixelWidth&&dy+sceneCanvas.height>=pixelHeight));
+ let rebuilt=false;
+ if(!covered){
+  // Bound retained margins; the image plane shares the same pixel budget
+  // with the geometry/name planes while enabled.
+  const retainedPixelBudget=imageVisible?5333333:8000000;
+  const margin=Math.max(0,Math.floor(Math.min(Date.now()<(state.zoomUntil||0)?0:256,(8192/dpr-state.w)/2,(8192/dpr-state.h)/2,(-state.w-state.h+Math.sqrt((state.w-state.h)**2+4*retainedPixelBudget/(dpr*dpr)))/4)));
+  const width=Math.ceil((state.w+2*margin)*dpr),height=Math.ceil((state.h+2*margin)*dpr);
+  if(sceneCanvas.width!==width)sceneCanvas.width=width;if(sceneCanvas.height!==height)sceneCanvas.height=height;
+  const transform={...m,e:m.e+margin,f:m.f+margin},view=worldViewport(transform,width/dpr,height/dpr);
+  const {componentLabels,...metrics}=renderScene(sceneCtx,transform,view,width/dpr,height/dpr,true);
+  // Eight pixels keep antialiased board strokes inside a complete-scene snapshot.
+  const corners=[[bounds[0],bounds[1]],[bounds[2],bounds[1]],[bounds[0],bounds[3]],[bounds[2],bounds[3]]].map(([x,y])=>({x:transform.a*x+transform.c*y+transform.e,y:transform.b*x+transform.d*y+transform.f}));
+  const complete=corners.every(p=>p.x>=8&&p.y>=8&&p.x<=width/dpr-8&&p.y<=height/dpr-8);
+  sceneCache={key,selection:selectionLinks,m:transform,complete,metrics,componentLabels};dx=-margin*dpr;dy=-margin*dpr;rebuilt=true;
+ }
+ ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle=appearance.background;ctx.fillRect(0,0,pixelWidth,pixelHeight);ctx.imageSmoothingEnabled=false;ctx.drawImage(sceneCanvas,Math.round(dx),Math.round(dy));
+ // Component names live in a transparent retained plane. Hover changes only this cheap plane.
+ if(namesCache?.scene!==sceneCache||namesCache?.hover!==state.hoverComponent||namesCache?.component!==state.component){if(namesCanvas.width!==sceneCanvas.width)namesCanvas.width=sceneCanvas.width;if(namesCanvas.height!==sceneCanvas.height)namesCanvas.height=sceneCanvas.height;namesCtx.setTransform(1,0,0,1,0,0);namesCtx.clearRect(0,0,namesCanvas.width,namesCanvas.height);namesCtx.setTransform(dpr,0,0,dpr,0,0);for(const label of sceneCache.componentLabels)if(componentNameVisible(label.id))paintComponentLabel(label,namesCtx);namesCache={scene:sceneCache,hover:state.hoverComponent,component:state.component};}
+ ctx.drawImage(namesCanvas,Math.round(dx),Math.round(dy));
+ if(state.objects.components&&state.hoverComponent!==null&&componentAllowed(state.hoverComponent)&&state.objects.outlines){const shape=partPaths.get(state.hoverComponent);if(shape){ctx.setTransform(dpr*m.a,dpr*m.b,dpr*m.c,dpr*m.d,dpr*m.e,dpr*m.f);ctx.strokeStyle='#ff3b40';ctx.lineWidth=2/state.scale;for(const o of shape.strokes)if(!o.orientation)ctx.stroke(o.path);}}
+ if(state.hover!==null&&state.hover!==state.pin){const p=D.pins[state.hover];if(p&&pinVisible(p)){ctx.setTransform(dpr*m.a,dpr*m.b,dpr*m.c,dpr*m.d,dpr*m.e,dpr*m.f);ctx.strokeStyle='#ff3b40';ctx.lineWidth=1.7/state.scale;ctx.stroke(pinPaths.get(p.id));}}
+ // Highest visual layer: original CI drawings cover pads, readings, labels,
+ // selections and hover decoration without changing any visibility setting.
+ let imageOverlayRebuilt=false;
+ if(imageVisible){
+  if(imageCache!==sceneCache){
+   if(imageCanvas.width!==sceneCanvas.width)imageCanvas.width=sceneCanvas.width;if(imageCanvas.height!==sceneCanvas.height)imageCanvas.height=sceneCanvas.height;
+   imageCtx.setTransform(1,0,0,1,0,0);imageCtx.clearRect(0,0,imageCanvas.width,imageCanvas.height);
+   const im=sceneCache.m;imageCtx.setTransform(dpr*im.a,dpr*im.b,dpr*im.c,dpr*im.d,dpr*im.e,dpr*im.f);drawComponentImages(imageCtx);
+   imageCache=sceneCache;imageOverlayRebuilt=true;
+  }
+  ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(imageCanvas,Math.round(dx),Math.round(dy));
+ }else if(imageCache){imageCanvas.width=imageCanvas.height=1;imageCache=null;}
+ const metrics=sceneCache.metrics,frameMs=Math.round((performance.now()-started)*10)/10;
+ window.__boardMetrics={canvasWidth:canvas.width,canvasHeight:canvas.height,viewport:[state.w,state.h],...metrics,phases:undefined,layers:[...state.layers],component:state.component,pin:state.pin,net:state.net,rotation:state.rotation,mirrored:state.mirror,mirroredVertical:state.mirrorVertical,frameMs,metricsScope:'retained-scene',sceneRebuilt:rebuilt,imageOverlay:imageVisible,imageOverlayRebuilt};
+ Object.assign(canvas.dataset,{framePhases:JSON.stringify(rebuilt?metrics.phases:{cachedScene:frameMs}),frameMs:String(frameMs),drawnTracks:String(metrics.drawnTracks),selectedTracks:String(metrics.selectedTracks),highlightedPins:String(metrics.highlightedPins),activeLayers:JSON.stringify([...state.layers].sort((a,b)=>a-b))});
+}
+
+function blockedCanvasNet(id){const name=(nets.get(id)?.sourceName??nets.get(id)?.name??'').trim().toUpperCase();return name==='GND'||['NC','N-C','N_C','N.C.','N/C','NO CONNECT','NOT CONNECTED','UNCONNECTED'].includes(name);}
+function hitPin(x,y,predicate=null){const r=5/state.scale,area=[x-r,y-r,x+r,y+r];let nearest=null,distance=Infinity,inside=null,size=Infinity;for(const id of gridQuery(pinGrid,area)){const p=D.pins[id];if(!p||!pinVisible(p)||(predicate&&!predicate(p)))continue;const ring=ringPin(p),hole=!p.via&&p.hole>0&&Math.hypot(x-p.x,y-p.y)<p.hole/2;if(ring){hitCtx.lineWidth=3/state.scale;if(hitCtx.isPointInStroke(pinPaths.get(id),x,y))return p;continue;}const hasForm=(p.copper||[]).length>0;if(!hole&&hasForm&&hitCtx.isPointInPath(pinPaths.get(id),x,y)){const b=p.bbox,s=(b[2]-b[0])*(b[3]-b[1]);if(s<size||(inside?.via&&!p.via)){inside=p;size=s;}}const d=Math.hypot(x-p.x,y-p.y);if(!hole&&(hasForm||state.objects.markers)&&d<r&&d<distance){nearest=p;distance=d;}}return inside||nearest;}
+function hitComponent(x,y){if(!state.objects.components)return null;const ids=gridQuery(partGrid,[x,y,x,y]);let found=null,size=Infinity;for(const id of ids){if(!componentAllowed(id))continue;const c=comps.get(id),b=c.bbox;if(x<b[0]||x>b[2]||y<b[1]||y>b[3])continue;const path=partPaths.get(id);if(ringComponents.has(c.id)){if(!c.pins.some(id=>{hitCtx.lineWidth=3/state.scale;return hitCtx.isPointInStroke(pinPaths.get(id),x,y);}))continue;}else if(path.hasArea){if(!hitCtx.isPointInPath(path.area,x,y))continue;}else{const touches=path.strokes.some(o=>{hitCtx.lineWidth=Math.max(o.width||0,6/state.scale);hitCtx.lineCap='round';return hitCtx.isPointInStroke(o.path,x,y);});if(!touches)continue;}const s=(b[2]-b[0])*(b[3]-b[1]);if(s<size){found=c;size=s;}}return found;}
+function hitTrack(x,y){if(!state.layers.size&&(!automaticTracks()||!selectionLinks.nets.size))return null;const r=4/state.scale;for(const id of [...gridQuery(trackGrid,[x-r,y-r,x+r,y+r])].sort((a,b)=>a-b)){const t=trackList[id];if(!trackNetAllowed(t.net)||!(state.layers.has(t.layer)||(automaticTracks()&&selectionLinks.nets.has(t.net)))||t.net===null||t.net===undefined||!intersects(t.bbox,[x-r,y-r,x+r,y+r]))continue;hitCtx.lineWidth=Math.max(t.width,8/state.scale);hitCtx.lineCap='round';if(hitCtx.isPointInStroke(trackPath(t),x,y))return t;}return null;}
+function setPanel(side,open){const left=side==='devices',other=left?'tools':'devices',button=$(left?'devicesButton':'detailsButton'),panel=$(left?'deviceSidebar':'inspector'),small=matchMedia('(max-width:900px)').matches;if(small&&open){$('workspace').classList.add(other+'-hidden');const otherButton=$(left?'detailsButton':'devicesButton');otherButton.setAttribute('aria-expanded','false');const name=left?'ferramentas':'aparelhos';otherButton.setAttribute('aria-label','Exibir '+name);otherButton.title='Exibir '+name;}$('workspace').classList.toggle(side+'-hidden',!open);button.setAttribute('aria-expanded',String(open));const label=(open?'Recolher ':'Exibir ')+(left?'aparelhos':'ferramentas');button.setAttribute('aria-label',label);button.title=label;window.dispatchEvent(new CustomEvent('jcid:panels'));$('panelBackdrop').hidden=!small||$('workspace').classList.contains('devices-hidden')&&$('workspace').classList.contains('tools-hidden');}
+function setDetails(open){setPanel('tools',open);}
+function closePanels(){setPanel('devices',false);setPanel('tools',false);}
+
+function error(message){$('searchError').textContent=message;$('searchError').hidden=!message;}
+function selectComponent(id,focus=false){stopPanMomentum();const c=comps.get(id);if(!c)return;if(!componentAllowed(id))return hiddenSelection();state.component=id;state.pin=null;state.net=null;state.hover=null;state.hoverComponent=null;state.view=String(c.view);if(!boardMap.has(state.view))state.view='all';error('');updateSelection();if(focus)fit(componentFocusBox(c),true);else requestDraw();}
+function selectPin(id,focus=false,resetFilter=false){stopPanMomentum();const p=D.pins[id];if(!p)return;if(!pinAllowed(p))return hiddenSelection();if(!selectablePin(p)){error('GND e NC ficam fora da seleção.');return;}const previousComponent=state.component;state.pin=id;state.component=comps.has(p.part)?p.part:null;state.net=nets.has(p.net)?p.net:null;state.hover=null;state.hoverComponent=null;const c=comps.get(state.component);if(c){state.view=boardMap.has(String(c.view))?String(c.view):'all';}error('');updateSelection();if(focus)fit(pinFocusBox(p),true);else requestDraw();}
+function selectNet(id,focus=false){stopPanMomentum();if(!nets.has(id))return;if(!networkAllowed(id))return hiddenSelection();if(blockedCanvasNet(id)){error('GND e NC ficam fora da seleção.');return;}state.net=id;state.pin=null;state.component=null;state.hover=null;state.hoverComponent=null;error('');updateSelection();if(focus)focusNetwork();else requestDraw();}
+function clear(){stopPanMomentum();state.component=null;state.pin=null;state.net=null;state.hover=null;state.hoverComponent=null;updateSelection();requestDraw();}
+const connectionOrder=new Intl.Collator('pt-BR',{numeric:true,sensitivity:'base'}),connectionCache=new Map();
+function connectionIds(){if(state.net===null||blockedCanvasNet(state.net))return [];if(!connectionCache.has(state.net)){const pins=[...new Set(nets.get(state.net)?.pins||[])].map(id=>D.pins[id]).filter(p=>p&&!p.via&&selectablePin(p)&&validBox(p.bbox)&&(p.copper||[]).length);pins.sort((a,b)=>connectionOrder.compare(comps.get(a.part)?.name||'',comps.get(b.part)?.name||'')||connectionOrder.compare(String(a.name),String(b.name))||a.id-b.id);connectionCache.set(state.net,pins.map(p=>p.id));}return netColorIsolation?connectionCache.get(state.net).filter(id=>pinAllowed(D.pins[id])):connectionCache.get(state.net);}
+function navigateConnection(direction){if(document.body.classList.contains('source-mode'))return false;const ids=connectionIds();if(!ids.length)return false;const current=ids.indexOf(state.pin),index=current<0?(direction<0?ids.length-1:0):(current+(direction<0?-1:1)+ids.length)%ids.length,p=D.pins[ids[index]];selectPin(p.id,false);if(state.scale<state.base*4)fit(pinFocusBox(p),true);else{state.cx=p.x;state.cy=p.y;state.fit=false;requestDraw();}return true;}
+function updateFooter(){const enabled=!document.body.classList.contains('source-mode'),p=enabled&&state.pin!==null?D.pins[state.pin]:null,c=enabled?comps.get(state.component):null,n=enabled?nets.get(state.net):null;const values={statusPart:c?.name||'',statusPad:p?String(p.name):'',statusNet:n?.name||''};for(const [id,value] of Object.entries(values)){const field=$(id);if(field.value!==value){field.value=value;field.setSelectionRange?.(0,0);field.scrollLeft=0;}field.title=value;}const field=$('statusNet');field.readOnly=!!n||!enabled;field.disabled=!enabled;$('clearNet').hidden=!enabled||!n;const ids=connectionIds(),canNavigate=enabled&&ids.length>0&&(state.pin===null||ids.length>1);$('previousConnection').disabled=$('nextConnection').disabled=!canNavigate;}
+on(window,'jcid:document',updateFooter);
+
+// Labels use actual text width and the nearest contact, rather than a 28 px pad cutoff.
+const padSpacingCache=new Map(),padNeighborCache=new Map(),annotationWidthCache=new Map(),netLabelVariantCache=new Map();
+function padSpacing(p){if(padSpacingCache.has(p.id))return padSpacingCache.get(p.id);const radius=CELL*2,searchRadius=radius*Math.SQRT2,neighbors=[];let spacing=radius;for(const id of gridQuery(pinGrid,[p.x-searchRadius,p.y-searchRadius,p.x+searchRadius,p.y+searchRadius])){const other=D.pins[id];if(!other||other.via||id===p.id)continue;const x=other.x-p.x,y=other.y-p.y,distance=Math.hypot(x,y);spacing=Math.min(spacing,distance);neighbors.push({x,y,distance});}padSpacingCache.set(p.id,spacing);padNeighborCache.set(p.id,neighbors.filter(n=>n.distance<=spacing*Math.SQRT2));return spacing;}
+function annotationWidth(ctx,text,font){const key=font+'|'+text;if(!annotationWidthCache.has(key)){ctx.save();ctx.font=font;annotationWidthCache.set(key,ctx.measureText(String(text)).width);ctx.restore();}return annotationWidthCache.get(key);}
+// Keep full net names readable: grow with zoom and wrap instead of squeezing below 6 px.
+function netLabelVariants(text,ctx){
+ if(netLabelVariantCache.has(text))return netLabelVariantCache.get(text);
+ const variants=[];
+ for(let count=1;count<=3;count++){
+  const lines=[];let rest=text;
+  for(let left=count;left>1&&rest.length>1;left--){
+   const target=Math.round(rest.length/left),min=Math.max(1,Math.floor(target*.65)),max=Math.min(rest.length-1,Math.ceil(target*1.35));let cut=target,distance=Infinity;
+   for(let at=min;at<=max;at++)if(/[_ /.-]/.test(rest[at-1])&&Math.abs(at-target)<distance){cut=at;distance=Math.abs(at-target);}
+   lines.push(rest.slice(0,cut));rest=rest.slice(cut);
+  }
+  lines.push(rest);if(lines.some(line=>!line))continue;
+  variants.push({lines,unitWidth:Math.max(...lines.map(line=>annotationWidth(ctx,line,'400 6px Segoe UI,Arial')/6))});
+ }
+ netLabelVariantCache.set(text,variants);return variants;
+}
+function testPointPad(p){const c=comps.get(p.part);return !!c&&c.pins?.length===1&&/^(?:PP|TP)\d/i.test(c.sourceComponentName??c.name);}
+function padAnnotation(p,m,ctx,componentName){
+ if(p.via||ringPin(p)||!validBox(p.bbox))return null;
+ const b=p.bbox,minor=Math.min(b[2]-b[0],b[3]-b[1])*state.scale;
+ if(minor<6)return null;
+ const reading=state.objects.readings||state.objects.smb?readingFor(p):null,nameWanted=state.objects.names&&p.part===state.component&&minor>=15;
+ const netText=state.objects.netNames&&padKind(p)!=='ground'?String(nets.get(p.net)?.name||(padKind(p)==='nc'?'NC':'')):'';
+ if(!reading&&!nameWanted&&!netText)return null;
+ const room=padSpacing(p)*state.scale-1,nameFont='600 10px Segoe UI,Arial';
+ // Quantized sizes keep the text cache bounded while readings grow with zoom.
+ const unitWidth=reading?annotationWidth(ctx,reading.value,'600 6px Segoe UI,Arial')/6:0;
+ const fitSize=(room-2)/Math.hypot(unitWidth,1.3);
+ const fontSize=Math.floor(Math.min(Math.max(6,minor*.6),fitSize,32)*2)/2;
+ const showValue=!!reading&&fontSize>=6,readFont='600 '+Math.max(6,fontSize)+'px Segoe UI,Arial';
+ const valueWidth=showValue?annotationWidth(ctx,reading.value,readFont):0,valueHeight=showValue?fontSize*1.3+2:0;
+ const nameWidth=nameWanted?annotationWidth(ctx,p.name,nameFont):0;
+ const twoRows=showValue&&nameWanted&&Math.hypot(Math.max(valueWidth,nameWidth)+3,valueHeight+14)<=room;
+ const showName=twoRows||!showValue&&nameWanted&&Math.hypot(nameWidth+3,14)<=room;
+ const bodyHeight=twoRows?valueHeight+14:showValue?valueHeight:showName?14:0;
+ let netLabel=null,netLines=null,netFont='',netX=0,netY=0,netWidth=0,netHeight=0,netLineHeight=0;
+ if(netText){
+  const desired=Math.floor(Math.min(18,Math.max(6,minor*.25))*2)/2,variants=netLabelVariants(netText,ctx);
+  const neighbors=padNeighborCache.get(p.id).map(n=>({x:m.a*n.x+m.c*n.y,y:m.b*n.x+m.d*n.y,halfDistance2:(n.distance*state.scale)**2/2}));
+  const px=m.a*p.x+m.c*p.y+m.e,py=m.b*p.x+m.d*p.y+m.f,testPoint=testPointPad(p);
+  for(let size=desired;size>=6&&!netLabel;size-=.5){for(const variant of variants){
+   const lineHeight=size*1.2,height=lineHeight*variant.lines.length,y=bodyHeight?bodyHeight/2+1+height/2:0,width=variant.unitWidth*size;
+   const positions=[{x:0,y}];
+   if(testPoint&&componentName){
+    // A one-pad test point shares its center with the PP/TP reference. Search
+    // around that reference instead of permanently discarding its net caption.
+    // Keep the reserved name even on hover, so the caption does not jump.
+    const r=componentName.reserved,bodyWidth=Math.max(valueWidth,showName?nameWidth:0),gap=2;
+    positions.push(
+     {x:0,y:Math.max(bodyHeight/2,r[3]-py)+gap+height/2},
+     {x:0,y:Math.min(-bodyHeight/2,r[1]-py)-gap-height/2},
+     {x:Math.max(bodyWidth/2,r[2]-px)+gap+width/2,y:0},
+     {x:Math.min(-bodyWidth/2,r[0]-px)-gap-width/2,y:0});
+   }
+   for(const position of positions){const x=position.x,y=position.y;
+    const clearName=!componentName||!intersects(componentName.reserved,[px+x-width/2-1,py+y-height/2-1,px+x+width/2+1,py+y+height/2+1]);
+    // Stay within the nearest-pad territory, including diagonal neighbors.
+    const fits=clearName&&2*Math.abs(x)+width+2<=room&&2*Math.abs(y)+height+2<=room&&neighbors.every(n=>Math.abs(n.x)*(width/2+1)+Math.abs(n.y)*(height/2+1)+n.x*x+n.y*y<=n.halfDistance2);
+    if(fits){netLabel=netText;netLines=variant.lines;netFont='400 '+size+'px Segoe UI,Arial';netX=x;netY=y;netWidth=2*Math.abs(x)+width;netHeight=2*Math.abs(y)+height+2;netLineHeight=lineHeight;break;}
+   }
+   if(netLabel)break;
+  }}
+ }
+ if(!showValue&&!showName&&!netLabel)return null;
+ return{x:m.a*p.x+m.c*p.y+m.e,y:m.b*p.x+m.d*p.y+m.f,angle:0,reading:showValue?reading.value:null,name:showName?String(p.name):null,twoRows,readFont,nameFont,fontSize,valueHeight,netLabel,netLines,netFont,netX,netY,netLineHeight,width:Math.max(showValue?valueWidth:0,showName?nameWidth:0,netWidth)+3,height:Math.max(bodyHeight,netHeight)};
+}
+function annotationBounds(label,width,height){const co=Math.abs(Math.cos(label.angle)),si=Math.abs(Math.sin(label.angle)),x=(co*width+si*height)/2,y=(si*width+co*height)/2;return[label.x-x,label.y-y,label.x+x,label.y+y];}
+function drawPadAnnotation(ctx,label){ctx.save();ctx.translate(label.x,label.y);ctx.rotate(label.angle);ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';ctx.strokeStyle='#071019';ctx.fillStyle='#fff9e9';if(label.name!==null){ctx.lineWidth=3;ctx.font=label.nameFont;const y=label.twoRows?-label.valueHeight/2:0;ctx.strokeText(label.name,0,y);ctx.fillText(label.name,0,y);}if(label.reading!==null){ctx.lineWidth=Math.max(1,Math.min(3,label.fontSize/5));ctx.font=label.readFont;ctx.strokeText(label.reading,0,label.twoRows?7:0);ctx.fillText(label.reading,0,label.twoRows?7:0);}if(label.netLabel){ctx.font=label.netFont;for(let i=0;i<label.netLines.length;i++)ctx.fillText(label.netLines[i],label.netX,label.netY+(i-(label.netLines.length-1)/2)*label.netLineHeight);}ctx.restore();}
+function readingFits(p){return padAnnotation(p,matrix(),ctx)?.reading!=null;}
+
+function updateSelection({preserveNetcolor=false}={}){refreshSelectionLinks();updateFooter();renderLayers();const c=comps.get(state.component),p=state.pin!==null?D.pins[state.pin]:null,n=nets.get(state.net);window.dispatchEvent(new CustomEvent('jcid:selection',{detail:{component:c?.name||null,pin:p?.name??null,net:n?.name||null,preserveNetcolor:preserveNetcolor||netColorStateRestoring}}));}
+function renderLayers(){const frag=document.createDocumentFragment();for(const l of D.layers){const b=document.createElement('button');b.type='button';b.className='layer-button';b.setAttribute('aria-pressed',String(state.layers.has(l.id)));b.setAttribute('aria-label','Camada '+l.label);b.style.setProperty('--layer-color',layerColor(l.id));b.title=l.label;b.addEventListener('click',()=>{state.layers.has(l.id)?state.layers.delete(l.id):state.layers.add(l.id);renderLayers();requestDraw();const current=$('layerList').querySelector('[data-layer="'+l.id+'"]');current?.focus({preventScroll:true});});b.dataset.layer=l.id;const swatch=document.createElement('span');swatch.className='layer-swatch';swatch.setAttribute('aria-hidden','true');const name=document.createElement('span');name.textContent=l.label;b.append(swatch,name);if(selectionLinks.tracks.some(t=>t.layer===l.id)){b.classList.add('net-layer');b.title+=' · Participa da rede selecionada';const dot=document.createElement('span');dot.className='net-dot';dot.setAttribute('aria-hidden','true');b.append(dot);}frag.append(b);}const scroll=$('layerList').scrollLeft;$('layerList').replaceChildren(frag);$('layerList').scrollLeft=scroll;}
+
+function search(){let q=$('searchInput').value.trim(),upper=q.toUpperCase();if(!q){error('Digite um componente, uma rede ou um pino.');return;}if(upper.startsWith('REDE:')){upper=upper.slice(5).trim();const n=netNames.get(upper);if(n){selectNet(n.id,true);return;}}const c=D.nexusComposition?null:compNames.get(upper);if(c){selectComponent(c.id,true);return;}const n=netNames.get(upper);if(n){selectNet(n.id,true);return;}for(const sep of D.nexusComposition?[]:['.',':','/','#',' ']){const at=upper.lastIndexOf(sep);if(at>0){const part=compNames.get(upper.slice(0,at).trim()),name=upper.slice(at+1).trim();if(part){const p=part.pins.map(id=>D.pins[id]).find(p=>p&&String(p.name).toUpperCase()===name);if(p){selectPin(p.id,true,true);return;}}}}if(state.component!==null){const p=comps.get(state.component).pins.map(id=>D.pins[id]).find(p=>p&&String(p.name).toUpperCase()===upper);if(p){selectPin(p.id,true,true);return;}}error(D.nexusComposition?'Na junção, busque uma linha ou escolha um componente no mapa para localizar seus pads.':'Não encontrado. Use um componente, o nome da rede ou componente.pino.');}
+const searchEntries=[...(D.nexusComposition?[]:D.components).map(c=>({kind:'component',id:c.id,name:c.name,upper:c.name.toUpperCase()})),...D.nets.map(n=>({kind:'net',id:n.id,name:n.name,upper:n.name.toUpperCase()}))].sort((a,b)=>Number(a.kind==='net')-Number(b.kind==='net')||connectionOrder.compare(a.name,b.name));
+let searchMatches=[],activeSearch=-1;
+function closeSearchOptions(){searchMatches=[];activeSearch=-1;$('searchOptions').hidden=true;$('searchOptions').replaceChildren();$('searchInput').setAttribute('aria-expanded','false');$('searchInput').removeAttribute('aria-activedescendant');}
+function activateSearchOption(index){activeSearch=index;for(let i=0;i<$('searchOptions').children.length;i++)$('searchOptions').children[i].setAttribute('aria-selected',String(i===index));const row=$('searchOptions').children[index];if(row){$('searchInput').setAttribute('aria-activedescendant',row.id);row.scrollIntoView({block:'nearest'});}}
+function chooseSearchOption(index){const item=searchMatches[index];if(!item||D.nexusComposition&&item.kind==='component')return;$('searchInput').value=item.name;$('searchInput').focus({preventScroll:true});closeSearchOptions();if(item.kind==='net')selectNet(item.id,true);else selectComponent(item.id,true);}
+function renderSearchOptions(){
+ closeSearchOptions();if(document.body.classList.contains('source-mode'))return;let q=$('searchInput').value.trim().toUpperCase();const onlyNets=q.startsWith('REDE:');if(onlyNets)q=q.slice(5).trim();if(!q)return;
+ const matches=searchEntries.filter(item=>(!onlyNets||item.kind==='net')&&item.upper.includes(q)&&(item.kind==='net'?!blockedCanvasNet(item.id)&&networkAllowed(item.id):componentAllowed(item.id)));
+ searchMatches=[...matches.filter(item=>item.upper===q),...matches.filter(item=>item.upper!==q)].slice(0,100);if(!searchMatches.length)return;
+ const fragment=document.createDocumentFragment();for(const [index,item] of searchMatches.entries()){const row=document.createElement('button');row.type='button';row.className='search-option';row.id='search-option-'+item.kind+'-'+item.id;row.dataset.kind=item.kind;row.dataset.id=String(item.id);row.tabIndex=-1;row.setAttribute('role','option');row.setAttribute('aria-selected','false');row.title=item.name;const name=document.createElement('span');name.textContent=item.name;const kind=document.createElement('small');kind.textContent=item.kind==='net'?'Linha':'Componente';row.append(name,kind);row.addEventListener('click',()=>chooseSearchOption(index));fragment.append(row);}
+ $('searchOptions').replaceChildren(fragment);$('searchOptions').hidden=false;$('searchInput').setAttribute('aria-expanded','true');
+}
+function submitSearch(){if(!$('searchOptions').hidden&&activeSearch>=0)chooseSearchOption(activeSearch);else{closeSearchOptions();search();}}
+closeSearchOptions();
+on($('searchInput'),'input',e=>{error('');if(!e.isComposing)renderSearchOptions();});on($('searchInput'),'compositionend',renderSearchOptions);on($('searchInput'),'focus',renderSearchOptions);
+on($('searchInput'),'keydown',e=>{if(e.isComposing||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='Escape'){e.preventDefault();closeSearchOptions();}else if(e.key==='Enter'){e.preventDefault();submitSearch();}else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if($('searchOptions').hidden)renderSearchOptions();if(searchMatches.length)activateSearchOption(activeSearch<0?(e.key==='ArrowDown'?0:searchMatches.length-1):(activeSearch+(e.key==='ArrowDown'?1:-1)+searchMatches.length)%searchMatches.length);}});
+on($('searchOptions'),'pointerdown',e=>{if(e.pointerType==='mouse')e.preventDefault();});
+on($('searchForm'),'focusout',e=>{if(!$('searchForm').contains(e.relatedTarget))closeSearchOptions();});
+on(document,'pointerdown',e=>{if(!$('searchForm').contains(e.target))closeSearchOptions();});on(window,'jcid:document',closeSearchOptions);on(window,'jcid:selection',closeSearchOptions);
+
+let hoverPending=false,hoverEvent=null;
+function inspectHover(e){
+ if(state.drag)return;hoverEvent=e;if(hoverPending)return;hoverPending=true;
+ requestAnimationFrame(()=>{
+  hoverPending=false;if(destroyed||state.drag||!hoverEvent)return;
+  const r=canvas.getBoundingClientRect(),x=hoverEvent.clientX-r.left,y=hoverEvent.clientY-r.top,w=toWorld(x,y),p=hitPin(w.x,w.y),part=p?comps.get(p.part):hitComponent(w.x,w.y),t=p?null:hitTrack(w.x,w.y),componentInfo=!!part;
+  if(state.hover!==(p?.id??null)||state.hoverComponent!==(part?.id??null)){state.hover=p?.id??null;state.hoverComponent=part?.id??null;requestDraw();}
+  const tip=$('tooltip');if(!p&&!t&&!componentInfo){tip.hidden=true;return;}
+  tip.replaceChildren();const a=document.createElement('strong'),b=document.createElement('span');
+  if(p){a.textContent=`${part?.name||'Via'} · Pino ${p.name}`;b.textContent=pinNetName(p);}
+  else if(componentInfo){a.textContent=part.name;}
+  else{a.textContent='Trilha · '+(layerMap.get(t.layer)?.label||'Camada');b.textContent=nets.get(t.net)?.name||'Sem rede indicada';}
+  tip.append(a);if(b.textContent)tip.append(b);
+  if(componentInfo)(window.JCIDComponents||window.JCIDCapacitors)?.tooltip(tip,part);
+  if(p){const reading=state.objects.readings||state.objects.smb?readingFor(p):null;if(reading){const v=document.createElement('span');v.className='tooltip-reading';v.textContent=reading.label+': '+reading.value;tip.append(v);}}
+  else if(t&&!componentInfo&&blockedCanvasNet(t.net)){const note=document.createElement('span');note.textContent='Seleção desta linha desativada';tip.append(note);}
+  tip.hidden=false;const tw=tip.offsetWidth,th=tip.offsetHeight;tip.style.left=Math.max(5,Math.min(x+13,state.w-tw-5))+'px';tip.style.top=Math.max(5,Math.min(y+14,state.h-th-5))+'px';
+ });
+}
+for(const type of ['jcid:components-ready','jcid:capacitors-ready'])on(window,type,()=>{if(hoverEvent)inspectHover(hoverEvent);});
+
+const pointers=new Map();let pinch=null,quickZoom=null,lastTouchTap=null,touchStartedAt=0,lastTouchAt=0;
+// Velocity is measured in screen pixels, independent of board units and rotation.
+// A single touch can coast; mouse, pinch and one-handed zoom never inherit it.
+const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+let touchPan=null,panMomentum=null,panMomentumFrame=0;
+function stopPanMomentum(){
+ const running=panMomentum!==null;
+ if(panMomentumFrame)cancelAnimationFrame(panMomentumFrame);
+ panMomentumFrame=0;panMomentum=null;
+ if(running)window.dispatchEvent(new CustomEvent('jcid:camera'));
+}
+function sampleTouchPan(p,time){
+ if(!touchPan)return;
+ const samples=touchPan.samples,last=samples[samples.length-1];
+ if(time<last.time)return;
+ if(p.x!==last.x||p.y!==last.y)touchPan.lastMove=time;
+ if(time===last.time)samples[samples.length-1]={...p,time};else samples.push({...p,time});
+ while(samples.length>2&&samples[1].time<time-100)samples.shift();
+}
+function startPanMomentum(p,time){
+ const gesture=touchPan;sampleTouchPan(p,time);touchPan=null;
+ if(!gesture||reducedMotion.matches||time-gesture.lastMove>80||document.hidden)return;
+ // Keep the one sample just before the 100 ms window as well. Low-frequency
+ // touch delivery otherwise leaves only two identical release positions.
+ const samples=gesture.samples;
+ if(samples.length<2||samples.at(-1).time-samples[0].time<12)return;
+ // A least-squares velocity over the final ~100 ms rejects a noisy last event.
+ const mean=samples.reduce((a,s)=>({x:a.x+s.x,y:a.y+s.y,t:a.t+s.time}),{x:0,y:0,t:0}),n=samples.length;
+ mean.x/=n;mean.y/=n;mean.t/=n;
+ let denominator=0,vx=0,vy=0;
+ for(const s of samples){const dt=s.time-mean.t;denominator+=dt*dt;vx+=dt*(s.x-mean.x);vy+=dt*(s.y-mean.y);}
+ if(!denominator)return;vx/=denominator;vy/=denominator;
+ const speed=Math.hypot(vx,vy);if(speed<.08)return;
+ const limit=Math.min(1,3/speed);vx*=limit;vy*=limit;
+ const m=matrix(),started=performance.now(),tau=260;
+ panMomentum={cx:state.cx,cy:state.cy,m,vx,vy,started};
+ function step(now){
+  panMomentumFrame=0;const motion=panMomentum;
+  if(!motion||destroyed||document.hidden||pointers.size||reducedMotion.matches){stopPanMomentum();return;}
+  const elapsed=Math.max(0,now-motion.started),decay=Math.exp(-elapsed/tau),distance=tau*(1-decay);
+  const dx=motion.vx*distance,dy=motion.vy*distance,m=motion.m;
+  state.cx=motion.cx-(m.d*dx-m.c*dy)/m.det;state.cy=motion.cy-(-m.b*dx+m.a*dy)/m.det;
+  state.fit=false;requestDraw();
+  if(Math.hypot(motion.vx,motion.vy)*decay<.025||elapsed>=1400){stopPanMomentum();return;}
+  panMomentumFrame=requestAnimationFrame(step);
+ }
+ panMomentumFrame=requestAnimationFrame(step);
+}
+on(document,'pointerdown',stopPanMomentum,true);
+on(document,'click',e=>{if(e.target!==canvas)stopPanMomentum();},true);
+on(document,'wheel',stopPanMomentum,{capture:true,passive:true});
+on(document,'keydown',stopPanMomentum,true);
+on(document,'visibilitychange',()=>{if(document.hidden){touchPan=null;stopPanMomentum();}});
+on(window,'pagehide',stopPanMomentum);
+on(window,'jcid:document',stopPanMomentum);
+on(window,'jcid:boardloadstate',stopPanMomentum);
+on(reducedMotion,'change',()=>{if(reducedMotion.matches)stopPanMomentum();});
+function touchUIScale91(){return window.NexusMobileLandscape91?.state().scale||1;}
+function pointOf(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
+function beginDrag(id,p,moved=false){state.drag={id,x:p.x,y:p.y,cx:state.cx,cy:state.cy,m:matrix(),moved};}
+function beginPinch(){touchPan=null;stopPanMomentum();quickZoom=null;lastTouchTap=null;const [a,b]=[...pointers.values()];if(!a||!b)return;const mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2};pinch={distance:Math.max(1,Math.hypot(a.x-b.x,a.y-b.y)),scale:state.scale,anchor:toWorld(mid.x,mid.y)};if(state.drag)state.drag.moved=true;}
+on(canvas,'pointerdown',e=>{
+ if(e.button!==0&&e.button!==1)return;
+ e.preventDefault();canvas.focus({preventScroll:true});hoverEvent=null;$('tooltip').hidden=true;if(state.hover!==null||state.hoverComponent!==null){state.hover=null;state.hoverComponent=null;requestDraw();}
+ const p=pointOf(e);pointers.set(e.pointerId,p);canvas.setPointerCapture(e.pointerId);
+ if(pointers.size===1){
+  beginDrag(e.pointerId,p);quickZoom=null;
+  if(e.pointerType==='touch'){
+   touchStartedAt=e.timeStamp;lastTouchAt=Date.now();touchPan={samples:[{...p,time:e.timeStamp}],lastMove:e.timeStamp};
+   if(lastTouchTap&&touchStartedAt-lastTouchTap.time<320&&Math.hypot(p.x-lastTouchTap.x,p.y-lastTouchTap.y)<26/touchUIScale91())quickZoom={id:e.pointerId,point:p,scale:state.scale,anchor:toWorld(p.x,p.y),moved:false};
+   if(quickZoom)touchPan=null;lastTouchTap=null;
+  }else{touchPan=null;lastTouchTap=null;lastTouchAt=0;}
+ }else beginPinch();
+});
+on(canvas,'pointermove',e=>{
+ if(!pointers.has(e.pointerId)){if(e.pointerType!=='touch')inspectHover(e);return;}
+ const p=pointOf(e);pointers.set(e.pointerId,p);
+ if(e.pointerType==='touch'&&pointers.size===1&&touchPan)sampleTouchPan(p,e.timeStamp);
+ if(pointers.size>=2){
+  state.zoomUntil=Date.now()+120;if(!pinch)beginPinch();const [a,b]=[...pointers.values()],mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+  state.scale=clampZoom(pinch.scale*Math.hypot(a.x-b.x,a.y-b.y)/pinch.distance);
+  const current=toWorld(mid.x,mid.y);state.cx+=pinch.anchor.x-current.x;state.cy+=pinch.anchor.y-current.y;
+  state.fit=false;canvas.classList.add('dragging');requestDraw();return;
+ }
+ if(quickZoom&&quickZoom.id===e.pointerId){
+  const q=quickZoom,dx=p.x-q.point.x,dy=p.y-q.point.y;
+  if(!q.moved&&Math.abs(dx)>10/touchUIScale91()&&Math.abs(dx)>Math.abs(dy)*1.5)quickZoom=null;
+  else{
+   if(Math.abs(dy)>7/touchUIScale91())q.moved=true;
+   if(q.moved){state.drag.moved=true;state.zoomUntil=Date.now()+120;state.scale=clampZoom(q.scale*Math.exp(dy*touchUIScale91()*.012));const current=toWorld(q.point.x,q.point.y);state.cx+=q.anchor.x-current.x;state.cy+=q.anchor.y-current.y;state.fit=false;canvas.classList.add('dragging');requestDraw();}
+   return;
+  }
+ }
+ const d=state.drag;if(!d||d.id!==e.pointerId)return;const dx=p.x-d.x,dy=p.y-d.y,m=d.m;
+ if(Math.hypot(dx,dy)>(e.pointerType==='touch'?7:3))d.moved=true;
+ if(d.moved){state.cx=d.cx-(m.d*dx-m.c*dy)/m.det;state.cy=d.cy-(-m.b*dx+m.a*dy)/m.det;state.fit=false;canvas.classList.add('dragging');requestDraw();}
+});
+function endPointer(e,cancelled=false){
+ if(!pointers.has(e.pointerId))return;
+ const d=state.drag,wasPinch=pinch!==null,wasQuick=quickZoom?.id===e.pointerId?quickZoom:null;pointers.delete(e.pointerId);if(e.pointerType==='touch')lastTouchAt=Date.now();
+ if(canvas.hasPointerCapture(e.pointerId))canvas.releasePointerCapture(e.pointerId);
+ if(pointers.size>=2){beginPinch();return;}
+ pinch=null;
+ if(pointers.size===1){const [id,p]=[...pointers.entries()][0];beginDrag(id,p,true);return;}
+ state.drag=null;quickZoom=null;canvas.classList.remove('dragging');
+ if(cancelled||wasPinch||!d||e.button!==0){touchPan=null;lastTouchTap=null;return;}
+ if(wasQuick){touchPan=null;lastTouchTap=null;if(!wasQuick.moved&&!d.moved)zoom(1.7,wasQuick.point);return;}
+ if(d.moved){lastTouchTap=null;if(e.pointerType==='touch')startPanMomentum(pointOf(e),e.timeStamp);else touchPan=null;return;}
+ touchPan=null;
+ if(e.pointerType==='touch'&&e.timeStamp-touchStartedAt<300){const p=pointOf(e);lastTouchTap={...p,time:e.timeStamp};}
+ const point=pointOf(e),w=toWorld(point.x,point.y);
+ if(window.NexusPadTransform67?.isActive()){const editable=hitPin(w.x,w.y,p=>!p.via&&comps.has(p.part));window.NexusPadTransform67.handlePointerSelection(editable?.id??null,e);return;}
+ const p=hitPin(w.x,w.y);
+ if(p){if(selectablePin(p))selectPin(p.id,false);return;}const t=hitTrack(w.x,w.y);if(t){if(!blockedCanvasNet(t.net))selectNet(t.net,false);return;}const c=hitComponent(w.x,w.y);if(c)selectComponent(c.id,false);else clear();
+}
+on(canvas,'pointerup',e=>endPointer(e));
+on(canvas,'pointercancel',e=>endPointer(e,true));
+on(canvas,'lostpointercapture',e=>{if(pointers.has(e.pointerId))endPointer(e,true);});
+on(canvas,'pointerleave',()=>{hoverEvent=null;$('tooltip').hidden=true;if(state.hover!==null||state.hoverComponent!==null){state.hover=null;state.hoverComponent=null;requestDraw();}});on(canvas,'wheel',e=>{e.preventDefault();const r=canvas.getBoundingClientRect();zoom(Math.exp(-Math.max(-200,Math.min(200,e.deltaY))*.0025),{x:e.clientX-r.left,y:e.clientY-r.top});},{passive:false});on(canvas,'dblclick',e=>{if(e.pointerType==='touch'||e.sourceCapabilities?.firesTouchEvents||e.pointerType!=='mouse'&&Date.now()-lastTouchAt<800)return;const r=canvas.getBoundingClientRect();zoom(1.7,{x:e.clientX-r.left,y:e.clientY-r.top});});
+on($('searchForm'),'submit',e=>{e.preventDefault();submitSearch();});on($('fitView'),'click',()=>fit());on($('rotateLeftButton'),'click',()=>{state.rotation=(state.rotation+270)%360;requestDraw();window.dispatchEvent(new CustomEvent('jcid:orientation'));});on($('mirrorVerticalButton'),'click',()=>{state.mirrorVertical=!state.mirrorVertical;$('mirrorVerticalButton').setAttribute('aria-pressed',String(state.mirrorVertical));requestDraw();window.dispatchEvent(new CustomEvent('jcid:orientation'));});on($('rotateButton'),'click',()=>{state.rotation=(state.rotation+90)%360;$('rotateButton').title=`Rotação atual: ${state.rotation}°`;requestDraw();window.dispatchEvent(new CustomEvent('jcid:orientation'));});on($('mirrorButton'),'click',()=>{state.mirror=!state.mirror;$('mirrorButton').setAttribute('aria-pressed',String(state.mirror));requestDraw();window.dispatchEvent(new CustomEvent('jcid:orientation'));});on($('previousConnection'),'click',()=>navigateConnection(-1));on($('nextConnection'),'click',()=>navigateConnection(1));on($('detailsButton'),'click',()=>setDetails($('workspace').classList.contains('tools-hidden')));on($('devicesButton'),'click',()=>setPanel('devices',$('workspace').classList.contains('devices-hidden')));on($('panelBackdrop'),'click',closePanels);on($('allLayers'),'click',()=>{state.layers=new Set(D.layers.map(l=>l.id));renderLayers();requestDraw();});on($('noLayers'),'click',()=>{state.layers.clear();renderLayers();requestDraw();});on($('selectionTracks'),'click',()=>{state.selectionTracks=!state.selectionTracks;$('selectionTracks').setAttribute('aria-pressed',String(state.selectionTracks));requestDraw();});for(const button of document.querySelectorAll('[data-object]'))on(button,'click',()=>{const key=button.dataset.object;if(key==='components'){setComponentsVisible(!state.objects.components);return;}if(key==='readings'||key==='smb'){setReadingMode(state.objects[key]?null:key==='smb'?'smb':'diode');return;}state.objects[key]=!state.objects[key];button.setAttribute('aria-pressed',String(state.objects[key]));requestDraw();});
+on(document,'keydown',e=>{if(document.querySelector('dialog[open]'))return;if(e.ctrlKey&&!e.shiftKey&&!e.altKey&&!e.metaKey&&(e.key==='ArrowRight'||e.key==='ArrowLeft')){const target=e.target,editing=target?.isContentEditable||target?.tagName==='TEXTAREA'||target?.tagName==='SELECT'||target?.tagName==='INPUT'&&!target.readOnly;if(!editing&&!$('appearanceDialog').open&&navigateConnection(e.key==='ArrowRight'?1:-1))e.preventDefault();return;}if(e.key==='Escape'){error('');if(e.target===canvas)clear();if(matchMedia('(max-width:900px)').matches)closePanels();}if($('appearanceDialog').open||document.body.classList.contains('source-mode')||e.target.matches('input,select,textarea,button'))return;if(e.key==='+'||e.key==='='){e.preventDefault();zoom(1.4);}else if(e.key==='-'){e.preventDefault();zoom(1/1.4);}else if(e.key==='0'){e.preventDefault();fit();}else if(e.key.toLowerCase()==='f'){e.preventDefault();focusSelection();}});
+function resize(options={}){const r=wrap.getBoundingClientRect();if(r.width<1||r.height<1)return;const dpr=window.NexusMobileLandscape91?.pixelRatio()||Math.min(2,devicePixelRatio||1);if(state.w===r.width&&state.h===r.height&&state.dpr===dpr)return;stopPanMomentum();state.w=r.width;state.h=r.height;state.dpr=dpr;state.base=Math.min(Math.max(80,state.w-50)/(bounds[2]-bounds[0]),Math.max(80,state.h-50)/(bounds[3]-bounds[1]));if(options.preserveCamera===true){requestDraw();}else if(state.fit)fit();else{state.scale=clampZoom(state.scale);requestDraw();}}
+const resizeObserver=new ResizeObserver(resize);resizeObserver.observe(wrap);
+
+function snapshot(){const saved={dataRevision:D.nexusRevision||'base',...api.getState(),fit:state.fit,netColors:getNetColors(),netColorGroup,netColorGroups:getNetColorGroups()};delete saved.toolNets;delete saved.toolPins;delete saved.markedComponents;return saved;}
+function restore(saved){stopPanMomentum();if(!saved||(saved.dataRevision||'base')!==(D.nexusRevision||'base'))return;clearToolNets();state.rotation=saved.rotation||0;state.mirror=!!saved.mirrored;state.mirrorVertical=!!saved.mirroredVertical;state.layers=new Set((saved.layers||[]).filter(id=>layerMap.has(id)));state.selectionTracks=saved.selectionTracks!==false;Object.assign(state.objects,saved.objects);if(state.objects.smb)state.objects.readings=false;state.objects.image=false;state.component=comps.has(saved.component)?saved.component:null;state.pin=D.pins[saved.pin]?.id===saved.pin&&selectablePin(D.pins[saved.pin])?saved.pin:null;state.net=nets.has(saved.net)?saved.net:null;state.view=boardMap.has(saved.view)?saved.view:'all';restoreNetColorGroups(saved.netColorGroups||{normal:{entries:saved.netColors,checked:saved.netColorChecked,sequence:saved.netColorSequence,isolation:{enabled:saved.netColorIsolation,scope:saved.netColorIsolationScope}}},saved.netColorGroups?saved.netColorGroup:'normal');if(saved.camera&&[saved.camera.x,saved.camera.y,saved.camera.scale].every(Number.isFinite)&&saved.camera.scale>0){state.cx=saved.camera.x;state.cy=saved.camera.y;state.scale=clampZoom(saved.camera.scale);state.fit=!!saved.fit;}updateSelection({preserveNetcolor:true});window.dispatchEvent(new CustomEvent('jcid:netcolors'));syncControls();if(saved.objects?.image)setImageEnabled(true,{revealComponents:false});requestDraw();}
+function syncControls(){for(const b of document.querySelectorAll('[data-object]'))b.setAttribute('aria-pressed',String(!!state.objects[b.dataset.object]));$('mirrorButton').setAttribute('aria-pressed',String(state.mirror));$('mirrorVerticalButton').setAttribute('aria-pressed',String(state.mirrorVertical));$('selectionTracks').setAttribute('aria-pressed',String(state.selectionTracks));$('readingToggleLabel').textContent=readingLabel==='Diodo'?'Diodo':'Referências';$('diodeButton').disabled=false;$('diodeButton').title='Exibir valores de diodo no lugar do SMB';$('smbButton').disabled=false;syncImageControl();}
+function destroy(){cancelStudyCamera();clearTimeout(panTileWarmTimer);clearPanTiles();stopPanMomentum();if(destroyed)return;destroyed=true;toolNets.clear();toolPins.clear();markedComponents.clear();studyComponents.clear();studyFocusComponent=null;studyPins.clear();studyPinColors.clear();studyTraceColors.clear();closeSearchOptions();for(const off of cleanups)off();cleanups.length=0;resizeObserver.disconnect();for(const id of pointers.keys())if(canvas.hasPointerCapture?.(id))canvas.releasePointerCapture(id);pointers.clear();hoverEvent=null;state.drag=null;canvas.classList.remove('dragging');$('tooltip').hidden=true;$('boardImageNotice').hidden=true;imageLoadToken++;compositeImages?.destroy();boardImage.removeAttribute('src');releaseImageUrl();sceneCanvas.width=namesCanvas.width=imageCanvas.width=imageCanvas.height=1;sceneCache=namesCache=imageCache=null;}
+function setReadingMode(mode){if(![null,'none','diode','smb'].includes(mode))return false;state.objects.readings=mode==='diode';state.objects.smb=mode==='smb';$('tooltip').hidden=true;syncControls();requestDraw();return true;}
+function selectReadingPin(id){const p=D.pins[id];if(document.body.classList.contains('source-mode')||document.body.classList.contains('board-loading')||!p||p.via||!comps.has(p.part)||!selectablePin(p)||!pinAllowed(p))return false;selectPin(id,false);return state.pin===id;}
+function getReadingContext(){if(document.body.classList.contains('source-mode')||document.body.classList.contains('board-loading'))return null;const p=state.pin!==null?D.pins[state.pin]:null,c=p?comps.get(p.part):null;if(!p||p.via||!c)return null;const record=icReadings?.get(p.id);return{boardId:readingBoardId,modelId:window.JCID_ACTIVE_BOARD?.modelId||'iphone-11',componentName:c.name,padName:String(p.name),pinId:p.id,originalDiode:record?.diode.original??readings[p.id]?.value??null,diode:record?.diode.value??null,smb:record?.smb.value??null};}
+on(window,'jcid:icvalues-changed',e=>{if(e.detail?.boardId!==readingBoardId)return;readingsRevision++;$('tooltip').hidden=true;syncControls();requestDraw();});
+function setComponentsVisible(visible){state.objects.components=!!visible;state.hover=state.hoverComponent=null;$('tooltip').hidden=true;syncControls();requestDraw();return state.objects.components;}
+function renameNet(id,name){return window.NexusBoardDraft.execute({type:'renameNet',id,name,linkSameNames:false}).changed;}
+const api={animateFocusBounds,cancelStudyCamera,isStudyCameraMoving:()=>!!studyCameraFrame,setStudyFocusComponent,getStudyFocusComponent:()=>studyFocusComponent,setStudyTraceColors,getStudyTraceColors,setStudyComponents,getStudyComponents:()=>[...studyComponents],setStudyPins,getStudyPins:()=>[...studyPins],getStudyPinColors:()=>[...studyPins].map(id=>({id,color:studyPinColors.get(id)||selectionInk.pad})),focusBounds:box=>{if(!validBox(box)||document.body.classList.contains('board-loading')||document.body.classList.contains('source-mode'))return false;fit(box,true);return true;},getComponentDrawing:id=>{const component=comps.get(id);return component?{data:D,component,pins:(component.pins||[]).map(id=>D.pins[id]).filter(p=>p&&!p.via&&p.part===component.id),outline:partPaths.get(id),pinPaths}:null;},unproject:toWorld,pickEditablePad:(x,y)=>{const w=toWorld(x,y);return hitPin(w.x,w.y,p=>!p.via&&comps.has(p.part))?.id??null;},renameNet,resizeViewport:()=>resize({preserveCamera:true}),getRepeatedPadGroups,getAutoColorEnabled:()=>window.NexusAutoColor.get(),setAutoColorEnabled:value=>window.NexusAutoColor.set(value),setMarkedComponents,getMarkedComponents:()=>[...markedComponents],setToolPins,getToolPins:()=>[...toolPins],setComponentsVisible,setToolNets,clearToolNets,getToolNets:()=>[...toolNets],setToolComponents,clearToolComponents,getToolComponents:()=>[...toolComponents],focusPinById,focusComponentById,getReadingContext,setReadingMode,selectReadingPin,getZoomLimits:zoomLimits,getState:()=>({markedComponents:[...markedComponents],toolPins:[...toolPins],toolNets:[...toolNets],toolComponents:[...toolComponents],netColorIsolation,netColorIsolationScope,netColorChecked:[...netColorChecked],netColorSequence,component:state.component,pin:state.pin,net:state.net,view:state.view,layers:[...state.layers],selectionTracks:state.selectionTracks,rotation:state.rotation,mirrored:state.mirror,mirroredVertical:state.mirrorVertical,camera:{x:state.cx,y:state.cy,scale:state.scale},objects:{...state.objects}}),getStudyVisualState,applyStudyVisualState,getNetColorGroup:()=>netColorGroup,setNetColorGroup,getNetColorGroups,getNetColors,getEffectiveNetColors:()=>[...effectiveNetColors].map(([id,item])=>({id,color:item.color})),groupNetColorsByColor,getNetColorSequence:()=>netColorSequence,getNetColorIsolation,getNetColorChecked:()=>[...netColorChecked],setNetColorChecked,setNetColor,recolorNetColors,removeNetColors,clearNetColors,setNetColorIsolation,isNetColorIsolated:()=>netColorIsolation,snapshot,restore,destroy,findNets:query=>{const q=String(query).trim().toUpperCase();return q?D.nets.filter(n=>!blockedCanvasNet(n.id)&&networkAllowed(n.id)&&n.name.toUpperCase().includes(q)).map(n=>({id:n.id,name:n.name})).sort((a,b)=>Number(b.name.toUpperCase()===q)-Number(a.name.toUpperCase()===q)||connectionOrder.compare(a.name,b.name)):[];},selectNet:id=>{if(!nets.has(id)||blockedCanvasNet(id))return false;if(!networkAllowed(id))return hiddenSelection();selectNet(id,true);return true;},clearSelection:clear,navigateConnection,setImageEnabled,getImageState:()=>({available:!!imageSource,status:boardImageStatus,visible:state.objects.image&&state.objects.components,local:!!options.loadImage}),getAppearance:()=>({...appearance,layers:{...appearance.layers}}),setAppearance,resetAppearance,project:(x,y)=>toScreen(x,y),redraw:requestDraw,closePanels,openTools:()=>setDetails(true),selectComponent:name=>{if(D.nexusComposition)return false;const q=String(name).toUpperCase(),c=compNames.get(q)||D.components.find(c=>[c.sourceComponentName,...(c.componentAliases||[])].some(n=>n?.toUpperCase()===q));if(!c)return false;if(!componentAllowed(c.id))return hiddenSelection();if(state.component!==c.id||state.pin!==null||state.net!==null)selectComponent(c.id,true);return true;}};
+window.__activeBoardView=api;
+if(!window.JCIDBoardView)window.JCIDBoardView=new Proxy({}, {get:(_,key)=>window.__activeBoardView?.[key]});
+if(matchMedia('(max-width:900px)').matches)closePanels();on(matchMedia('(max-width:900px)'),'change',e=>{if(e.matches)closePanels();else $('panelBackdrop').hidden=true;});$('readingToggleLabel').textContent=readingLabel==='Diodo'?'Diodo':'Referências';updateSelection();resize();const params=new URLSearchParams(location.search),query=(params.get('componente')??params.get('id')??params.get('rede')??'').trim();if(query&&!options.skipQuery){$('searchInput').value=query;search();}else fit();$('loading').hidden=true;
+syncControls();
+if(options.snapshot)restore(options.snapshot);
+return api;
+})();
+</script>
+<script src="aparelhos-dados.js?v=3fd880c9cc"></script>
+<script src="schematics.js?v=b8d82e2d52"></script>
+<dialog id="nexusFilesDialog" class="nexus-dialog" aria-labelledby="nexusFilesTitle"><header><h2 id="nexusFilesTitle" data-nexo-brand>NEXO MOBILE</h2><button type="button" id="nexusFilesClose" aria-label="Fechar arquivos">×</button></header><div class="nexus-content"><p>Suas placas, esquemáticos e imagens no próprio aparelho.</p><p id="nexusInstallHint"></p><div class="nexus-actions"><button type="button" id="nexusAdd">Pacote ZIP</button><button type="button" id="nexusAddBoard">Placa .sbnx</button><button type="button" id="nexusInstall">Instalar app</button><button type="button" id="nexusCancel" hidden>Cancelar importação</button></div><input type="file" id="nexusBoardFileInput" accept=".sbnx,application/zip,application/octet-stream" hidden><input type="file" id="nexusFileInput" accept=".zip,application/zip" multiple hidden><div id="nexusProgressWrap" hidden><progress id="nexusProgress"></progress><span id="nexusProgressLabel"></span></div><p id="nexusMessage" role="status" aria-live="polite"></p><div id="nexusPackages"></div><small>Importe um pacote ZIP completo ou uma placa .sbnx, sem descompactar. Os arquivos não são enviados ao servidor. Guarde uma cópia dos arquivos: limpar os dados do navegador também apaga a biblioteca local.</small></div><footer><small id="nexusOffline"></small><small id="nexusStorage"></small></footer></dialog>
+<script src="board-document-scope61.js?v=7d0bca04b0"></script><script src="nexus-bridge.js?v=be7ba921a9"></script>
+<script src="board-loader.js?v=0f07a6f85b"></script>
+<script src="schematic-tool.js?v=d2a881aba1"></script>
+<script src="netcolor-color.js?v=62605d23c7"></script>
+<script src="netcolor.js?v=5ebe80e006"></script>
+<script src="desktop.js?v=bf71a47eb1"></script>
+<script src="workbench.js?v=8e739bb388"></script>
+<script src="panels.js?v=e4c5e1425c"></script>
+<script src="rffe-catalog.js?v=f50a381268"></script>
+<script src="rffe-data.js?v=f46dd5cc99"></script>
+<script src="rffe-comparison.js?v=0f441743cf"></script><script src="rffe.js?v=5519009b92"></script><script src="rffe-relay-config.js?v=725d2277f7"></script><script src="rffe-relay.js?v=9f75e08059"></script><script src="rffe-transport.js?v=4145d77d10"></script><script src="rffe-connection.js?v=cb696c9103"></script>
+<script type="module" src="nexus-ui.js?v=e95921c52f"></script>
+<script src="nexus-layout.js?v=10f3c62a83"></script>
+<script src="ic-pad-matrix.js?v=83eeed5e0f"></script><script src="ic-edit-groups.js?v=1f9b99db7d"></script><script src="ic-pad-scene69.js?v=8d4a94c7ab"></script><script src="ic-values.js?v=501c327a17"></script>
+<script src="ic-editor-viewport.js?v=89455de8d1"></script>
+<script src="toolbar45.js?v=a7d585757b"></script>
+<script src="capacitor-search.js?v=73f3d7e5ac"></script>
+<script src="board-editor59.js?v=cf9e41506b"></script><script src="board-snap60.js?v=0d597a6a3b"></script><script src="board-editor-actions59.js?v=fcb8c78878"></script>
+<script src="i2c-data.js?v=774809ea90"></script>
+<script src="i2c.js?v=fe3b42835b"></script>
+<script src="tools45.js?v=8dd6928bdb"></script>
+<script src="studies74.js?v=0fd66854af"></script>
+<script src="charging77-data.js?v=a3a5d78e48"></script>
+<script src="study-vias79.js?v=ff2ccb7f8f"></script>
+<script src="study-routing79.js?v=c76008c6af"></script>
+<script src="study-continuity79.js?v=3c0490c9d8"></script>
+<script src="study-visual80.js?v=73ada9e119"></script>
+<script src="charging83-story.js?v=81978b7b46"></script>
+<script src="study-pads84.js?v=c0f1a89954"></script>
+<script src="study-flow77.js?v=6e9d43a80c"></script>
+<script src="studies77.js?v=d573c89ace"></script>
+<script src="study-story83.js?v=9151f98631"></script>
+<script src="charging86-research.js?v=aa0094f0d1"></script>
+<script src="study-research86.js?v=36b1f7b415"></script>
+<script src="session47.js?v=99ea7ca972"></script>
+<script src="mobile-focus.js?v=9720d8d886"></script>
+<script src="board-join-ui62.js?v=390e9b04a7"></script><script src="board-transform67.js?v=f334382695"></script><script src="maintenance64.js?v=c54d5e70cb"></script><script type="module" src="nexus-sync-ui66.js?v=62167fcb6f"></script></body>
+</html>

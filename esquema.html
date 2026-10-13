@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="mobile-landscape91.js?v=0ed90b5627"></script>
+<title>Esquemático · SB APPLE</title>
+<link rel="stylesheet" href="schematic-viewer.css?v=7b22a7d43d">
+<link rel="icon" type="image/svg+xml" href="nexo-board.svg">
+<link rel="alternate icon" href="nexo-board.ico">
+<link rel="stylesheet" href="mobile-landscape91.css?v=c7f50f1e84">
+<link rel="stylesheet" href="tools83.css?v=393be788da">
+<script src="nexo-brand92.js?v=b32c26d66d"></script>
+</head>
+<body>
+<header class="viewer-heading"><strong id="viewerTitle">Esquemático</strong><button id="dockViewer" hidden title="Encaixar na barra de ferramentas">Acoplar</button></header>
+<div class="viewer-source"><select id="viewerDocument" aria-label="Escolher documento"></select></div>
+<form id="componentSearch" class="search-bar" role="search">
+ <input id="componentQuery" aria-label="Buscar componente no esquema" placeholder="Buscar componente…" autocomplete="off" spellcheck="false" title="Digite o componente e aperte Enter">
+ <label class="exact-search" title="Desmarque para buscar parte do nome"><input type="checkbox" id="searchExact" checked>Exata</label>
+ <select id="occurrences" aria-label="Ocorrências do componente" disabled><option>Ocorrências</option></select>
+</form>
+<nav class="viewer-toolbar" aria-label="Controles do esquemático">
+ <div class="control-group"><button id="previousPage" title="Página anterior" aria-label="Página anterior">‹</button><label class="page-field"><input id="pageNumber" type="number" min="1" max="1" value="1" aria-label="Ir à página"><span id="pageTotal">/ —</span></label><button id="nextPage" title="Próxima página" aria-label="Próxima página">›</button></div>
+ <button id="fitDocument" title="Ajustar à largura disponível" aria-pressed="true">Ajustar</button>
+ <button id="focusRegion" title="Voltar ao componente selecionado" disabled>Localizar</button>
+ <button id="wheelMode" class="wheel-mode" type="button" aria-pressed="true" aria-label="Roda do mouse: zoom. Alternar para rolagem" title="Roda do mouse: zoom. Clique para rolar as páginas"><svg viewBox="0 0 16 20" width="12" height="15" aria-hidden="true"><rect x="2.5" y="1.5" width="11" height="17" rx="5"/><path d="M8 1.5v6m0-3v2"/></svg><span id="wheelModeLabel">Zoom</span></button>
+ <a id="originalPdf" target="_blank" rel="noopener" title="Abrir PDF original">PDF</a>
+</nav>
+<main id="pageViewer" tabindex="0" aria-label="Páginas contínuas do esquemático"><div id="pageStack"></div></main>
+<footer class="viewer-status"><span id="viewerStatus" role="status">Abrindo esquemático…</span><span class="viewer-hint">Roda: zoom · arraste para mover</span></footer>
+<script src="aparelhos-dados.js?v=3fd880c9cc"></script><script src="schematics.js?v=b8d82e2d52"></script><script src="board-document-scope61.js?v=7d0bca04b0"></script><script src="nexus-bridge.js?v=be7ba921a9"></script><script src="pdf-pages.js?v=98a55b9af5"></script><script src="schematic-hints.js?v=c6ec506dbb"></script><script src="schematic-navigation.js?v=a0fce47c7a"></script><script src="schematic-pins.js?v=c26a788d69"></script><script src="schematic-viewer.js?v=77dfe1dbfa"></script>
+</body>
+</html>

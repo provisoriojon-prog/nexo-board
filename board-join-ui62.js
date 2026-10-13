@@ -1,0 +1,30 @@
+(() => {
+ 'use strict';
+ const $=id=>document.getElementById(id),pane=$('boardEditorPane');if(!pane)return;
+ const tab=document.createElement('button');tab.type='button';tab.dataset.editorSection='join';tab.setAttribute('aria-pressed','false');tab.textContent='Junção';pane.querySelector('.board-editor-tabs').append(tab);
+ const section=document.createElement('section');section.dataset.editorPage='join';section.hidden=true;
+ section.innerHTML='<label for="boardJoinSource">Adicionar da mesma pasta</label><select id="boardJoinSource" size="7"></select><button type="button" id="boardJoinAdd">Adicionar à junção</button><p id="boardJoinHint">Junte mapas com pads, como dock, câmera e placa principal. Depois use Placas para posicionar cada parte.</p><div class="board-join-parts" id="boardJoinParts"></div><button type="button" id="boardJoinConnect" disabled>Conectar nomes iguais</button><p>Une linhas de mesmo nome entre os mapas. NC permanece separado.</p><p>Numa junção, esquemático, busca de componentes, RFFE e NEX-32 ficam indisponíveis.</p>';
+ pane.querySelector('.board-editor-body').insertBefore(section,$('boardEditorMessage'));
+ const active=()=>window.JCID_ACTIVE_BOARD,model=()=>window.JCID_DEVICES.models.find(m=>m.id===active().modelId);
+ function refresh(){const current=active(),used=new Set(window.JCID_BOARD.nexusComposition?.sourceItemIds||[current.id]),select=$('boardJoinSource'),value=select.value;select.replaceChildren();for(const item of model()?.children||[])if(item.interactive_map_ready&&!used.has(item.id)&&item.id!==current.id)select.add(new Option((item.groupLabel?item.groupLabel+' / ':'')+item.label,item.id));if([...select.options].some(o=>o.value===value))select.value=value;else if(select.options.length)select.selectedIndex=0;$('boardJoinAdd').disabled=!select.options.length||document.body.classList.contains('source-mode')||window.NexusBoardEditor.isBusy();$('boardJoinHint').textContent=select.options.length?'Escolha o mapa e adicione. Use Placas para mover, alinhar, girar ou espelhar cada parte.':'Não há outro mapa com pads disponível nesta pasta. Importe os arquivos desejados primeiro.';$('boardJoinConnect').disabled=!window.JCID_BOARD.nexusComposition||document.body.classList.contains('source-mode')||window.NexusBoardEditor.isBusy();const host=$('boardJoinParts');host.replaceChildren();if(window.JCID_BOARD.nexusComposition){const heading=document.createElement('strong');heading.textContent='Nesta junção';host.append(heading);for(const part of window.JCID_BOARD.nexusComposition.parts){const row=document.createElement('div');row.textContent=part.label;host.append(row);}}}
+ tab.addEventListener('click',()=>{window.NexusBoardEditorSection('join');refresh();});
+ function values(data,id){const result={},handle=window.JCIDICValues?.forBoard(id,data,data.readings||{pins:{}});for(const pin of data.pins){const value=handle?.get(pin.id);if(value)result[pin.id]={diode:value.diode.value,smb:value.smb.value};}return result;}
+ function assets(data,item){const result=structuredClone(data),resolve=path=>{if(!path)return null;if(/^https?:\/\//i.test(path))return path;const source=window.NexusLibrary.localResource(item,path);if(!source)throw Error('Os desenhos deste mapa estão ausentes. Importe o pacote completo.');return new URL(source,location.href).href;};
+  if(result.nexusComposition)for(const part of result.nexusComposition.parts)part.imageSource=resolve(part.imageSource);
+  return {data:result,imageSource:result.nexusComposition?null:resolve(result.imageSource||(item.id==='iphone-11-motherboard'?'fontes-previas/iphone11-placa-principal.jpg':null))};
+ }
+ $('boardJoinAdd').addEventListener('click',()=>window.NexusBoardEditor.runTask(async({signal,progress})=>{
+  const current=active(),folder=model(),item=folder?.children.find(i=>i.id===$('boardJoinSource').value),baseItem=folder?.children.find(i=>i.id===current.id);
+  if(!item?.interactive_map_ready||!baseItem)throw Error('Selecione um mapa com pads da mesma pasta.');
+  progress({label:'Abrindo '+item.label+'…'});const addition=await window.JCIDBoards.readSource(item,signal);if(signal.aborted)throw new DOMException('Cancelado','AbortError');
+  if(active().id!==current.id||active().modelId!==current.modelId)throw Error('A placa aberta mudou. Escolha a junção novamente.');
+  const base=assets(window.JCID_BOARD,baseItem),added=assets(addition.data,item);added.data.readings=addition.readings;added.data.ncDisplay=addition.nc;
+  const baseValues=values(window.JCID_BOARD,current.id),additionValues=values(added.data,item.id);added.data.nexusPersonal={...(added.data.nexusPersonal||{}),version:1,values:additionValues,rffe:{notes:{},marks:[]}};
+  const metadata={base:{itemId:current.id,modelId:current.modelId,label:baseItem.label,imageSource:base.imageSource},addition:{itemId:item.id,modelId:current.modelId,label:item.label,imageSource:added.imageSource},revision:crypto.randomUUID()};
+  window.NexusBoardDraft.execute({type:'joinBoard',addition:added.data,metadata,baseValues,baseImages:base.data.nexusComposition?.parts.map(p=>({id:p.id,imageSource:p.imageSource}))});
+  $('fitView').click();if(window.NexusDurableDocuments?.isAvailable()){progress({label:'Guardando junção na biblioteca…'});await window.NexusDurableDocuments.saveJoinedCopy({signal,onProgress:progress});window.NexusBoardEditor.message('Junção guardada na raiz da biblioteca. As próximas edições serão salvas automaticamente.');}else window.NexusBoardEditor.message('Junção temporária. Abra o NEXUS local no PC para guardar na biblioteca.');refresh();
+ }));
+ $('boardJoinConnect').addEventListener('click',()=>window.NexusBoardEditor.runTask(async()=>{const result=window.NexusBoardDraft.execute({type:'connectCompositionNets'});window.NexusBoardEditor.message(result.changed?'Linhas de mesmo nome conectadas. Desfazer reverte esta varredura.':'Não há novas linhas de mesmo nome para conectar.');refresh();}));
+ for(const event of ['jcid:boardchange','jcid:document','jcid:board-edited','nexus:library','jcid:editorbusy'])window.addEventListener(event,refresh);
+ refresh();
+})();

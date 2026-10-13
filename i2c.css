@@ -1,0 +1,65 @@
+/* I2C shares the RFFE visual rhythm without connection or scanner controls. */
+#inspector .i2c-panel{display:flex;flex-direction:column;flex:1;min-width:0;min-height:0;overflow:auto;background:#edf2f5;color:#294457;font:12px/1.35 'Segoe UI',Arial,sans-serif;container-type:inline-size}
+#inspector .i2c-panel[hidden]{display:none!important}
+.source-mode #inspector>.i2c-panel:not([hidden]){display:flex}
+#i2cPane :is(button,input){font:inherit;min-width:0;border:1px solid #b6c8d4;border-radius:2px;color:inherit}
+#i2cPane button{min-height:26px;padding:3px 6px;background:#f8fafb;cursor:pointer}
+#i2cPane button:hover:not(:disabled){background:#deedf4}
+#i2cPane button:disabled{cursor:default;opacity:.48}
+#i2cPane button:focus-visible{outline:2px solid #2092b9;outline-offset:-2px}
+#i2cPane input{background:#fff;padding:3px 5px;width:100%;height:27px}
+#i2cPane svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.i2c-model{display:flex;align-items:center;gap:6px;padding:5px 7px;border-bottom:1px solid #c6d3dc;flex:0 0 auto}
+.i2c-model>span{font-size:11px;color:#617989}
+.i2c-model strong{min-width:0;flex:1;font-size:12px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#i2cPane .i2c-refresh{display:flex;align-items:center;justify-content:center;width:26px;height:26px;min-width:26px;padding:3px}
+.i2c-browser{padding:6px 7px;display:flex;flex-direction:column;gap:5px;flex:0 0 auto;border-bottom:1px solid #bfced8}
+.i2c-search{display:flex;align-items:center;gap:6px;min-width:0}
+.i2c-caption{font-size:11px;font-weight:600;color:#617989;flex:0 0 auto}
+.i2c-bus-list{height:140px;min-height:70px;overflow:auto;background:#fff;border:1px solid #b7c9d5;padding:2px;overscroll-behavior:contain}
+#i2cPane .i2c-bus-list button{display:block;width:100%;border:0;border-radius:0;min-height:24px;padding:3px 5px;text-align:left;line-height:1.35;font-size:11px;font-weight:400;overflow-wrap:anywhere}
+#i2cPane .i2c-bus-list button[aria-selected=true],#i2cPane .i2c-actions button[aria-pressed=true]{background:#167aa9;color:#fff}
+#i2cPane .i2c-bus-list button[aria-selected=true]:hover:not(:disabled){background:#116890}
+.i2c-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+#i2cPane .i2c-actions button{display:flex;align-items:center;justify-content:center;gap:5px}
+.i2c-signal-dot{display:inline-block;width:8px;height:8px;flex:0 0 8px;border:1px solid #0002;border-radius:50%}
+.i2c-sda{background:#80ed80}.i2c-scl{background:#a148e5}
+.i2c-table-title{display:flex;flex-direction:column;gap:1px;min-height:29px;padding:5px 7px 4px;flex:0 0 auto}
+.i2c-table-title>span{font-size:10px;color:#617989}
+.i2c-table-title strong{font-size:11px;font-weight:600;overflow-wrap:anywhere}
+.i2c-table-wrap{flex:1;min-height:110px;overflow:auto;background:#fff;margin:0 7px 6px;border:1px solid #b7c9d5;overscroll-behavior:contain}
+.i2c-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:11px}
+.i2c-table col:first-child{width:44%}.i2c-table col:not(:first-child){width:28%}
+.i2c-table th{position:sticky;top:0;z-index:1;text-align:left;padding:4px 5px;background:#e8eff4;font-size:10px;font-weight:600;border-bottom:1px solid #b7c9d5}
+.i2c-table td{padding:4px 5px;vertical-align:middle;border-bottom:1px solid #e0e8ed;overflow-wrap:anywhere}
+.i2c-table td:not(:first-child){color:#526c7e;font-size:10px}
+#i2cPane .i2c-table .i2c-part{width:100%;padding:0;min-height:20px;border:0;background:transparent;color:#196f99;text-align:left;font-size:11px;font-weight:600;overflow-wrap:anywhere}
+.i2c-table tr.is-current td{background:#e1f1f5}
+#i2cPane .i2c-table .i2c-part[aria-current=true]{text-decoration:underline;color:#095c76}
+.i2c-empty{margin:0;padding:10px 6px;color:#6d8391;font-size:11px;line-height:1.45}
+.i2c-status{margin:0;padding:5px 7px;flex:0 0 auto;border-top:1px solid #c6d3dc;background:#e7eff4;color:#5f7988;font-size:10px;line-height:1.4;overflow-wrap:anywhere}
+@media(min-width:901px) and (pointer:fine){
+ #inspector .i2c-panel{font-size:var(--desktop-font,11px)}
+ #i2cPane button{min-height:var(--desktop-button,23px);font-size:var(--desktop-font,11px);padding:2px 5px}
+ #i2cPane input{height:var(--desktop-field,24px);font-size:var(--desktop-font,11px);padding:2px 5px}
+ .i2c-model{padding:5px 6px 3px}.i2c-model>span{font-size:var(--desktop-small,10px)}
+ #i2cPane .i2c-refresh{width:var(--desktop-button,23px);height:var(--desktop-button,23px);min-width:var(--desktop-button,23px)}
+ .i2c-browser{padding:5px 6px;gap:var(--desktop-gap,4px)}
+ .i2c-bus-list{height:116px}
+ #i2cPane .i2c-bus-list button{min-height:var(--desktop-row,22px);padding:2px 4px}
+ .i2c-table-title{padding:5px 6px 4px}.i2c-table-wrap{margin:0 6px 5px}
+ .i2c-table td{padding:3px 4px}.i2c-status{padding:4px 6px}
+}
+@media(max-width:900px),(pointer:coarse){
+ #inspector .i2c-panel{font-size:13px}
+ #i2cPane input{height:34px;font-size:16px}
+ #i2cPane button{min-height:36px}
+ #i2cPane .i2c-refresh{width:34px;height:34px;min-width:34px}
+ .i2c-model{min-height:36px}.i2c-model strong{font-size:14px}
+ .i2c-bus-list{height:160px}
+ #i2cPane .i2c-bus-list button{min-height:33px;font-size:11px;padding:6px 5px}
+ .i2c-table{font-size:12px}.i2c-table th,.i2c-table td:not(:first-child){font-size:11px}
+ #i2cPane .i2c-table .i2c-part{min-height:32px;font-size:12px}
+ .i2c-status{font-size:11px}
+}
+@container(max-width:220px){.i2c-search{flex-direction:column;align-items:stretch}.i2c-table col:first-child{width:40%}.i2c-table col:not(:first-child){width:30%}.i2c-table td,.i2c-table th{padding-left:3px;padding-right:3px}}

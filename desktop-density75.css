@@ -1,0 +1,244 @@
+/* A single desktop scale for application chrome. Drawing, PDF contents and touch
+   targets retain their own dimensions; this file never scales the canvas. */
+@media (min-width:901px) and (pointer:fine){
+ :root{--desktop-font:11px;--desktop-small:10px;--desktop-field:24px;--desktop-button:23px;--desktop-row:22px;--desktop-gap:4px}
+ body{font:var(--desktop-font)/1.4 'Segoe UI',Arial,sans-serif}
+ .workbench-ribbon.nexus-toolbar45{min-height:40px;padding:2px 7px 3px;column-gap:12px}
+ .nexus-toolbar45>.ribbon-scroll{grid-template-columns:repeat(6,56px);gap:2px}
+ .nexus-toolbar45 .ribbon-button{height:34px;gap:1px;padding:2px 4px;border-radius:3px;font-size:var(--desktop-small);line-height:11px}
+ .nexus-toolbar45 .ribbon-button>span{line-height:11px}
+ .nexus-toolbar45 .ribbon-button svg{width:16px;height:16px;flex-basis:16px}
+ .nexus-toolbar45 .search-form input{height:var(--desktop-field);font-size:var(--desktop-font);padding:3px 6px}
+ .nexus-toolbar-options{padding-top:3px;margin-top:2px}
+ .nexus-toolbar-group-panel .ribbon-button{height:34px;flex-basis:66px;width:66px;font-size:var(--desktop-small)}
+ .nexus-toolbar-group-panel .ribbon-button svg{width:16px;height:16px;flex-basis:16px}
+ .search-options{font-size:var(--desktop-font)}
+ .search-options button{font-size:var(--desktop-font);min-height:var(--desktop-row);padding:3px 6px}
+ .workspace .device-search-row{gap:4px;padding:3px 4px}
+ .workspace .device-search-row .device-search{padding:0}
+ .workspace .device-search-row .device-search input{height:var(--desktop-field);font-size:var(--desktop-font);padding:2px 5px}
+ .workspace .device-sidebar :is(.folder-button,.device-child){height:20px;min-height:20px;font-size:10.5px}
+ .workspace .device-sidebar :is(.folder-label,.child-text){font-size:10.5px;line-height:17px;font-weight:400}
+ .workspace .device-sidebar :is(.folder-button,.device-child)::before{top:9px}
+ .workspace .device-sidebar .file-icon{width:14px;height:15px;flex-basis:14px}
+ .workspace .panel-icon svg{width:15px;height:15px}
+ .workspace .device-search-row .panel-icon{height:var(--desktop-field);width:23px;padding:3px}
+ .workspace .document-toolbar{min-height:25px;height:25px;gap:4px;padding:0}
+ .workspace .document-tabs{min-height:24px;height:24px;gap:1px}
+ .workspace .document-tab{min-width:100px;max-width:260px;min-height:24px;height:24px}
+ .workspace .document-toolbar .tab-select{min-height:22px;height:22px;padding:2px 6px;font-size:10.5px;line-height:16px}
+ .workspace .document-toolbar .tab-close{min-height:22px;height:22px;width:21px;padding:0 3px;font-size:14px;line-height:20px}
+ /* Collapsed panes use only a tab-bar control, never a full-height empty rail. */
+ .workspace{--rail:0px}
+ .workspace.devices-hidden .device-sidebar,.workspace.tools-hidden .inspector{border:0;background:transparent}
+ .workspace.tools-hidden .inspector{overflow:visible}
+ .workspace.devices-hidden .device-sidebar>.device-search-row,.workspace.tools-hidden .inspector>.tool-menu{display:none!important}
+ .workspace .document-toolbar>.panel-tab-toggle{flex:0 0 25px;width:25px;height:24px;min-height:24px;margin:0;padding:3px!important;align-self:flex-start;border:0;border-radius:0;background:transparent}
+ .workspace .document-toolbar>#devicesButton{order:-1;border-right:1px solid var(--border)}
+ .workspace .document-toolbar>#detailsButton{order:3;border-left:1px solid var(--border)}
+ .workspace .document-toolbar>#detailsButton svg{transform:none}
+ .workspace .document-toolbar>.panel-tab-toggle:hover{background:#d9e5ed}
+ .workspace .tools-refined .tool-menu,.workspace .tools-refined:has(#studiesTool) .tool-menu{grid-template-rows:repeat(2,var(--desktop-button));gap:2px;padding:3px}
+ .workspace .tools-refined .tool-menu .tool-tab{height:var(--desktop-button);min-height:var(--desktop-button);font-size:10.5px;line-height:15px;padding:2px 3px}
+ .workspace .selection-footer{min-height:33px;gap:6px;padding:4px 6px}
+ .workspace .selection-footer input{height:var(--desktop-field);font-size:12px;padding:2px 5px}
+ .workspace .selection-footer label,.workspace .selection-footer .footer-net{font-size:var(--desktop-font);gap:4px}
+ .workspace .selection-footer #statusNet:placeholder-shown{font-size:var(--desktop-font)}
+ .workspace .selection-footer .net-clear{height:21px;width:21px;font-size:16px}
+ .workspace .tab-limit-message,.footer{font-size:var(--desktop-small)}
+ .layer-shelf{gap:4px;padding:3px 6px}
+ .layer-shelf button{font-size:10.5px;min-height:22px;height:22px;padding:2px 6px}
+ .appearance-dialog{font:var(--desktop-font)/1.4 'Segoe UI',Arial,sans-serif}
+ .appearance-dialog h2{font-size:14px}
+ .appearance-dialog :is(button,input,select){font-family:inherit;font-size:var(--desktop-font)}
+ .appearance-dialog :is(button,select,input:not([type=color])){min-height:var(--desktop-field);height:var(--desktop-field);padding:2px 6px}
+ .appearance-dialog :is(label,legend){font-size:var(--desktop-font)}
+ .appearance-dialog p,.appearance-dialog small{font-size:var(--desktop-small)}
+ .appearance-dialog input[type=color]{width:34px;min-width:34px;height:22px;padding:1px}
+ .appearance-dialog :is(.profile-select-row,.profile-edit-row){gap:var(--desktop-gap)}
+ .appearance-dialog .appearance-colors label{gap:6px}
+
+ /* Per-tool rules follow here, within this same desktop-only scope. */
+
+/* Desktop tool density. Host wraps this fragment in the desktop/fine-pointer media query.
+   #inspector intentionally beats the inherited 12px rules and later per-tool overrides.
+   Geometry, physical pad drawing and matrix-cell dimensions are deliberately untouched. */
+#inspector :is(.studies-panel,.netcolor-panel,.rffe-panel,.ic-values-panel,.component-search-panel,.board-editor){
+  font-family:'Segoe UI',Arial,sans-serif;
+  font-size:var(--desktop-font);
+  line-height:1.35;
+}
+#inspector :is(.studies-panel,.netcolor-panel,.rffe-panel,.component-search-panel,.board-editor) button{
+  font-family:inherit;
+  font-size:var(--desktop-font);
+  line-height:1.3;
+}
+#inspector :is(.studies-panel,.netcolor-panel,.rffe-panel,.component-search-panel,.board-editor) :is(input,select,textarea){font-family:inherit}
+
+/* Studies: same field rhythm as the other tools; leave ample room for the note. */
+#inspector .studies-panel{padding:6px;gap:var(--desktop-gap)}
+#inspector .studies-panel :is(button,select,input){min-height:var(--desktop-field);padding:2px 5px;font-size:var(--desktop-font)}
+#inspector .studies-panel button{min-height:var(--desktop-button)}
+#inspector .studies-actions{gap:var(--desktop-gap);padding-bottom:var(--desktop-gap)}
+#inspector .studies-actions button{min-height:var(--desktop-button);padding:2px 5px}
+#inspector .study-note-head{min-height:var(--desktop-row);gap:var(--desktop-gap)}
+#inspector .study-note-head strong{font-size:var(--desktop-font);font-weight:600}
+#inspector .study-note-head button{width:var(--desktop-button);height:var(--desktop-button);min-height:var(--desktop-button);font-size:16px;line-height:1;padding:0}
+#inspector .studies-panel textarea{font:var(--desktop-font)/1.5 'Segoe UI',Arial,sans-serif;padding:6px;min-height:120px;flex-basis:120px}
+#inspector .studies-note-tools{gap:var(--desktop-gap)}
+#inspector .studies-panel .study-note-row{min-height:34px;padding:3px 6px;gap:1px}
+#inspector .study-note-row :is(strong,span){font-size:var(--desktop-font)}
+#inspector .studies-empty{padding:8px;font-size:var(--desktop-font)}
+#inspector .studies-foot{font-size:var(--desktop-small);line-height:1.4}
+#inspector .studies-foot small{font-size:var(--desktop-small)}
+
+/* NetColor: exact same row height and type as the device list. */
+#inspector .netcolor-add{padding:6px;gap:var(--desktop-gap)}
+#inspector .netcolor-add>span{font-size:var(--desktop-font);font-weight:600;min-height:15px}
+#inspector .netcolor-panel button{min-height:var(--desktop-button);padding:2px 5px}
+#inspector .netcolor-buttons{gap:var(--desktop-gap)}
+#inspector .netcolor-panel kbd{font-size:var(--desktop-small);margin-left:4px;padding:0 2px}
+#inspector .netcolor-autocolor{min-height:var(--desktop-row);padding:2px 6px;font-size:var(--desktop-font)}
+#inspector .netcolor-list{margin:4px 6px 0}
+#inspector .netcolor-row{height:var(--desktop-row);min-height:var(--desktop-row);gap:var(--desktop-gap);padding:0 4px}
+#inspector .netcolor-panel .netcolor-name{font-size:var(--desktop-font);line-height:18px;height:20px;min-height:20px;padding:0 2px;gap:5px}
+#inspector .netcolor-row input,#inspector .netcolor-actions input,#inspector .netcolor-autocolor input{width:12px;height:12px;min-width:12px;margin:0}
+#inspector .netcolor-actions{padding:4px 6px;gap:var(--desktop-gap);font-size:var(--desktop-font)}
+#inspector .netcolor-palette{padding:5px 6px;gap:var(--desktop-gap)}
+#inspector .netcolor-panel .netcolor-swatch{height:19px;min-height:19px;padding:0}
+#inspector .netcolor-panel .netcolor-custom{margin:0 6px 5px;min-height:var(--desktop-button);padding:2px 7px}
+#inspector .netcolor-empty{padding:8px;font-size:var(--desktop-font)}
+
+/* RFFE: compact model, shared input/button dimensions, consistent table rhythm. */
+#inspector #rffePane{font-size:var(--desktop-font)}
+#inspector #rffePane .rffe-model{padding:5px 6px 3px;gap:6px}
+#inspector #rffePane .rffe-model>span{font-size:var(--desktop-small)}
+#inspector #rffePane .rffe-model input{font-size:12px;line-height:1.25;height:var(--desktop-field);padding:2px 4px}
+#inspector #rffePane .rffe-connection{padding:2px 6px 5px;gap:var(--desktop-gap)}
+#inspector #rffePane .rffe-connection button{height:var(--desktop-button);min-height:var(--desktop-button);padding:2px 5px;font-size:var(--desktop-font)}
+#inspector #rffePane .rffe-connection .rffe-refresh{width:var(--desktop-button);padding:3px}
+#inspector #rffePane .rffe-connection svg{width:13px;height:13px}
+#inspector #rffePane :is(.rffe-connection-state,.rffe-communication-state,.rffe-caption){font-size:var(--desktop-small)}
+#inspector #rffePane .rffe-browser{padding:5px 6px 6px;gap:6px}
+#inspector #rffePane .rffe-buses{gap:var(--desktop-gap)}
+#inspector #rffePane .rffe-bus-list{height:116px;padding:2px}
+#inspector #rffePane .rffe-bus-list button{min-height:var(--desktop-row);height:var(--desktop-row);font-size:var(--desktop-font);line-height:16px;padding:2px 4px}
+#inspector #rffePane .rffe-signals{gap:var(--desktop-gap)}
+#inspector #rffePane .rffe-signal button{min-height:var(--desktop-button);padding:2px 3px;font-size:var(--desktop-font);gap:3px}
+#inspector #rffePane .rffe-signal svg{width:12px;height:12px}
+#inspector #rffePane .rffe-table-title{padding:5px 6px 4px;gap:1px}
+#inspector #rffePane .rffe-table-title>span{font-size:var(--desktop-small)}
+#inspector #rffePane .rffe-table-title strong{font-size:var(--desktop-font);line-height:1.35}
+#inspector #rffePane .rffe-table-wrap{margin:0 6px 5px}
+#inspector #rffePane .rffe-table{font-size:var(--desktop-font)}
+#inspector #rffePane .rffe-table th{font-size:var(--desktop-small);padding:4px 3px;height:var(--desktop-row)}
+#inspector #rffePane .rffe-table td{font-size:var(--desktop-font);padding:3px}
+#inspector #rffePane .rffe-table .rffe-part{font-size:var(--desktop-font);padding:0;min-height:18px;line-height:1.35}
+#inspector #rffePane .rffe-table :is(small,.rffe-result){font-size:var(--desktop-small)}
+#inspector #rffePane .rffe-table input:not([type=checkbox]){height:var(--desktop-row);font-size:var(--desktop-font);padding:2px}
+#inspector #rffePane .rffe-table input.rffe-mark{width:12px;height:12px;margin:3px}
+#inspector #rffePane .rffe-status{font-size:var(--desktop-small);padding:4px 6px;line-height:1.4}
+
+/* Values IC: reduce controls, not the circuit viewport or its pads. */
+#inspector .ic-values-panel .ic-values-context{min-height:24px;padding:3px 6px;gap:6px}
+#inspector .ic-values-panel .ic-values-address{font-size:var(--desktop-font)}
+#inspector .ic-values-panel .ic-values-net,#inspector .ic-values-panel .ic-values-address>span:last-child{font-size:var(--desktop-small)}
+#inspector .ic-values-panel .ic-values-form{padding:5px 6px;gap:var(--desktop-gap)}
+#inspector .ic-values-panel .ic-values-heading strong{font-size:12px}
+#inspector .ic-values-panel .ic-values-heading button{min-height:var(--desktop-button);font-size:var(--desktop-font);padding:2px 6px}
+#inspector .ic-values-panel .ic-values-entry{grid-template-columns:24px minmax(0,1fr) 24px;gap:var(--desktop-gap)}
+#inspector .ic-values-panel .ic-values-entry input{height:27px;min-height:27px;font-size:13px;padding:3px 5px}
+#inspector .ic-values-panel .ic-values-entry button{min-height:27px;font-size:19px;line-height:1;padding:0}
+#inspector .ic-values-panel .ic-values-actions{gap:var(--desktop-gap)}
+#inspector .ic-values-panel .ic-values-actions button{min-height:var(--desktop-button);padding:2px 5px;font-size:var(--desktop-font)}
+#inspector .ic-values-panel .ic-values-readout{font-size:var(--desktop-small);gap:6px}
+#inspector .ic-values-panel .ic-values-readout output{font-size:var(--desktop-font)}
+#inspector .ic-values-panel .ic-edit-scope{font-size:var(--desktop-font)}
+#inspector .ic-values-panel .ic-matrix{margin:0 6px 5px}
+#inspector .ic-values-panel .ic-matrix-toolbar{padding:3px;gap:3px}
+#inspector .ic-values-panel .ic-matrix-toolbar button{min-height:var(--desktop-button);padding:2px 5px;font-size:var(--desktop-font);line-height:16px}
+#inspector .ic-values-panel .ic-values-status{font-size:var(--desktop-small);line-height:1.4;padding:4px 6px}
+
+/* Component search: compact forms and results, retain the four component choices. */
+#inspector .component-search-heading{padding:6px;gap:var(--desktop-gap)}
+#inspector .component-search-heading strong{font-size:12px}
+#inspector .capacitor-search-form{padding:6px;gap:var(--desktop-gap)}
+#inspector .capacitor-search-form :is(label,legend){font-size:var(--desktop-font)}
+#inspector .component-kind legend{margin-bottom:4px}
+#inspector .component-kind-choice span{font-size:var(--desktop-font);padding:3px 2px;min-height:var(--desktop-button);line-height:16px}
+#inspector .capacitor-query-row{gap:var(--desktop-gap)}
+#inspector .capacitor-search-form>input,#inspector .capacitor-query-row input{height:var(--desktop-field);font-size:var(--desktop-font);padding:2px 5px}
+#inspector .component-search-panel button{min-height:var(--desktop-button);padding:2px 5px;font-size:var(--desktop-font)}
+#inspector #capacitorSelectedInfo{font-size:var(--desktop-small);line-height:1.4}
+#inspector .capacitor-search-status{font-size:var(--desktop-small);padding:5px 6px;line-height:1.4}
+#inspector .capacitor-results{padding:0 6px 5px}
+#inspector .capacitor-model{margin-bottom:var(--desktop-gap)}
+#inspector .capacitor-model>summary{padding:4px 6px;min-height:var(--desktop-row)}
+#inspector .capacitor-model>summary strong{font-size:var(--desktop-font)}
+#inspector .capacitor-variant{padding:4px 6px;font-size:var(--desktop-small)}
+#inspector .capacitor-result{padding:5px 6px}
+#inspector .capacitor-result-main{gap:6px}
+#inspector .capacitor-spec{font-size:var(--desktop-font);line-height:1.45}
+#inspector .capacitor-result-actions{gap:5px}
+#inspector .capacitor-result-actions .capacitor-source{font-size:var(--desktop-small);min-height:18px;padding:0}
+#inspector .capacitor-search-foot{font-size:var(--desktop-small);padding:5px 6px;line-height:1.4}
+
+/* Editor keeps all five tabs and familiar form order. Native list options use 11px. */
+#inspector .board-editor-heading{padding:4px 6px;gap:var(--desktop-gap);min-height:var(--desktop-row)}
+#inspector .board-editor-heading strong{font-size:var(--desktop-font)}
+#inspector .board-editor button{min-height:var(--desktop-button);font-size:var(--desktop-font);padding:2px 5px}
+#inspector .board-editor-heading button{font-size:var(--desktop-small);padding:2px 4px}
+#inspector .board-editor-tabs{padding:4px;gap:3px}
+#inspector .board-editor-tabs button{font-size:10.5px;padding:2px 1px;line-height:16px;min-height:var(--desktop-button)}
+#inspector .board-editor-body{padding:6px;gap:6px}
+#inspector .board-editor-body>section{gap:5px}
+#inspector .board-editor form{gap:5px;margin-top:3px}
+#inspector .board-editor :is(input:not([type=checkbox]),select){font-size:var(--desktop-font);padding:2px 5px;border-radius:2px}
+#inspector .board-editor input:not([type=checkbox]){height:var(--desktop-field)}
+#inspector .board-editor select{padding:2px;line-height:18px}
+#inspector .board-editor option{font-size:var(--desktop-font);padding:3px 4px;line-height:16px}
+#inspector .board-editor label{font-size:var(--desktop-font)}
+#inspector .board-editor .editor-check{gap:5px;min-height:var(--desktop-row)}
+#inspector .board-editor .editor-check input{width:12px;height:12px;margin:1px}
+#inspector .board-editor p{font-size:var(--desktop-small);line-height:1.45}
+#inspector .board-editor-actions{gap:var(--desktop-gap)}
+#inspector .board-editor-footer{padding:5px 6px;gap:var(--desktop-gap)}
+#inspector .board-editor-footer p{font-size:var(--desktop-small)}
+#inspector .board-editor-changes{gap:var(--desktop-gap)}
+#inspector .board-editor-changes :is(strong,button){font-size:var(--desktop-font)}
+#inspector .editor-pad-kinds{margin:3px 0;gap:var(--desktop-gap)}
+#inspector .editor-pad-kinds button{padding:3px 2px;font-size:var(--desktop-font);gap:4px}
+#inspector .editor-pad-heading strong{font-size:var(--desktop-font)}
+#inspector .editor-pad-heading button{font-size:var(--desktop-small)}
+#inspector .editor-pad-selection{padding:3px;gap:3px}
+#inspector .board-editor .editor-selected-pad{padding:3px 4px;font-size:var(--desktop-font)}
+#inspector .editor-selected-pad small{font-size:var(--desktop-small)}
+#inspector .board-join-parts{padding-top:5px;gap:var(--desktop-gap)}
+#inspector .board-join-parts>strong,#inspector .board-join-parts>div{font-size:var(--desktop-font)}
+#inspector .board-join-parts>div{padding:4px 5px}
+
+/* Schematic outer controls. The iframe already has its own 11px desktop typography. */
+#inspector .schematic-window-bar{min-height:25px;font-size:var(--desktop-font);padding:1px 3px 1px 6px}
+#inspector .window-actions button{height:23px;min-height:23px;width:23px;font-size:16px;padding:0;line-height:1}
+#inspector .schematic-controls{padding:4px 6px;gap:3px 4px;font-size:var(--desktop-font)}
+#inspector .schematic-controls>select{height:var(--desktop-field);font:var(--desktop-font)/1.3 'Segoe UI',Arial,sans-serif;padding:2px 4px}
+#inspector .schematic-controls button{height:var(--desktop-button);min-height:var(--desktop-button);font-size:var(--desktop-font);padding:2px 5px}
+#inspector #schematicPaneStatus{font-size:var(--desktop-small);line-height:1.4}
+
+/* Welcome hierarchy is compact but still gives the otherwise empty pane a purpose. */
+#inspector .tools-welcome{font-size:var(--desktop-font);padding:12px 9px;gap:12px}
+#inspector .tools-welcome h2{font-size:16px;margin:5px 0 3px}
+#inspector .tools-welcome-kicker{font-size:var(--desktop-small)}
+#inspector .tools-welcome-heading p,#inspector .tools-welcome-copy strong{font-size:var(--desktop-font)}
+#inspector .tools-welcome-copy>span,#inspector .tools-welcome-tip p{font-size:var(--desktop-small);line-height:1.4}
+#inspector .tools-welcome-actions{gap:5px}
+#inspector .tools-welcome-action{min-height:48px;padding:6px;gap:7px}
+#inspector .tools-welcome-icon{height:25px;width:25px;flex-basis:25px}
+#inspector .tools-welcome-icon svg{width:17px;height:17px}
+
+/* Short desktop windows keep the RFFE results table reachable. */
+@media(max-height:620px){#inspector #rffePane .rffe-bus-list{height:72px}}
+@container nexus-tools (max-width:255px){#inspector #rffePane .rffe-signal button{font-size:var(--desktop-small)}}
+@container nexus-tools (max-width:240px){#inspector .board-editor-tabs button{font-size:9px}}
+
+}
