@@ -3,3 +3,35 @@
 html.nexus-landscape91 body :is(input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]):not([type=button]):not([type=submit]),textarea,select){font-size:16px!important}
 html.nexus-landscape91,html.nexus-landscape91 body{height:100%;height:100dvh}
 html.nexus-landscape91 body select:not([multiple]):not([size]){box-sizing:border-box;min-height:30px!important;line-height:20px!important;padding-block:3px!important;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='m1 1 4 4 4-4' fill='none' stroke='%23486170' stroke-width='1.4'/%3E%3C/svg%3E");background-size:10px 6px;background-repeat:no-repeat;background-position:right 6px center;padding-right:22px!important}
+
+/* At the landscape scale a phone uses the wide grid, but its pointer remains
+   coarse. Reuse the desktop docking behavior without retaining empty rails.
+   Expanded panels keep their existing controls and dimensions. */
+html.nexus-landscape91 .workspace{--rail:0px}
+html.nexus-landscape91 .workspace.devices-hidden .device-sidebar,
+html.nexus-landscape91 .workspace.tools-hidden .inspector{
+ width:0;height:0;min-width:0;min-height:0;max-height:0;
+ padding:0;border:0;background:transparent;box-shadow:none;
+}
+html.nexus-landscape91 .workspace.tools-hidden .inspector{overflow:visible}
+html.nexus-landscape91 .workspace.devices-hidden .device-sidebar>.device-search-row,
+html.nexus-landscape91 .workspace.tools-hidden .inspector>.tool-menu{display:none!important}
+/* Keep a floating schematic alive when its containing panel is collapsed. */
+html.nexus-landscape91 .workspace.tools-hidden .inspector>.schematic-panel.floating:not([hidden]){display:flex!important;visibility:visible}
+html.nexus-landscape91 .workspace .document-toolbar{
+ height:27px;min-height:27px;padding:0;gap:0;flex-wrap:nowrap;
+ border-bottom:0;box-shadow:inset 0 -1px var(--border);
+}
+html.nexus-landscape91 .workspace .document-tabs,
+html.nexus-landscape91 .workspace .document-tab{height:27px;min-height:27px}
+html.nexus-landscape91 .workspace .document-toolbar .tab-select,
+html.nexus-landscape91 .workspace .document-toolbar .tab-close{height:25px;min-height:25px}
+html.nexus-landscape91 .workspace .document-toolbar>.panel-tab-toggle{
+ flex:0 0 27px;width:27px!important;height:27px!important;min-height:27px;
+ margin:0;padding:3px!important;align-self:flex-start;
+ border:0;border-radius:0;background:transparent;
+}
+html.nexus-landscape91 .workspace .document-toolbar>#devicesButton{order:-1;border-right:1px solid var(--border)}
+html.nexus-landscape91 .workspace .document-toolbar>#detailsButton{order:3;border-left:1px solid var(--border)}
+html.nexus-landscape91 .workspace .document-toolbar>#detailsButton svg{transform:none}
+html.nexus-landscape91 .workspace .document-toolbar>.panel-tab-toggle:hover{background:#d9e5ed}

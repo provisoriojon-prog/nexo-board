@@ -6,12 +6,21 @@
  let widths={left:220,right:320},drag=null,pending=null,tick=0;
  try{const saved=JSON.parse(localStorage.getItem('jcid-panel-widths-v1'));for(const side of ['left','right'])if(Number.isFinite(saved?.[side]))widths[side]=Math.max(min[side],saved[side]);}catch{}
  const hidden=side=>workspace.classList.contains(side==='left'?'devices-hidden':'tools-hidden');
- const visible=side=>hidden(side)?parseFloat(getComputedStyle(workspace).getPropertyValue('--rail'))||0:widths[side];
+ // Saved widths represent usable panel content. Installed mobile may add a
+ // safe-area gutter outside it; include that gutter only in layout arithmetic.
+ const inset=side=>{
+  if(!document.documentElement.classList.contains('nexo-pwa94'))return 0;
+  const panel=side==='left'?document.querySelector('.device-sidebar'):$('inspector');
+  if(!panel)return 0;
+  const style=getComputedStyle(panel);
+  return (parseFloat(style.paddingLeft)||0)+(parseFloat(style.paddingRight)||0);
+ };
+ const visible=side=>hidden(side)?parseFloat(getComputedStyle(workspace).getPropertyValue('--rail'))||0:widths[side]+inset(side);
  function dockControls(){
   // Reuse the real controls and their handlers; expanded panels retain their layout.
   for(const [side,id,home] of [['left','devicesButton',leftRow],['right','detailsButton',rightMenu]]){
    const button=$(id);if(!button||!home||!tabbar)return;
-   const docked=desktop.matches&&hidden(side),host=docked?tabbar:home;
+   const docked=(desktop.matches||document.documentElement.classList.contains('nexus-landscape91'))&&hidden(side),host=docked?tabbar:home;
    button.classList.toggle('panel-tab-toggle',docked);
    if(button.parentElement!==host){
     const focused=document.activeElement===button;
@@ -21,14 +30,14 @@
   }
  }
  const total=()=>workspace.getBoundingClientRect().width;
- const limit=side=>Math.max(min[side],total()-visible(side==='left'?'right':'left')-gap);
+ const limit=side=>Math.max(min[side],total()-visible(side==='left'?'right':'left')-gap-inset(side));
  function save(){try{localStorage.setItem('jcid-panel-widths-v1',JSON.stringify(widths));}catch{}}
  function render(){
   dockControls();
   if(small.matches)return;
   const room=total()-gap;
   if(visible('left')+visible('right')>room){
-   for(const side of ['right','left'])if(!hidden(side))widths[side]=Math.max(min[side],Math.min(widths[side],room-visible(side==='left'?'right':'left')));
+   for(const side of ['right','left'])if(!hidden(side))widths[side]=Math.max(min[side],Math.min(widths[side],room-visible(side==='left'?'right':'left')-inset(side)));
   }
   workspace.style.setProperty('--left-panel',widths.left+'px');workspace.style.setProperty('--right-panel',widths.right+'px');
   handles.left.style.left=(visible('left')-3)+'px';handles.right.style.right=(visible('right')-3)+'px';
@@ -43,5 +52,5 @@
   for(const name of ['pointerup','pointercancel','lostpointercapture'])h.addEventListener(name,end);
   h.addEventListener('keydown',e=>{let value=widths[side],step=e.shiftKey?50:10;if(e.key==='ArrowLeft')value-=side==='left'?step:-step;else if(e.key==='ArrowRight')value+=side==='left'?step:-step;else if(e.key==='Home')value=min[side];else if(e.key==='End')value=limit(side);else return;e.preventDefault();e.stopPropagation();resize(side,value);save();});
  }
- new ResizeObserver(render).observe(workspace);window.addEventListener('jcid:panels',render);small.addEventListener('change',()=>{end();render();});desktop.addEventListener('change',render);document.addEventListener('DOMContentLoaded',render,{once:true});render();
+ new ResizeObserver(render).observe(workspace);window.addEventListener('jcid:panels',render);window.addEventListener('nexus:mobile-scale',()=>{end();render();});small.addEventListener('change',()=>{end();render();});desktop.addEventListener('change',render);document.addEventListener('DOMContentLoaded',render,{once:true});render();
 })();

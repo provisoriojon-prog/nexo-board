@@ -1,0 +1,109 @@
+/* Installed mobile owns its safe-area shell. Canvas backgrounds reach the
+   screen edges; only interactive content is inset, including landscape .6. */
+html.nexo-pwa94 {
+  --nexo-safe-top: env(safe-area-inset-top, 0px);
+  --nexo-safe-right: env(safe-area-inset-right, 0px);
+  --nexo-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --nexo-safe-left: env(safe-area-inset-left, 0px);
+  --nexo-status-clearance: 8px;
+  background: #edf2f6;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+html.nexo-pwa94 body {
+  position: fixed;
+  inset: 0;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: calc(var(--nexo-safe-top) + var(--nexo-status-clearance)) 0 0;
+  background: #edf2f6;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+/* Keep the reserved top opaque even while the map/panels scroll or focus mode
+   hides the ribbon. No interactive control is placed under the iOS status UI. */
+html.nexo-pwa94 body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--nexo-safe-top) + var(--nexo-status-clearance));
+  background: #edf2f6;
+  pointer-events: none;
+  z-index: 90;
+}
+html.nexo-pwa94 .workspace { min-height: 0; }
+html.nexo-pwa94 .workbench-ribbon {
+  padding-left: calc(8px + var(--nexo-safe-left));
+  padding-right: calc(8px + var(--nexo-safe-right));
+}
+html.nexo-pwa94 .layer-shelf {
+  padding-left: calc(8px + var(--nexo-safe-left));
+  padding-right: calc(8px + var(--nexo-safe-right));
+}
+html.nexo-pwa94 .workspace .document-toolbar {
+  padding-left: var(--nexo-safe-left);
+  padding-right: var(--nexo-safe-right);
+}
+/* Portrait keeps its overlay controls. Their reserved tab spaces must remain
+   while the landscape controls are docked directly alongside the tabs. */
+@media (max-width:900px) {
+  html.nexo-pwa94:not(.nexus-landscape91) .workspace .document-toolbar {
+    padding-left: calc(41px + var(--nexo-safe-left));
+    padding-right: calc(41px + var(--nexo-safe-right));
+  }
+}
+html.nexo-pwa94 .workspace:not(.devices-hidden) .device-sidebar {
+  padding-left: var(--nexo-safe-left);
+}
+html.nexo-pwa94 .workspace:not(.tools-hidden) .inspector {
+  padding-right: var(--nexo-safe-right);
+}
+@media (min-width:901px) {
+  /* Safe margins belong outside the panel's usable width. A notch must not
+     squeeze a 320px tool panel into a narrow column or shift its resize grip. */
+  html.nexo-pwa94 .workspace {
+    --nexo-left-extent: calc(var(--left-panel) + var(--nexo-safe-left));
+    --nexo-right-extent: calc(var(--right-panel) + var(--nexo-safe-right));
+    grid-template-columns: var(--nexo-left-extent) minmax(0,1fr) var(--nexo-right-extent);
+  }
+  html.nexo-pwa94 .workspace.devices-hidden { --nexo-left-extent: var(--rail); }
+  html.nexo-pwa94 .workspace.tools-hidden { --nexo-right-extent: var(--rail); }
+  html.nexo-pwa94 .workspace:not(.devices-hidden) .document-toolbar { padding-left: 0; }
+  html.nexo-pwa94 .workspace:not(.tools-hidden) .document-toolbar { padding-right: 0; }
+  html.nexo-pwa94 .workspace:not(.devices-hidden) .selection-footer { padding-left: 8px; }
+  html.nexo-pwa94 .workspace:not(.tools-hidden) .selection-footer { padding-right: 8px; }
+}
+html.nexo-pwa94 .selection-footer {
+  padding-block: 5px;
+  padding-left: calc(8px + var(--nexo-safe-left));
+  padding-right: calc(8px + var(--nexo-safe-right));
+  flex-shrink: 0;
+}
+/* The bar background reaches the screen edge; only its contents are inset.
+   This replaces the former empty body padding below the whole application. */
+html.nexo-pwa94 .nexus-app-status {
+  flex: 0 0 auto;
+  min-height: calc(38px + var(--nexo-safe-bottom));
+  padding: 3px 12px calc(3px + var(--nexo-safe-bottom));
+  padding-left: calc(12px + var(--nexo-safe-left));
+  padding-right: calc(12px + var(--nexo-safe-right));
+  gap: 8px;
+  align-items: center;
+  background: #edf2f6;
+}
+html.nexo-pwa94 .nexus-app-status #nexusAppState {
+  min-width: 0;
+  line-height: 20px;
+}
+html.nexo-pwa94 .nexus-app-status .nexus-focus-button {
+  margin: 0;
+  flex: 0 0 36px;
+  width: 36px;
+  min-width: 36px;
+  height: 32px;
+  min-height: 32px;
+}

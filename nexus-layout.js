@@ -16,15 +16,17 @@
   if (mobile.addEventListener) mobile.addEventListener('change', renderStatus);
   else mobile.addListener(renderStatus);
   let activity = null;
+  const mobileStatus = () => mobile.matches || document.documentElement.classList.contains('nexo-pwa94');
+  window.addEventListener('nexo:pwa-mode', renderStatus);
   function selectedNetName(){
     if(document.body.classList.contains('board-loading')||document.body.classList.contains('source-mode'))return '';
     const field=$('statusNet');
     return field?.readOnly&&!field.disabled?field.value:'';
   }
   function renderStatus() {
-    status.classList.toggle('is-net-status',mobile.matches);
-    $('nexusAppMode').hidden=mobile.matches;
-    if(mobile.matches){
+    status.classList.toggle('is-net-status',mobileStatus());
+    $('nexusAppMode').hidden=mobileStatus();
+    if(mobileStatus()){
       const name=selectedNetName();
       $('nexusAppState').textContent=name||'Selecione uma linha';
       $('nexusAppState').title=name;
