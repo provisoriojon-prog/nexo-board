@@ -1,0 +1,38 @@
+/* Adjustable desktop panes and the persistent schematic tool. */
+.main{overflow:hidden}
+.selection-footer #statusPad{font-weight:700}
+.panel-bottom{display:flex;align-items:center;justify-content:flex-end;flex:0 0 auto;min-height:29px;margin-top:auto;padding:2px 4px;border-top:1px solid #c5d2db;background:#e8eff4}
+.inspector>.panel-bottom{justify-content:flex-start}
+.panel-bottom .panel-icon{height:24px;width:25px}
+.source-mode #inspector>.panel-bottom{display:flex}
+.devices-hidden .device-sidebar>.panel-bottom,.tools-hidden .inspector>.panel-bottom{display:flex!important;justify-content:center;padding:2px 3px;border:0}
+.device-sidebar>.device-search{padding-top:4px}
+.panel-resizer{position:absolute;top:0;bottom:0;width:7px;z-index:45;cursor:col-resize;touch-action:none;outline:none}
+.panel-resizer:hover,.panel-resizer:focus-visible,.panel-resizer.dragging{background:#218aa65c;box-shadow:inset 1px 0 #257e9e,inset -1px 0 #257e9e}
+.workspace.panels-resizing,.workspace.panels-resizing *{cursor:col-resize!important;user-select:none!important}
+.workspace.panels-resizing iframe{pointer-events:none}
+.schematic-tools{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;padding:0;background:#edf2f5}
+.schematic-tools .pane-heading{flex:0 0 auto}
+.tool-menu{display:flex;flex:0 0 auto;gap:3px;align-items:center;padding:3px 4px;border-bottom:1px solid #b5c6d2;background:#e1eaf0;overflow-x:auto}
+.tool-menu .tool-tab{height:23px;min-height:23px;padding:1px 9px;border-radius:2px;font:12px 'Segoe UI',sans-serif;border:1px solid #aebfc9;background:#f7f9fa;white-space:nowrap}
+.tool-menu .tool-tab[aria-pressed=true]{background:#c6e5ee;border-color:#579bb1;box-shadow:inset 0 -2px #35859f}
+.schematic-panel{display:flex;flex:1;min-width:0;min-height:0;flex-direction:column;background:#e7edf1;overflow:hidden}
+.schematic-panel[hidden]{display:none!important}
+.schematic-window-bar{display:flex;align-items:center;justify-content:space-between;flex:0 0 auto;gap:3px;min-height:27px;padding:1px 3px 1px 7px;background:#e8f0f5;border-bottom:1px solid #bdcdd7;font-size:11px;color:#365268;user-select:none}
+.schematic-window-bar>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.window-actions{display:flex;gap:1px;flex-shrink:0}
+.window-actions button{height:24px;min-height:24px;width:26px;padding:0;border:0;border-radius:2px;background:transparent;color:#355e74;font-size:17px;line-height:1}
+.window-actions button:hover{background:#cee0eb}.window-actions #closeSchematic:hover{background:#d85656;color:white}
+.schematic-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:3px 5px;flex:0 0 auto;padding:5px 6px 4px;min-height:27px;border-bottom:1px solid #c6d3dc;background:#edf3f6;font-size:11px}
+.schematic-controls>select{width:100%;min-width:0;height:24px;padding:2px 4px;border:1px solid #bdccd6;border-radius:3px;background:#fff;font:11px 'Segoe UI',Arial,sans-serif;color:#304857}
+.schematic-controls button{font-size:11px;padding:1px 7px;min-height:21px;height:21px;flex-shrink:0;border-radius:2px}
+.schematic-controls button[aria-pressed=true]{background:#d3eaf0;border-color:#68a0b5;color:#245b70}
+#schematicPaneStatus{grid-column:1/-1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#647d8b;font-size:10px;line-height:14px}
+#schematicFrame{display:block;width:100%;min-height:0;flex:1;border:0;background:#687782}
+.schematic-panel.floating{position:fixed;z-index:100;flex:none;resize:both;min-width:300px;min-height:240px;max-width:calc(100vw - 12px);max-height:calc(100dvh - 12px);border:1px solid #688fa7;border-radius:4px;box-shadow:0 9px 34px #122b4d55}
+.schematic-panel.floating .schematic-window-bar{cursor:move;touch-action:none;background:#d8e8f3}
+.schematic-panel.window-dragging iframe{pointer-events:none}
+.source-mode #inspector>.tool-menu{display:flex}
+.source-mode #inspector>.schematic-panel:not([hidden]){display:flex}
+.tools-hidden .inspector>.schematic-panel.floating:not([hidden]){display:flex!important}
+@media(max-width:900px){.panel-resizer{display:none}.schematic-tools.inspector{width:min(600px,calc(100vw - 42px))}.tools-hidden .schematic-tools.inspector{width:40px}.tool-menu .tool-tab{height:28px;min-height:28px}.schematic-window-bar{min-height:30px}.window-actions button{width:30px;height:28px;min-height:28px}.schematic-panel.floating{min-width:min(300px,calc(100vw - 12px));min-height:230px}}

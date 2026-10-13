@@ -1,0 +1,7 @@
+.library-sync-actions66{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.library-sync-summary66{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.library-sync-summary66>div{padding:10px 12px;background:#fff;border:1px solid #cbdce3;border-radius:6px}
+.library-sync-summary66 dt{font-size:11px;color:#59727f}.library-sync-summary66 dd{margin:2px 0 0;font-weight:600;font-size:16px}
+#librarySyncFull66{color:#35576a;background:transparent;border:1px solid #b3c8d3;font-size:12px}
+#librarySyncConfirm65{border-color:#aacddc;background:#edf6fa}
+#librarySyncSaving66{color:#295e73}

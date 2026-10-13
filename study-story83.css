@@ -1,0 +1,58 @@
+/* Studies: one typography scale, aligned controls, no technical source chrome. */
+#functionStudiesPane #studyMode83,#studyJourney83,#storyCard83{--story-font:10.5px;--story-control:26px;font-family:'Segoe UI',Arial,sans-serif;font-size:var(--story-font);line-height:1.4}
+#functionStudiesPane #studyMode83{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:0 0 6px}
+#functionStudiesPane #studyMode83 button{height:var(--story-control);min-height:var(--story-control);padding:2px 5px;font:inherit;line-height:1.4;background:#e8eff5;color:#496576;border:1px solid #c3d2df;border-radius:3px;white-space:nowrap}
+#functionStudiesPane #studyMode83 button[aria-pressed=true]{background:#e5e2f3;color:#57437f;border-color:#b3a5d0;box-shadow:inset 0 -2px #937bc0}
+#studyJourney83[hidden],#studyAnalysis83[hidden],#storyCard83[hidden]{display:none!important}
+.story83-heading{display:flex;align-items:center;gap:6px;min-width:0;margin-bottom:5px}
+.story83-counter{flex:none;color:#728292;font:inherit;font-variant-numeric:tabular-nums;line-height:1.4;white-space:nowrap}
+#functionStudiesPane #storyStep83{flex:1;min-width:0;width:0;height:var(--story-control);min-height:var(--story-control);padding:2px 4px;background:#fff;border:1px solid #c3d2df;border-radius:3px;color:#38516a;font:inherit;line-height:1.4}
+.story83-transport{display:flex;align-items:center;gap:8px;min-width:0}
+.story83-controls{display:grid;grid-template-columns:var(--story-control) var(--story-control) minmax(var(--story-control),1fr) var(--story-control) var(--story-control);gap:4px;flex:1;min-width:0;align-items:center}
+#functionStudiesPane #studyJourney83 .story83-controls button{display:flex;align-items:center;justify-content:center;gap:4px;min-width:0;height:var(--story-control);min-height:var(--story-control);padding:2px 3px;border:1px solid #bdcad8;border-radius:4px;background:#f7fafc;color:#536477;font:inherit;line-height:1.4;white-space:nowrap;cursor:pointer}
+#functionStudiesPane #studyJourney83 .story83-controls button[data-story-action=play]{background:#e6e1f3;border-color:#b9a8d7;color:#5e4687}
+.story83-controls button:disabled{opacity:.35;cursor:default!important}
+.story83-controls button span{min-width:0;overflow:hidden;text-overflow:ellipsis;font:inherit;line-height:1.4}
+#functionStudiesPane .study-playback-icon{display:block;flex:none;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#functionStudiesPane [data-story-action=play] .study-playback-icon rect{fill:currentColor;stroke:none}
+#functionStudiesPane #studyJourney83 .story89-loop{display:flex;align-items:center;flex:none;gap:4px;height:var(--story-control);margin:0;padding:0;color:#627488;font:inherit;line-height:1.4;white-space:nowrap;cursor:pointer;user-select:none}
+#functionStudiesPane #studyJourney83 .story89-loop input{appearance:auto;display:block;flex:none;width:13px;height:13px;min-width:13px;min-height:13px;margin:0;padding:0;accent-color:#8166b0;cursor:pointer}
+.story83-progress{height:2px;margin:6px 0 8px;overflow:hidden;border-radius:2px;background:#dde5ed}
+.story83-progress i{display:block;width:100%;height:100%;background:#9277c2;transform-origin:left;transform:scaleX(0)}
+.story83-copy{padding:0 0 6px;margin:0 0 6px;border-bottom:1px solid #d3dfe7}
+.story83-title{margin:0;min-width:0;color:#423852;font:inherit;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+.story83-summary{margin:5px 0 0;color:#3b5467;font:inherit;line-height:1.5;overflow-wrap:anywhere}
+.story83-direction{margin:3px 0 0;color:#6c7e8d;font:inherit;line-height:1.4}
+.story83-direction[data-role=in]{color:#26774a}.story83-direction[data-role=out]{color:#b13f49}
+.story84-detail{margin:0;color:#587080;font:inherit;line-height:1.5}
+.story84-detail>summary{display:list-item;padding:3px 0;color:#506878;font:inherit;font-weight:600;line-height:1.4;cursor:pointer}
+.story84-detail p{margin:5px 0 7px;font:inherit;line-height:1.5;overflow-wrap:anywhere}
+.story84-detail p:empty,.story84-detail ul:empty,.story84-detail div:empty{display:none}
+.story84-terminals{display:flex;gap:4px;flex-wrap:wrap;margin:0 0 7px}
+#functionStudiesPane #studyJourney83 .story84-terminals button{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;min-height:var(--story-control);padding:3px 5px;background:#f5f8fb;border:1px solid #c8d5df;border-left:3px solid var(--terminal-color);border-radius:3px;color:#3d566a;cursor:pointer;text-align:left;font:inherit;line-height:1.4}
+.story84-terminals strong{flex:none;font:inherit;font-weight:600}.story84-terminals span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:inherit}
+.story84-signals{display:grid;gap:4px;margin-bottom:7px}.story84-signals>div{display:grid;gap:1px;padding:3px 0;border-bottom:1px solid #d8e2e9;overflow-wrap:anywhere}
+.story84-signals strong{color:#3b5c71;font:inherit;font-weight:600}.story84-signals span{color:#677e8d;font:inherit}
+.story84-dependencies{margin:5px 0 7px;padding-left:15px}.story84-dependencies li{margin:3px 0}
+.story84-observation{color:#687b8b}
+/* Passive caption: all interaction remains in the sidebar. */
+#storyCard83{--story-font:12px;position:absolute;z-index:8;left:50%;bottom:10px;width:min(480px,calc(100% - 24px));max-height:calc(100% - 18px);box-sizing:border-box;transform:translateX(-50%);overflow:hidden;padding:8px 12px;border:1px solid #c4cddb80;border-radius:8px;background:rgba(249,251,254,.96);box-shadow:0 2px 10px #09233918;color:#36536a;user-select:none;pointer-events:none}
+#storyCard83:not([hidden]){display:block}
+.story83-cardhead{display:flex;align-items:baseline;gap:10px;min-width:0}
+#storyCard83 .story83-cardhead .story83-title{flex:1;color:#344b5c;font-size:inherit;font-weight:600;line-height:1.4}
+#storyCard83 .story83-counter{font-size:10.5px;color:#7c8c98}
+#storyCard83 .story83-summary{margin:3px 0 0;color:#516775;font:inherit;line-height:1.45}
+#storyCard83.story89-tight{bottom:5px;padding-top:5px;padding-bottom:5px}
+#studyJourney83 :is(button,input,select,summary):focus-visible,#studyMode83 button:focus-visible{outline:2px solid #9977c7;outline-offset:2px}
+@media(max-width:900px),(pointer:coarse){
+ #functionStudiesPane #studyMode83,#studyJourney83,#storyCard83{--story-font:12px;--story-control:32px}
+ #functionStudiesPane .study-playback-icon{width:16px;height:16px}
+ #storyCard83{bottom:8px;width:min(480px,calc(100% - 16px));padding:7px 10px}
+ #storyCard83 .story83-cardhead{gap:8px}
+ #functionStudiesPane #studyJourney83 .story89-loop input{width:14px;height:14px;min-width:14px;min-height:14px}
+}
+@container nexus-tools (max-width:285px){
+ #functionStudiesPane #studyJourney83 .story83-controls button[data-story-action=play] span{display:none}
+ #functionStudiesPane #studyJourney83 .story83-transport{gap:5px}
+}
+

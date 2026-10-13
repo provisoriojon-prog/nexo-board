@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">NEXO MOBILE</title><desc id="desc">N em ciano desenhado como uma conexão de circuito, sobre azul profundo.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#173f56"/><stop offset="1" stop-color="#071827"/></linearGradient><linearGradient id="ink" x2="1" y2="1"><stop stop-color="#c2ffff"/><stop offset=".48" stop-color="#64eaf2"/><stop offset="1" stop-color="#27c3e2"/></linearGradient></defs>
+<path fill="url(#bg)" d="M0 0h512v512H0z"/>
+<g fill="none" stroke="#74cadb" stroke-width="3" opacity=".10"><path d="M0 105h65l34 34v57h43M512 407h-75l-30-30v-48h-35M100 512v-55l34-34h59M412 0v55l-30 30h-64"/><circle cx="142" cy="196" r="7"/><circle cx="372" cy="329" r="7"/></g>
+<rect x="34" y="34" width="444" height="444" rx="106" fill="none" stroke="#c2ffff" stroke-width="2" opacity=".07"/>
+<path d="M162 352V160l188 192V160" fill="none" stroke="url(#ink)" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="url(#ink)"><circle cx="162" cy="160" r="34"/><circle cx="350" cy="352" r="34"/></g>
+<circle cx="162" cy="160" r="11" fill="#15394f"/><circle cx="350" cy="352" r="11" fill="#0c2638"/>
+<circle cx="383" cy="128" r="16" fill="#ffc76b"/>
+</svg>
